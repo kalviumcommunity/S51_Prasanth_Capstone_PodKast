@@ -18,7 +18,7 @@ PodKast is a sophisticated social media platform designed exclusively for podcas
 - **Database**: MongoDB provides a scalable and flexible database solution for storing user data and podcast information.
 - **Authentication**: JWT tokens ensure secure authentication and authorization for user sessions.
 - **Cloud Integration**: Utilizes Firebase Storage for secure cloud storage of podcast audio files.
-- **Deployment**: Deployed on Heroku for backend services and Firebase Hosting for frontend deployment.
+- **Deployment**: Deployed on Render for backend services and Netlify Hosting for frontend deployment.
 
 ## Installation
 
