@@ -1,0 +1,36 @@
+{
+  "name": "podkast",
+  "version": "1.0.0",
+  "description": "PodKast is a sophisticated social media platform designed exclusively for podcast enthusiasts. It offers a seamless user experience for discovering, sharing, and engaging with your favorite podcasts and connecting with fellow enthusiasts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalviumcommunity/S51_Prasanth_Capstone_PodKast.git"
+  },
+  "keywords": [
+    "podcast",
+    "audio",
+    "streaming"
+  ],
+  "author": "Prasanth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kalviumcommunity/S51_Prasanth_Capstone_PodKast/issues"
+  },
+  "homepage": "https://github.com/kalviumcommunity/S51_Prasanth_Capstone_PodKast#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
