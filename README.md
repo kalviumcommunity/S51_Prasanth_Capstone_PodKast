@@ -41,7 +41,7 @@ PodKast is a sophisticated social media platform designed exclusively for podcas
 
     ```plaintext
     PORT=3000
-    MONGODB_URI=your_mongodb_connection_string
+    MONGO_URI=your_mongodb_connection_string
     FIREBASE_API_KEY=your_firebase_api_key
     
     and more...
