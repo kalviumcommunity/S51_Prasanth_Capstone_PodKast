@@ -1,13 +1,29 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+require("dotenv").config();
+const { startDatabase, isConnected } = require("./config/db");
+
 const app = express();
-require('dotenv').config();
+const port = process.env.PORT || 5000;
 
-const port = process.env.PORT || 5000
+app.use(bodyParser.json());
+app.use(cors());
 
-app.get("/", (res, req) => {
-  req.send({ message: "Hello World!" });
+app.get("/", (req, res) => {
+  const databaseStatus = isConnected() ? "connected" : "disconnected";
+  const message = isConnected()
+    ? "Welcome to PodKast! Your podcast social media platform is up and running smoothly."
+    : `Oops! It seems like there's an issue with the database connection. We're working to resolve it as soon as possible. Please check back later.`;
+
+  res.json({
+    message: message,
+    database: databaseStatus,
+  });
 });
 
+// Start the server
 app.listen(port, async () => {
-  console.log(`🚀 server running on PORT: ${port}`);
+  await startDatabase();
+  console.log(`🚀 Server running on PORT: ${port}`);
 });
