@@ -1,0 +1,57 @@
+/* Navbar Style Start */
+
+nav{
+    width: 70px;
+    height: 100%;
+    position: fixed;
+    background-color: #2D264B;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar-section-logo-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-section-logo-area img{
+    width: 50px;
+    height: 40px;
+}
+
+.navbar-section-menus-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-menu-active{
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgb(161, 161, 161);
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    cursor: pointer;
+}
+
+.navbar-menu-in-active{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    cursor: pointer;
+}
+
+
+/* Navbar Style End */
