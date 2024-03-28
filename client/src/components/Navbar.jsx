@@ -56,37 +56,41 @@ function Navbar() {
 
   return (
     <>
-      <nav>
-        <div className="navbar-section-logo-area">
-          <img src={Logo} alt="" />
-        </div>
-        <div className="navbar-section-menus-area">
-          {Object.keys(iconComponentMap).map((icon) => (
-            <div
-              key={icon}
-              className={
-                activeIcon === icon
-                  ? "navbar-menu-active"
-                  : "navbar-menu-in-active"
-              }
-              onClick={() => handleIconClick(icon)}
-            >
-              <img
-                src={
+      <div className="navbar-container">
+        <nav>
+          <div className="navbar-section-logo-area">
+            <img src={Logo} alt="" />
+          </div>
+          <div className="navbar-section-menus-area">
+            {Object.keys(iconComponentMap).map((icon) => (
+              <div
+                key={icon}
+                className={
                   activeIcon === icon
-                    ? iconComponentMap[icon].icon.dark
-                    : iconComponentMap[icon].icon.light
+                    ? "navbar-menu-active"
+                    : "navbar-menu-in-active"
                 }
-                alt={`${icon}-icon`}
-              />
-            </div>
-          ))}
+                onClick={() => handleIconClick(icon)}
+              >
+                <img
+                  src={
+                    activeIcon === icon
+                      ? iconComponentMap[icon].icon.dark
+                      : iconComponentMap[icon].icon.light
+                  }
+                  alt={`${icon}-icon`}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="navbar-login-content-area">
+            <img src={UserIcon} alt="user-icon" />
+          </div>
+        </nav>
+        <div className="content">
+          {React.createElement(iconComponentMap[activeIcon].component)}
         </div>
-        <div className="navbar-login-content-area">
-          <img src={UserIcon} alt="user-icon" />
-        </div>
-      </nav>
-      {React.createElement(iconComponentMap[activeIcon].component)}
+      </div>
     </>
   );
 }
