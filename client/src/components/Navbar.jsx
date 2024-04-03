@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Components
 import HomeComponent from "./HomeComponent";
@@ -22,11 +22,12 @@ import GameDarkIcon from "../assets/Icons/PS5-Dark.svg";
 import SettingIocn from "../assets/Icons/Setting.svg";
 import SettingDarkIcon from "../assets/Icons/Setting-Dark.svg";
 import UserIcon from "../assets/Icons/Profile.svg";
+import LoginComponent from "./LoginComponent";
 
 function Navbar() {
   const [activeIcon, setActiveIcon] = useState("home");
+  const [showPopup, setShowPopup] = useState(false);
 
-  // Map icon names to corresponding components
   const iconComponentMap = {
     home: {
       component: HomeComponent,
@@ -53,6 +54,23 @@ function Navbar() {
   const handleIconClick = (icon) => {
     setActiveIcon(icon);
   };
+
+  const togglePopup = () => {
+    setShowPopup((prevShowPopup) => !prevShowPopup);
+  };
+
+  const closePopupOnEsc = (event) => {
+    if (event.keyCode === 27) {
+      setShowPopup(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", closePopupOnEsc);
+    return () => {
+      window.removeEventListener("keydown", closePopupOnEsc);
+    };
+  }, []);
 
   return (
     <>
@@ -84,8 +102,9 @@ function Navbar() {
             ))}
           </div>
           <div className="navbar-login-content-area">
-            <img src={UserIcon} alt="user-icon" />
+            <img src={UserIcon} alt="user-icon" onClick={togglePopup}/>
           </div>
+          {showPopup && <div className="navbar-component-popup-area"><LoginComponent/></div>}
         </nav>
         <div className="content">
           {React.createElement(iconComponentMap[activeIcon].component)}
