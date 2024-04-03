@@ -77,6 +77,21 @@ nav {
   background-color: #222222;
 }
 
+.navbar-component-popup-area{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #222222;
+  padding: 10px;
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 1px, rgba(255, 255, 255, 0.13) 0px 0px 1px 1px;
+  border-radius: 10px;
+}
+
+.navbar-login-content-area{
+  cursor: pointer;
+}
+
 /* Navbar Style End */
 
 /* Onboarding Component Style Start */
@@ -195,3 +210,111 @@ nav {
 }
 
 /* Onboarding Component Style End */
+
+/* Login Component Style Start */
+
+.login-component-logo-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-component-logo-area p{
+  color: white;
+  font-size: x-small;
+}
+
+.login-component-logo-area img{
+  width: 150px;
+}
+
+.login-component-login-fields-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.login-component-username-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.login-component-username-area label{
+  font-size: smaller;
+}
+
+.login-component-username-area input{
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  height: 5vh;
+  width: 20vw;
+}
+
+.login-component-password-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.login-component-password-area label{
+  font-size: smaller;
+}
+
+.login-component-password-area input{
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  height: 5vh;
+  width: 20vw;
+}
+
+.login-component-submit-button-area{
+  width: 20vw;
+  height: 5vh;
+}
+
+.login-component-submit-button-area button{
+  width: 100%;
+  height: 100%;
+  color: white;
+  border: none;
+  background-color: #4caf50;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.login-component-register-call-to-action-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-component-register-call-to-action-area p{
+  font-size: smaller;
+}
+
+.login-component-register-call-to-action-area a{
+  outline: none;
+  text-decoration: none;
+  color: orange;
+}
+
+/* Login Component Style End */
