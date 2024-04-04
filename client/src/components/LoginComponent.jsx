@@ -5,10 +5,11 @@ import "react-toastify/dist/ReactToastify.css";
 import Logo from "../assets/logo-full.png";
 import { jwtDecode } from "jwt-decode"; // Import jwtDecode library
 
-function LoginComponent() {
+function LoginComponent({ onLoginSuccess }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(true);
+  const [userAvatar, setUserAvatar] = useState(null);
 
   useEffect(() => {
     // Check if token exists in local storage and is valid
@@ -37,8 +38,23 @@ function LoginComponent() {
       localStorage.setItem("token", token);
       toast.success("Login successful!");
       setIsPopupOpen(false);
+      await fetchUserAvatar(username, token); // Fetch user avatar after successful login
+      onLoginSuccess(userAvatar); // Call onLoginSuccess callback
     } catch (error) {
       toast.error("Invalid username or password");
+    }
+  };
+
+  const fetchUserAvatar = async (username, token) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/users/get/${username}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUserAvatar(response.data.avatar);
+    } catch (error) {
+      console.error("Error fetching user avatar:", error);
     }
   };
 
