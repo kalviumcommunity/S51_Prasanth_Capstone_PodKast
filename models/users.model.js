@@ -50,10 +50,14 @@ const userSchema = new mongoose.Schema({
   publicProfile: {
     type: publicProfileSchema,
     required: true
+  },
+  password: {
+    type: String,
+    required: true
   }
 });
 
 // Create the User model
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('users', userSchema);
 
 module.exports = User;
