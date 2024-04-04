@@ -3,11 +3,13 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
 const { startDatabase, isConnected } = require("./config/db");
+const { getRouter } = require('./routes/routes');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
+app.use("/api", getRouter);
 app.use(cors());
 
 app.get("/", (req, res) => {
