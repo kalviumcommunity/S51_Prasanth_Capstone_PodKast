@@ -1,19 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Logo from "../assets/logo-full.png";
+import { jwtDecode } from "jwt-decode"; // Import jwtDecode library
 
 function LoginComponent() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isPopupOpen, setIsPopupOpen] = useState(true); // Track popup state
+  const [isPopupOpen, setIsPopupOpen] = useState(true);
+
+  useEffect(() => {
+    // Check if token exists in local storage and is valid
+    const token = localStorage.getItem("token");
+    if (token) {
+      // Validate the token (e.g., check expiration)
+      // If the token is expired, remove it from local storage
+      const decodedToken = jwtDecode(token); // Use jwtDecode instead of jwt.decode
+      if (decodedToken && decodedToken.exp * 1000 < Date.now()) {
+        localStorage.removeItem("token");
+      } else {
+        // Token is valid, close the popup
+        setIsPopupOpen(false);
+      }
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/login", { username, password });
-      console.log(response.data);
+      const response = await axios.post(
+        "https://s51-prasanth-capstone-podkast.onrender.com/api/login",
+        { username, password }
+      );
+      const { token } = response.data;
+      localStorage.setItem("token", token);
       toast.success("Login successful!");
       setIsPopupOpen(false);
     } catch (error) {
@@ -23,7 +44,7 @@ function LoginComponent() {
 
   return (
     <>
-      {isPopupOpen && ( 
+      {isPopupOpen && (
         <div className="login-component">
           <div className="login-component-logo-area">
             <p>Press (ESC) to close the popup</p>

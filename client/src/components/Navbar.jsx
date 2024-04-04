@@ -102,9 +102,13 @@ function Navbar() {
             ))}
           </div>
           <div className="navbar-login-content-area">
-            <img src={UserIcon} alt="user-icon" onClick={togglePopup}/>
+              <img src={UserIcon} alt="user-icon" onClick={togglePopup} />
           </div>
-          {showPopup && <div className="navbar-component-popup-area"><LoginComponent/></div>}
+          {showPopup && (
+            <div className="navbar-component-popup-area">
+              <LoginComponent />
+            </div>
+          )}
         </nav>
         <div className="content">
           {React.createElement(iconComponentMap[activeIcon].component)}
