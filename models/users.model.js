@@ -47,6 +47,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  avatar:  {
+    type: String,
+    required: true
+  },
   publicProfile: {
     type: publicProfileSchema,
     required: true

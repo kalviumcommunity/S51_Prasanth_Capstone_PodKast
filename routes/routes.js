@@ -12,3 +12,27 @@ app.use((req, res, next) => {
   next();
 });
 
+getRouter.get("/get", async (req, res) => {
+  res.header({ "Access-Control-Allow-Origin": "*" });
+  try {
+    const captions = await User.find();
+    res.status(200).json(captions);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+getRouter.get("/get/:publicUserID", async (req, res) => {
+  res.header({ "Access-Control-Allow-Origin": "*" });
+  try {
+    const { publicUserID } = req.params;
+    const caption = await User.findOne({ publicUserID: publicUserID });
+    res.status(200).json(caption);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+module.exports = { getRouter, postRouter };
