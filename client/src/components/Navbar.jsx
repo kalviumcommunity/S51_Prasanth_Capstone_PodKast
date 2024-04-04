@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 // Components
 import HomeComponent from "./HomeComponent";
@@ -24,9 +25,10 @@ import SettingDarkIcon from "../assets/Icons/Setting-Dark.svg";
 import UserIcon from "../assets/Icons/Profile.svg";
 import LoginComponent from "./LoginComponent";
 
-function Navbar() {
+function Navbar({ userAvatar }) {
   const [activeIcon, setActiveIcon] = useState("home");
   const [showPopup, setShowPopup] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const iconComponentMap = {
     home: {
@@ -72,49 +74,55 @@ function Navbar() {
     };
   }, []);
 
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
   return (
-    <>
-      <div className="navbar-container">
-        <nav>
-          <div className="navbar-section-logo-area">
-            <img src={Logo} alt="" />
-          </div>
-          <div className="navbar-section-menus-area">
-            {Object.keys(iconComponentMap).map((icon) => (
-              <div
-                key={icon}
-                className={
-                  activeIcon === icon
-                    ? "navbar-menu-active"
-                    : "navbar-menu-in-active"
-                }
-                onClick={() => handleIconClick(icon)}
-              >
-                <img
-                  src={
-                    activeIcon === icon
-                      ? iconComponentMap[icon].icon.dark
-                      : iconComponentMap[icon].icon.light
-                  }
-                  alt={`${icon}-icon`}
-                />
-              </div>
-            ))}
-          </div>
-          <div className="navbar-login-content-area">
-              <img src={UserIcon} alt="user-icon" onClick={togglePopup} />
-          </div>
-          {showPopup && (
-            <div className="navbar-component-popup-area">
-              <LoginComponent />
-            </div>
-          )}
-        </nav>
-        <div className="content">
-          {React.createElement(iconComponentMap[activeIcon].component)}
+    <div className="navbar-container">
+      <nav>
+        <div className="navbar-section-logo-area">
+          <img src={Logo} alt="" />
         </div>
+        <div className="navbar-section-menus-area">
+          {Object.keys(iconComponentMap).map((icon) => (
+            <div
+              key={icon}
+              className={
+                activeIcon === icon
+                  ? "navbar-menu-active"
+                  : "navbar-menu-in-active"
+              }
+              onClick={() => handleIconClick(icon)}
+            >
+              <img
+                src={
+                  activeIcon === icon
+                    ? iconComponentMap[icon].icon.dark
+                    : iconComponentMap[icon].icon.light
+                }
+                alt={`${icon}-icon`}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="navbar-login-content-area">
+          {userAvatar ? (
+            <img src={userAvatar} alt="user-avatar" />
+          ) : (
+            <img src={UserIcon} alt="user-icon" onClick={togglePopup} />
+          )}
+        </div>
+        {showPopup && (
+          <div className="navbar-component-popup-area">
+            <LoginComponent onLoginSuccess={handleLoginSuccess} />
+          </div>
+        )}
+      </nav>
+      <div className="content">
+        {React.createElement(iconComponentMap[activeIcon].component)}
       </div>
-    </>
+    </div>
   );
 }
 

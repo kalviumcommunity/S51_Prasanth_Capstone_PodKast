@@ -23,11 +23,11 @@ getRouter.get("/get", async (req, res) => {
   }
 });
 
-getRouter.get("/get/:publicUserID", async (req, res) => {
+getRouter.get("/get/:username", async (req, res) => {
   res.header({ "Access-Control-Allow-Origin": "*" });
   try {
-    const { publicUserID } = req.params;
-    const caption = await User.findOne({ publicUserID: publicUserID });
+    const { username } = req.params;
+    const caption = await User.findOne({ username: username });
     res.status(200).json(caption);
   } catch (err) {
     console.log(err);
