@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./style.css"; // Import CSS file for styling
 
 // Components
 import HomeComponent from "./HomeComponent";
@@ -119,7 +120,7 @@ function Navbar({ userAvatar }) {
           </div>
         )}
       </nav>
-      <div className="content">
+      <div className={`content ${showPopup ? "blur-background" : ""}`}>
         {React.createElement(iconComponentMap[activeIcon].component)}
       </div>
     </div>

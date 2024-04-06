@@ -86,10 +86,15 @@ nav {
   padding: 10px;
   box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 1px, rgba(255, 255, 255, 0.13) 0px 0px 1px 1px;
   border-radius: 10px;
+  z-index: 1000;
 }
 
 .navbar-login-content-area{
   cursor: pointer;
+}
+
+.blur-background {
+  filter: blur(2px);
 }
 
 /* Navbar Style End */
@@ -213,108 +218,173 @@ nav {
 
 /* Login Component Style Start */
 
-.login-component-logo-area{
+.login-component{
+  width: 50vw;
+  height: 80vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+  color: white;
 }
 
-.login-component-logo-area p{
-  color: white;
-  font-size: x-small;
+.login-component-left-image-area{
+  width: 20vw;
+  height: 100%;
+  border-radius: 5px;
+  background-image: url("../assets/Slides/slide-1.jpg");
+}
+
+.login-component-right-form-area{
+  width: 30vw;
+  height: 100%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.login-component-right-form-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .login-component-logo-area img{
-  width: 150px;
+  width: 130px;
 }
 
-.login-component-login-fields-area{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
+.login-component-close-popup-button p{
+  font-size: 10px;
 }
 
 form{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  width: 90%;
+  height: 50vh;
+  gap: 20px;
 }
 
 .login-component-username-area{
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .login-component-username-area label{
-  font-size: smaller;
+  font-size: 12px;
 }
 
 .login-component-username-area input{
-  background-color: transparent;
-  border: 1px solid white;
-  border-radius: 5px;
-  color: white;
+  width: 25vw;
   height: 5vh;
-  width: 20vw;
+  border-radius: 5px;
 }
 
 .login-component-password-area{
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .login-component-password-area label{
-  font-size: smaller;
+  font-size: 12px;
 }
 
-.login-component-password-area input{
-  background-color: transparent;
-  border: 1px solid white;
+.login-component-form-password-inputs{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-component-form-password-inputs input{
+  width: 25vw;
+  height: 5vh;
   border-radius: 5px;
-  color: white;
-  height: 5vh;
-  width: 20vw;
 }
 
-.login-component-submit-button-area{
-  width: 20vw;
-  height: 5vh;
-}
-
-.login-component-submit-button-area button{
+.login-component-remember-me-and-forget-password-area{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  height: 100%;
-  color: white;
-  border: none;
-  background-color: #4caf50;
-  border-radius: 10px;
+}
+
+.login-component-remember-me-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 
-.login-component-register-call-to-action-area{
+.login-component-remember-me-button label{
+  font-size: 12px;
+}
+
+.login-component-forget-password-button{
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-component-random-quote{
+  font-size: 13px;
+  width: 25vw;
+  text-wrap: wrap;
+}
+
+.login-component-welcome-message-area h1{
+  font-size: 30px;
+}
+
+.login-component-form-submit-button{
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  gap: 20px;
 }
 
-.login-component-register-call-to-action-area p{
-  font-size: smaller;
-}
-
-.login-component-register-call-to-action-area a{
+.login-component-form-submit-button button{
+  border: none;
   outline: none;
-  text-decoration: none;
+  width: 30vw;
+  height: 5vh;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: orange;
+}
+
+input[type=text]:focus {
+  outline: none !important;
+  border: 1px solid lightgrey;
+}
+
+input[type=password]:focus {
+  outline: none !important;
+  border: 1px solid lightgrey;
+}
+
+.error-message{
+  font-size: 12px;
+  color: rgb(255, 79, 79);
+}
+
+.login-component-remember-me-button input{
+  border: none !important;
+  outline: none !important;
+}
+
+.login-component-redirect-to-register-component p{
+  font-size: 13px;
+}
+
+.login-component-redirect-to-register-component span{
   color: orange;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /* Login Component Style End */
