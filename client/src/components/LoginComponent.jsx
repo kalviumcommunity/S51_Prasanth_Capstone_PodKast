@@ -128,6 +128,7 @@ function LoginComponent({ onLoginSuccess }) {
                   id="username"
                   name="username"
                   value={username}
+                  placeholder="rj_prasanthu"
                   onChange={(e) => setUsername(e.target.value)}
                 />
                 {usernameError && <p className="error-message">{usernameError}</p>}

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import "./style.css"; // Import CSS file for styling
+import "./style.css";
 
 // Components
 import HomeComponent from "./HomeComponent";
@@ -25,11 +24,13 @@ import SettingIocn from "../assets/Icons/Setting.svg";
 import SettingDarkIcon from "../assets/Icons/Setting-Dark.svg";
 import UserIcon from "../assets/Icons/Profile.svg";
 import LoginComponent from "./LoginComponent";
+import OnboardingComponent from "./OnboardingComponent";
 
 function Navbar({ userAvatar }) {
   const [activeIcon, setActiveIcon] = useState("home");
   const [showPopup, setShowPopup] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isNewVisitor, setIsNewVisitor] = useState(false);
 
   const iconComponentMap = {
     home: {
@@ -53,6 +54,14 @@ function Navbar({ userAvatar }) {
       icon: { light: SettingIocn, dark: SettingDarkIcon },
     },
   };
+
+  useEffect(() => {
+    const visitedBefore = localStorage.getItem("visitedBefore");
+    if (!visitedBefore) {
+      setIsNewVisitor(true);
+      localStorage.setItem("visitedBefore", true);
+    }
+  }, []);
 
   const handleIconClick = (icon) => {
     setActiveIcon(icon);
@@ -121,7 +130,11 @@ function Navbar({ userAvatar }) {
         )}
       </nav>
       <div className={`content ${showPopup ? "blur-background" : ""}`}>
-        {React.createElement(iconComponentMap[activeIcon].component)}
+        {isNewVisitor ? (
+          <OnboardingComponent />
+        ) : (
+          React.createElement(iconComponentMap[activeIcon].component)
+        )}
       </div>
     </div>
   );
