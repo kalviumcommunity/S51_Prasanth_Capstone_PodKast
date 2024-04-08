@@ -17,7 +17,7 @@ const userSchema = Joi.object({
   username: Joi.string().required(),
   publicUserID: Joi.string(),
   avatar: Joi.string().required(),
-  publicProfile: publicProfileSchema.required(),
+  publicProfile: publicProfileSchema,
   password: Joi.string().required()
 });
 
