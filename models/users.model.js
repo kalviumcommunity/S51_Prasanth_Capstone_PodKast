@@ -4,15 +4,15 @@ const mongoose = require('mongoose');
 const publicProfileSchema = new mongoose.Schema({
   bio: {
     type: String,
-    required: true
+    required: false
   },
   location: {
     type: String,
-    required: true
+    required: false
   },
   website: {
     type: String,
-    required: true
+    required: false
   },
   socialMedia: {
     type: {
@@ -29,7 +29,7 @@ const publicProfileSchema = new mongoose.Schema({
         required: false
       }
     },
-    required: true
+    required: false
   }
 });
 
@@ -57,7 +57,7 @@ const userSchema = new mongoose.Schema({
   },
   publicProfile: {
     type: publicProfileSchema,
-    required: true
+    required: false
   },
   password: {
     type: String,
