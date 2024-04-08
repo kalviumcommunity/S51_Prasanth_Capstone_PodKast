@@ -1,0 +1,32 @@
+meta {
+  name: Register
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/api/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "username": "johndoe",
+    "publicUserID": "123456",
+    "avatar": "https://example.com/avatar.jpg",
+    "publicProfile": {
+      "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "location": "New York, USA",
+      "website": "https://example.com",
+      "socialMedia": {
+        "twitter": "@johndoe",
+        "linkedin": "https://www.linkedin.com/in/johndoe",
+        "instagram": "@johndoe"
+      }
+    },
+    "password": "password123"
+  }
+}
