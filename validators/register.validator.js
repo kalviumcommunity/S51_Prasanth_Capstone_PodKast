@@ -8,7 +8,7 @@ const publicProfileSchema = Joi.object({
     twitter: Joi.string().allow(''),
     linkedin: Joi.string().allow(''),
     instagram: Joi.string().allow('')
-  }).required()
+  })
 });
 
 const userSchema = Joi.object({
