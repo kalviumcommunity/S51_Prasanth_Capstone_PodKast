@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const User = require("../models/users.model");
+const jwt = require("jsonwebtoken");
 const userValidator = require("../validators/register.validator");
 
 const registerRouter = express.Router();
@@ -44,6 +45,10 @@ registerRouter.post("/register", async (req, res) => {
 
     // Save the new user to the database
     const savedUser = await newUser.save();
+
+    const token = jwt.sign({ userId: savedUser._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h" // Token expires in 1 hour
+    });
 
     // Send response
     res.status(201).json({ message: "User registered successfully", user: savedUser });

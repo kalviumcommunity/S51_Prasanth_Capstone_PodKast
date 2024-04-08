@@ -13,6 +13,7 @@
     "@splidejs/react-splide": "^0.7.12",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
+    "firebase": "^10.10.0",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "podkast-audio-player": "^1.4.0",
@@ -25,7 +26,8 @@
     "react-toastify": "^10.0.5",
     "react-tooltip": "^5.26.3",
     "redux": "^5.0.1",
-    "swiper": "^11.1.0"
+    "swiper": "^11.1.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

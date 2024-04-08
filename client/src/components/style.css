@@ -479,14 +479,14 @@ form{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 35vw;
+  width: 30vw;
   height: 75vh;
   align-items: center;
 }
 
 .register-component-welcome-message h1{
   color: white;
-  font-size: 34px;
+  font-size: 24px;
 }
 
 .register-component-email-area{
@@ -520,11 +520,11 @@ form{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 10px;
 }
 
 .register-component-show-password-area input{
-  width: 27vw;
+  width: 28vw;
   height: 5vh;
   border-radius: 5px;
 }
@@ -552,14 +552,14 @@ form{
   color: white;
   gap: 10px;
   align-self: flex-start;
-  width: 21vw;
+  width: 30vw;
 }
 
 .register-component-terms-and-conditions-area label{
   font-size: 12px;
 }
 
-.register-component-register-button-area{
+.register-component-next-button-area{
   width: 100%;
   height: 10vh;
   display: flex;
@@ -567,7 +567,7 @@ form{
   align-items: center;
 }
 
-.register-component-register-button-area button{
+.register-component-next-button-area button{
   width: 30vw;
   height: 5vh;
   outline: none;
@@ -635,6 +635,214 @@ form{
   color: orange;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.register-component-user-avatar-upload{
+  width: 30vw;
+  height: 10vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.register-component-user-avatar-upload label{
+  font-size: 12px;
+}
+
+/* .register-component-user-avatar-upload input{
+  
+} */
+
+.register-component-name-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 30vw;
+  color: white;
+}
+
+.register-component-name-area label{
+  font-size: 12px;
+}
+
+.register-component-name-area input{
+  width: 30vw;
+  height: 5vh;
+  border-radius: 5px;
+}
+
+.register-component-username-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 30vw;
+  color: white;
+}
+
+.register-component-username-area label{
+  font-size: 12px;
+}
+
+.register-component-username-area input{
+  width: 30vw;
+  height: 5vh;
+  border-radius: 5px;
+}
+
+.register-component-public-user-id-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 30vw;
+  color: white;
+}
+
+.register-component-public-user-id-area label{
+  font-size: 12px;
+}
+
+.register-component-public-user-id-area input{
+  width: 30vw;
+  height: 5vh;
+  border-radius: 5px;
+  cursor: no-drop;
+  color: lightgray;
+}
+
+.register-component-back-button-area{
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-component-back-button-area button{
+  border: 1px solid lightgray;
+  background-color: transparent;
+  color: white;
+  width: 30vw;
+  height: 5vh;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register-component-user-bio-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 30vw;
+  color: white;
+}
+
+.register-component-user-bio-area label{
+  font-size: 12px;
+}
+
+.register-component-user-bio-area input{
+  width: 30vw;
+  height: 5vh;
+  border-radius: 5px;
+}
+
+.register-component-country-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 30vw;
+  color: white;
+}
+
+.register-component-country-area label{
+  font-size: 12px;
+}
+
+.register-component-country-area input{
+  width: 30vw;
+  height: 5vh;
+  border-radius: 5px;
+}
+
+.register-component-website-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 30vw;
+  color: white;
+}
+
+.register-component-website-area label{
+  font-size: 12px;
+}
+
+.register-component-website-area input{
+  width: 30vw;
+  height: 5vh;
+  border-radius: 5px;
+}
+
+.register-component-liknked-in-link-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 30vw;
+  color: white;
+}
+
+.register-component-liknked-in-link-area label{
+  font-size: 12px;
+}
+
+.register-component-liknked-in-link-area input{
+  width: 30vw;
+  height: 5vh;
+  border-radius: 5px;
+}
+
+.register-component-x-link-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 30vw;
+  color: white;
+}
+
+.register-component-x-link-area label{
+  font-size: 12px;
+}
+
+.register-component-x-link-area input{
+  width: 30vw;
+  height: 5vh;
+  border-radius: 5px;
+}
+
+.register-component-insta-gram-link-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 30vw;
+  color: white;
+}
+
+.register-component-insta-gram-link-area label{
+  font-size: 12px;
+}
+
+.register-component-insta-gram-link-area input{
+  width: 30vw;
+  height: 5vh;
+  border-radius: 5px;
 }
 
 /* Register Component Style End */ 
