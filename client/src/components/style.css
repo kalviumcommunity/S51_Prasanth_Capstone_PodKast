@@ -90,7 +90,19 @@ nav {
 }
 
 .navbar-login-content-area{
+  width: 4vw;
+  height: 9vh;
   cursor: pointer;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-login-content-area .user-avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
 }
 
 .blur-background {
@@ -257,7 +269,7 @@ nav {
   font-size: 10px;
 }
 
-form{
+.login-form{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -375,6 +387,11 @@ input[type=email]:focus {
 .error-message{
   font-size: 12px;
   color: rgb(255, 79, 79);
+}
+
+.success-message{
+  font-size: 12px;
+  color: green;
 }
 
 .login-component-remember-me-button input{
@@ -504,6 +521,7 @@ form{
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
+  border: none;
 }
 
 .register-component-password-area{
@@ -527,6 +545,7 @@ form{
   width: 28vw;
   height: 5vh;
   border-radius: 5px;
+  border: none;
 }
 
 .register-component-conform-password-area{
@@ -543,6 +562,7 @@ form{
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
+  border: none;
 }
 
 .register-component-terms-and-conditions-area{
@@ -599,7 +619,7 @@ form{
 }
 
 .register-component-sign-up-with-google-button{
-  width: 20vw;
+  width: 25vw;
   height: 5vh;
   background-color: white;
   border-radius: 5px;
@@ -672,6 +692,7 @@ form{
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
+  border: none;
 }
 
 .register-component-username-area{
@@ -691,6 +712,7 @@ form{
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
+  border: none;
 }
 
 .register-component-public-user-id-area{
@@ -748,6 +770,7 @@ form{
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
+  border: none;
 }
 
 .register-component-country-area{
@@ -767,6 +790,7 @@ form{
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
+  border: none;
 }
 
 .register-component-website-area{
@@ -786,6 +810,7 @@ form{
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
+  border: none;
 }
 
 .register-component-liknked-in-link-area{
@@ -805,6 +830,7 @@ form{
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
+  border: none;
 }
 
 .register-component-x-link-area{
@@ -824,6 +850,7 @@ form{
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
+  border: none;
 }
 
 .register-component-insta-gram-link-area{
@@ -843,6 +870,7 @@ form{
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
+  border: none;
 }
 
 /* Register Component Style End */ 

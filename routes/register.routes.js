@@ -29,6 +29,11 @@ registerRouter.post("/register", async (req, res) => {
       return res.status(400).json({ error: "Email is already registered" });
     }
 
+    const existingUserName = await User.findOne({ username: req.body.username });
+    if (existingUserName) {
+      return res.status(400).json({ error: "Username is already registered" });
+    }
+
     // Hash the password
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
@@ -40,18 +45,18 @@ registerRouter.post("/register", async (req, res) => {
       publicUserID: req.body.publicUserID,
       avatar: req.body.avatar,
       publicProfile: req.body.publicProfile,
-      password: hashedPassword
+      password: hashedPassword,
     });
 
     // Save the new user to the database
     const savedUser = await newUser.save();
 
-    const token = jwt.sign({ userId: savedUser._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ userId: savedUser._id }, process.env.SECRET_KEY, {
       expiresIn: "1h" // Token expires in 1 hour
     });
 
     // Send response
-    res.status(201).json({ message: "User registered successfully", user: savedUser });
+    res.status(201).json({ message: "User registered successfully", token });
   } catch (err) {
     console.error("Error registering user:", err);
     res.status(500).json({ error: "Internal Server Error" });

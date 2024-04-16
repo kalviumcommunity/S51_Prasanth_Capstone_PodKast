@@ -26,11 +26,12 @@ import UserIcon from "../assets/Icons/Profile.svg";
 import LoginComponent from "./LoginComponent";
 import OnboardingComponent from "./OnboardingComponent";
 
-function Navbar({ userAvatar }) {
+function Navbar({ isLoggedIn }) {
   const [activeIcon, setActiveIcon] = useState("home");
   const [showPopup, setShowPopup] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isNewVisitor, setIsNewVisitor] = useState(false);
+  const [userAvatar, setUserAvatar] = useState(null);
+  const [showOptions, setShowOptions] = useState(false);
 
   const iconComponentMap = {
     home: {
@@ -61,6 +62,10 @@ function Navbar({ userAvatar }) {
       setIsNewVisitor(true);
       localStorage.setItem("visitedBefore", true);
     }
+    const avatar = localStorage.getItem("avatar");
+    if (avatar) {
+      setUserAvatar(avatar);
+    }
   }, []);
 
   const handleIconClick = (icon) => {
@@ -80,12 +85,17 @@ function Navbar({ userAvatar }) {
   useEffect(() => {
     window.addEventListener("keydown", closePopupOnEsc);
     return () => {
-      window.removeEventListener("keydown", closePopupOnEsc);
+      window.removeEventListener("keydowan", closePopupOnEsc);
     };
   }, []);
 
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true);
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("avatar");
+  };
+
+  const handleAvatarClick = () => {
+    setShowOptions(!showOptions);
   };
 
   return (
@@ -117,15 +127,33 @@ function Navbar({ userAvatar }) {
           ))}
         </div>
         <div className="navbar-login-content-area">
-          {userAvatar ? (
-            <img src={userAvatar} alt="user-avatar" />
+          {isLoggedIn && userAvatar ? (
+            <img
+              src={userAvatar}
+              alt="user-avatar"
+              className="user-avatar"
+              onClick={handleAvatarClick}
+              title="User Settings"
+            />
           ) : (
-            <img src={UserIcon} alt="user-icon" onClick={togglePopup} />
+            <img
+              src={UserIcon}
+              alt="user-icon"
+              onClick={togglePopup}
+              title="User Settings"
+            />
           )}
         </div>
+        {showOptions && (
+          <div className="user-options">
+            <div className="option" onClick={handleLogout}>
+              Logout
+            </div>
+          </div>
+        )}
         {showPopup && (
           <div className="navbar-component-popup-area">
-            <LoginComponent onLoginSuccess={handleLoginSuccess} />
+            <LoginComponent/>
           </div>
         )}
       </nav>
