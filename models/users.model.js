@@ -29,7 +29,6 @@ const publicProfileSchema = new mongoose.Schema({
         required: false
       }
     },
-    required: false
   }
 });
 
