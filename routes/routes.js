@@ -35,4 +35,16 @@ getRouter.get("/get/:username", async (req, res) => {
   }
 });
 
+getRouter.get("/get/email/:email", async (req, res) => {
+  res.header({ "Access-Control-Allow-Origin": "*" });
+  try {
+    const { email } = req.params;
+    const caption = await User.findOne({ email: email });
+    res.status(200).json(caption);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 module.exports = { getRouter, postRouter };

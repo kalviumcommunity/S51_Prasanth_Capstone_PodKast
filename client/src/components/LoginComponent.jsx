@@ -3,7 +3,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Logo from "../assets/logo-full.png";
-import { jwtDecode } from "jwt-decode"; // Import jwtDecode library
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 import EyeShow from "../assets/Icons/Eye-Show.svg";
 import EyeHide from "../assets/Icons/Eye-Hide.svg";
@@ -21,15 +22,16 @@ const quotes = [
   "The only way to do great work is to do what you love.",
 ];
 
-function LoginComponent({ onLoginSuccess }) {
+function LoginComponent() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(true);
-  const [userAvatar, setUserAvatar] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [randomQuote, setRandomQuote] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check if token exists in local storage and is valid
@@ -75,32 +77,18 @@ function LoginComponent({ onLoginSuccess }) {
       localStorage.setItem("token", token);
       toast.success("Login successful!");
       setIsPopupOpen(false);
-      await fetchUserAvatar(username, token); // Fetch user avatar after successful login
-      onLoginSuccess(userAvatar); // Call onLoginSuccess callback
     } catch (error) {
       toast.error("Invalid username or password");
-    }
-  };
-
-  const fetchUserAvatar = async (username, token) => {
-    try {
-      const response = await axios.get(
-        `http://localhost:3000/api/users/get/${username}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setUserAvatar(response.data.avatar);
-    } catch (error) {
-      console.error("Error fetching user avatar:", error);
     }
   };
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
+
+  const handleRegisterNow = () => {
+    navigate('/register')
+  }
 
   return (
     <>
@@ -114,7 +102,7 @@ function LoginComponent({ onLoginSuccess }) {
             <div className="login-component-logo-area">
               <img src={Logo} alt="podkast-logo" />
             </div>
-            <form onSubmit={handleSubmit}>
+            <form className="login-form" onSubmit={handleSubmit}>
               <div className="login-component-welcome-message-area">
                 <h1>Welcome Back,😍</h1>
               </div>
@@ -166,7 +154,7 @@ function LoginComponent({ onLoginSuccess }) {
               </div>
             </form>
             <div className="login-component-redirect-to-register-component">
-              <p>Don&apos;t have an account? <span>Register Now!</span></p>
+              <p>Don&apos;t have an account? <span onClick={handleRegisterNow}>Register Now!</span></p>
             </div>
           </div>
         </div>

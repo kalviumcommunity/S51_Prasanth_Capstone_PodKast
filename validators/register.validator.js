@@ -1,5 +1,11 @@
 const Joi = require('joi');
 
+const socialMediaSchema = Joi.object({
+  twitter: Joi.string().optional(),
+  linkedin: Joi.string().optional(),
+  instagram: Joi.string().optional()
+}).optional();
+
 const publicProfileSchema = Joi.object({
   bio: Joi.string().optional(),
   location: Joi.string().optional(),
@@ -16,7 +22,6 @@ const userSchema = Joi.object({
   publicProfile: publicProfileSchema.optional(),
   password: Joi.string().required()
 });
-
 
 const userValidator = (data) => {
   return userSchema.validate(data, { abortEarly: false });
