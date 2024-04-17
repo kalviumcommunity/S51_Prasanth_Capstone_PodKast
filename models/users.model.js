@@ -29,7 +29,9 @@ const publicProfileSchema = new mongoose.Schema({
         required: false
       }
     },
-    required: true
+<<<<<<<<< Temporary merge branch 1
+=========
+>>>>>>>>> Temporary merge branch 2
   }
 });
 
