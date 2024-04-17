@@ -7,19 +7,23 @@ const socialMediaSchema = Joi.object({
 }).optional();
 
 const publicProfileSchema = Joi.object({
-  bio: Joi.string().optional(),
-  location: Joi.string().optional(),
-  website: Joi.string().optional(),
-  socialMedia: socialMediaSchema.optional()
-}).optional();
+  bio: Joi.string(),
+  location: Joi.string(),
+  website: Joi.string(),
+  socialMedia: Joi.object({
+    twitter: Joi.string().allow(''),
+    linkedin: Joi.string().allow(''),
+    instagram: Joi.string().allow('')
+  }).required()
+});
 
 const userSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().email().required(),
   username: Joi.string().required(),
-  publicUserID: Joi.string().optional(),
-  avatar: Joi.string().optional(),
-  publicProfile: publicProfileSchema.optional(),
+  publicUserID: Joi.string(),
+  avatar: Joi.string().required(),
+  publicProfile: publicProfileSchema.required(),
   password: Joi.string().required()
 });
 
