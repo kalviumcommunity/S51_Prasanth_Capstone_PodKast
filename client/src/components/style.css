@@ -945,6 +945,132 @@ form{
   .login-component-random-quote{
     width: 55vw;
   }
+  .register-component{
+    height: 100%;
+    width: 100%;
+  }
+  .register-component-content-area{
+    flex-direction: column;
+    gap: 20px;
+  }
+  .register-component-hamburger-type-area{
+    width: 100%;
+  }
+  .register-component-left-content-area{
+    width: 95vw;
+    height: 30vh;
+  }
+  .register-component-right-form-area{
+    width: 95vw;
+  }
+  .register-component-welcome-message{
+    width: 100%;
+  }
+  form{
+    width: 90%;
+  }
+  .register-component-email-area{
+    width: 100%;
+  }
+  .register-component-email-area input{
+    width: 100%;
+  }
+  .register-component-password-area{
+    width: 100%;
+  }
+  .register-component-show-password-area input{
+    width: 100%;
+  }
+  .register-component-conform-password-area{
+    width: 100%;
+  }
+  .register-component-conform-password-area input{
+    width: 100%;
+  }
+  .register-component-terms-and-conditions-area{
+    width: 100%;
+  }
+  .register-component-dash-one{
+    width: 35vw;
+  }
+  .register-component-sign-up-with-google-button-area{
+    width: 100%;
+  }
+  .register-component-sign-up-with-google-button{
+    width: 50vw;
+  }
+  .register-component-already-have-an-account{
+    width: 100%;
+  }
+  .register-component-user-avatar-upload{
+    width: 100%;
+  }
+  .register-component-name-area{
+    width: 100%;
+  }
+  .register-component-name-area input{
+    width: 100%;
+  }
+  .register-component-username-area{
+    width: 100%;
+  }
+  .register-component-username-area input{
+    width: 100%;
+  }
+  .register-component-public-user-id-area{
+    width: 100%;
+  }
+  .register-component-public-user-id-area input{
+    width: 100%;
+  }
+  .register-component-next-button-area{
+    width: 100%;
+  }
+  .register-component-next-button-area button{
+    width: 100%;
+  }
+  .register-component-back-button-area{
+    width: 100%;
+  }
+  .register-component-back-button-area button{
+    width: 100%;
+  }
+  .register-component-user-bio-area{
+    width: 100%;
+  }
+  .register-component-user-bio-area input{
+    width: 100%;
+  }
+  .register-component-country-area{
+    width: 100%;
+  }
+  .register-component-country-area input{
+    width: 100%;
+  }
+  .register-component-website-area{
+    width: 100%;
+  }
+  .register-component-website-area input{
+    width: 100%;
+  }
+  .register-component-liknked-in-link-area{
+    width: 100%;
+  }
+  .register-component-liknked-in-link-area input{
+    width: 100%;
+  }
+  .register-component-x-link-area{
+    width: 100%;
+  }
+  .register-component-x-link-area input{
+    width: 100%;
+  }
+  .register-component-insta-gram-link-area{
+    width: 100%;
+  }
+  .register-component-insta-gram-link-area input{
+    width: 100%;
+  }
 }
 
 /* Responsive Design Style End */
