@@ -1,70 +1,45 @@
 import { useEffect, useState } from "react";
 import AudioPlayer from "podkast-audio-player";
+import InsideNavbar from "./InsideNavbar"
+import axios from "axios";
 
 function RSSComponent() {
+
   const [rssLink, setRssLink] = useState("");
   const [fetchedData, setFetchedData] = useState([]);
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    // Fetch RSS feed data when the component mounts or when rssLink changes
     if (rssLink) {
-      fetchRssData();
+      fetchPodcastData(rssLink);
     }
   }, [rssLink]);
 
-  const handleInputChange = (e) => {
-    setRssLink(e.target.value);
-  };
-
-  const fetchRssData = async () => {
+  const fetchPodcastData = async (link) => {
     try {
-      // Fetch RSS feed as text
-      const response = await fetch(rssLink);
-      const xmlData = await response.text();
+      const response = await axios.get(link);
+      const podcastData = response.data; // Assuming response contains the podcast data
+      
+      // Convert podcast data to an array of songs for AudioPlayer
+      const songs = podcastData.map((podcast) => ({
+        audioSrc: podcast.audioSrc,
+        title: podcast.title,
+        artist: podcast.artist,
+        coverPic: podcast.coverPic,
+      }));
 
-      // Parse XML data
-      const parser = new DOMParser();
-      const xmlDoc = parser.parseFromString(xmlData, "application/xml");
-
-      // Process and extract data as needed
-      const items = xmlDoc.getElementsByTagName("item");
-      const audioData = [];
-
-      for (let i = 0; i < items.length; i++) {
-        const item = items[i];
-        const audioUrl = item.querySelector("enclosure").getAttribute("url");
-        const title = item.querySelector("title").textContent;
-        const creator =
-          item.querySelector("creator")?.textContent ||
-          item.querySelector("author")?.textContent;
-        const thumbnailUrl =
-          item.querySelector("media\\:thumbnail")?.getAttribute("url") ||
-          "../assets/Cover/audio-1.jpg";
-
-        audioData.push({
-          audioSrc: audioUrl,
-          title1: title,
-          title2: creator,
-          coverpic: thumbnailUrl,
-        });
-      }
-
-      const validateData = (data) => {
-        return data.map((item) => ({
-          ...item,
-          coverpic: "../assets/Cover/audio-1.jpg", // Provide a default image URL if coverpic is missing
-        }));
-      };
-
-      setFetchedData(validateData(audioData));
+      // Update fetched data state
+      setFetchedData(songs);
     } catch (error) {
-      console.error("Error fetching or parsing RSS feed:", error);
+      console.error("Error fetching podcast data:", error);
+      // Handle error (e.g., display error message to user)
     }
   };
 
   return (
     <>
       <div className="rss-reader-content-area">
+        <InsideNavbar/>
         <div className="rss-reader-input-content-area">
           <div className="rss-reader-user-inputs">
             <h1>
@@ -91,8 +66,8 @@ function RSSComponent() {
                 <div className="rss-reader-rows-area">
                   <div className="rss-selector">
                     <select name="options" id="options">
-                      <option value="Audio">Audio Content</option>
-                      <option value="News">News Updates</option>
+                      <option value="Audio">PodKast Feed</option>
+                      {/* <option value="News">News Updates</option> */}
                     </select>
                   </div>
                   <div className="rss-link-input">
@@ -101,19 +76,21 @@ function RSSComponent() {
                       name="rsslink"
                       id="rsslink"
                       placeholder="RSS Feed Link"
-                      onChange={handleInputChange}
+                      onChange={(e) => setRssLink(e.target.value)}
                     />
                   </div>
                 </div>
                 <div className="rss-reader-fetch-button">
-                  <button onClick={fetchRssData}>Fetch</button>
+                  <button onClick={() => fetchPodcastData(rssLink)}>Fetch</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="rss-reader-fetched-data-content-area">
-          <AudioPlayer songs={fetchedData} theme="light" />
+        {fetchedData.length > 0 && (
+            <AudioPlayer songs={fetchedData} theme={theme} />
+          )}
         </div>
       </div>
     </>
