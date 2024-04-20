@@ -6,7 +6,7 @@ import HomeComponent from "./HomeComponent";
 import SearchComponent from "./SearchComponent";
 import MessageComponent from "./MessageComponent";
 import GameComponent from "./GameComponent";
-import SettingComponent from "./SettingComponent";
+import RSSComponent from "./RSSComponent";
 
 // Logo
 import Logo from "../assets/logo.png";
@@ -51,7 +51,7 @@ function Navbar({ isLoggedIn }) {
       icon: { light: GameIcon, dark: GameDarkIcon },
     },
     setting: {
-      component: SettingComponent,
+      component: RSSComponent,
       icon: { light: SettingIocn, dark: SettingDarkIcon },
     },
   };

@@ -48,7 +48,7 @@ nav {
 }
 
 .navbar-menu-in-active:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .navbar-menu-in-active {
@@ -77,19 +77,20 @@ nav {
   overflow-y: auto;
 }
 
-.navbar-component-popup-area{
+.navbar-component-popup-area {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #222222;
   padding: 10px;
-  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 1px, rgba(255, 255, 255, 0.13) 0px 0px 1px 1px;
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 1px,
+    rgba(255, 255, 255, 0.13) 0px 0px 1px 1px;
   border-radius: 10px;
   z-index: 1000;
 }
 
-.navbar-login-content-area{
+.navbar-login-content-area {
   width: 4vw;
   height: 9vh;
   cursor: pointer;
@@ -99,7 +100,7 @@ nav {
   align-items: center;
 }
 
-.navbar-login-content-area .user-avatar{
+.navbar-login-content-area .user-avatar {
   width: 40px;
   height: 40px;
   border-radius: 100px;
@@ -113,36 +114,38 @@ nav {
 
 /* Onboarding Component Style Start */
 
-.onboarding-component-onboarding-screens-content-area{
-    width: 93vw;
-    height: 93vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 10px;
+.onboarding-component-onboarding-screens-content-area {
+  width: 93vw;
+  height: 93vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
 }
 
-.onboarding-component-onboarding-screens{
+.onboarding-component-onboarding-screens {
   width: 60vw;
   height: 90vh;
   background-color: #222222;
   border-radius: 10px;
-  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 1px, rgba(255, 255, 255, 0.13) 0px 0px 1px 1px;
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 1px,
+    rgba(255, 255, 255, 0.13) 0px 0px 1px 1px;
   display: flex;
   align-items: center;
 }
 
-.onboarding-component-demo-music-player{
+.onboarding-component-demo-music-player {
   width: 30vw;
   height: 18vh;
   border-radius: 10px;
-  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 1px, rgba(255, 255, 255, 0.13) 0px 0px 1px 1px;
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 1px,
+    rgba(255, 255, 255, 0.13) 0px 0px 1px 1px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.onboarding-component-slides-text-area{
+.onboarding-component-slides-text-area {
   width: 60vw;
   display: flex;
   flex-direction: column;
@@ -153,11 +156,11 @@ nav {
   text-align: center;
 }
 
-.onboarding-component-slides-text-area p{
+.onboarding-component-slides-text-area p {
   text-align: center;
 }
 
-.onboarding-component-slider-slide{
+.onboarding-component-slider-slide {
   width: 65vw;
   height: 90vh;
   display: flex;
@@ -171,20 +174,20 @@ nav {
   display: block;
 }
 
-.onboarding-component-slider-slide img{
+.onboarding-component-slider-slide img {
   width: 60vw;
   height: 60vh;
   border-radius: 10px;
 }
 
-.onboarding-component-slider-content-area{
+.onboarding-component-slider-content-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.onboarding-component-get-start-button{
+.onboarding-component-get-start-button {
   width: 100px;
   height: 30px;
   border: none;
@@ -197,7 +200,7 @@ nav {
   color: white;
 }
 
-.onboarding-component-right-content-area{
+.onboarding-component-right-content-area {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -205,14 +208,15 @@ nav {
   gap: 15px;
 }
 
-.onboarding-component-ads-content-area{
+.onboarding-component-ads-content-area {
   width: 30vw;
   height: 70vh;
   border-radius: 10px;
-  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 1px, rgba(255, 255, 255, 0.13) 0px 0px 1px 1px;
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 1px,
+    rgba(255, 255, 255, 0.13) 0px 0px 1px 1px;
 }
 
-.onboarding-component-ads-content-area img{
+.onboarding-component-ads-content-area img {
   width: 30vw;
   height: 70vh;
   border-radius: 10px;
@@ -230,7 +234,7 @@ nav {
 
 /* Login Component Style Start */
 
-.login-component{
+.login-component {
   width: 50vw;
   height: 80vh;
   display: flex;
@@ -240,36 +244,36 @@ nav {
   color: white;
 }
 
-.login-component-left-image-area{
+.login-component-left-image-area {
   width: 20vw;
   height: 100%;
   border-radius: 5px;
   background-image: url("../assets/Slides/slide-1.jpg");
 }
 
-.login-component-right-form-area{
+.login-component-right-form-area {
   width: 30vw;
   height: 100%;
   border: 1px solid lightgray;
   border-radius: 5px;
 }
 
-.login-component-right-form-area{
+.login-component-right-form-area {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
 
-.login-component-logo-area img{
+.login-component-logo-area img {
   width: 130px;
 }
 
-.login-component-close-popup-button p{
+.login-component-close-popup-button p {
   font-size: 10px;
 }
 
-.login-form{
+.login-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -279,87 +283,87 @@ nav {
   gap: 20px;
 }
 
-.login-component-username-area{
+.login-component-username-area {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.login-component-username-area label{
+.login-component-username-area label {
   font-size: 12px;
 }
 
-.login-component-username-area input{
+.login-component-username-area input {
   width: 25vw;
   height: 5vh;
   border-radius: 5px;
 }
 
-.login-component-password-area{
+.login-component-password-area {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.login-component-password-area label{
+.login-component-password-area label {
   font-size: 12px;
 }
 
-.login-component-form-password-inputs{
+.login-component-form-password-inputs {
   display: flex;
   gap: 10px;
   justify-content: center;
   align-items: center;
 }
 
-.login-component-form-password-inputs input{
+.login-component-form-password-inputs input {
   width: 25vw;
   height: 5vh;
   border-radius: 5px;
 }
 
-.login-component-remember-me-and-forget-password-area{
+.login-component-remember-me-and-forget-password-area {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
-.login-component-remember-me-button{
+.login-component-remember-me-button {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 
-.login-component-remember-me-button label{
+.login-component-remember-me-button label {
   font-size: 12px;
 }
 
-.login-component-forget-password-button{
+.login-component-forget-password-button {
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
 }
 
-.login-component-random-quote{
+.login-component-random-quote {
   font-size: 13px;
   width: 25vw;
   text-wrap: wrap;
 }
 
-.login-component-welcome-message-area h1{
+.login-component-welcome-message-area h1 {
   font-size: 30px;
 }
 
-.login-component-form-submit-button{
+.login-component-form-submit-button {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login-component-form-submit-button button{
+.login-component-form-submit-button button {
   border: none;
   outline: none;
   width: 30vw;
@@ -369,41 +373,41 @@ nav {
   background-color: orange;
 }
 
-input[type=text]:focus {
+input[type="text"]:focus {
   outline: none !important;
   border: 1px solid lightgrey;
 }
 
-input[type=password]:focus {
+input[type="password"]:focus {
   outline: none !important;
   border: 1px solid lightgrey;
 }
 
-input[type=email]:focus {
+input[type="email"]:focus {
   outline: none !important;
   border: 1px solid lightgrey;
 }
 
-.error-message{
+.error-message {
   font-size: 12px;
   color: rgb(255, 79, 79);
 }
 
-.success-message{
+.success-message {
   font-size: 12px;
   color: green;
 }
 
-.login-component-remember-me-button input{
+.login-component-remember-me-button input {
   border: none !important;
   outline: none !important;
 }
 
-.login-component-redirect-to-register-component p{
+.login-component-redirect-to-register-component p {
   font-size: 13px;
 }
 
-.login-component-redirect-to-register-component span{
+.login-component-redirect-to-register-component span {
   color: orange;
   cursor: pointer;
   text-decoration: underline;
@@ -411,10 +415,9 @@ input[type=email]:focus {
 
 /* Login Component Style End */
 
+/* Register Component Style Start */
 
-/* Register Component Style Start */ 
-
-.register-component{
+.register-component {
   width: 100vw;
   height: 100vh;
   background-color: #222222;
@@ -423,7 +426,7 @@ input[type=email]:focus {
   justify-content: space-around;
 }
 
-.register-component-hamburger-type-area{
+.register-component-hamburger-type-area {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -431,7 +434,7 @@ input[type=email]:focus {
   height: 5vh;
 }
 
-.register-component-back-to-home{
+.register-component-back-to-home {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -439,15 +442,15 @@ input[type=email]:focus {
   cursor: pointer;
 }
 
-.register-component-back-to-home img{
+.register-component-back-to-home img {
   width: 15px;
 }
 
-.register-component-back-to-home p{
+.register-component-back-to-home p {
   font-size: 12px;
 }
 
-.register-component-register-page{
+.register-component-register-page {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -455,29 +458,29 @@ input[type=email]:focus {
   cursor: pointer;
 }
 
-.register-component-register-page img{
+.register-component-register-page img {
   width: 15px;
 }
 
-.register-component-register-page p{
+.register-component-register-page p {
   font-size: 12px;
 }
 
-.register-component-content-area{
+.register-component-content-area {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin: 10px;
 }
 
-.register-component-left-content-area{
+.register-component-left-content-area {
   width: 60vw;
   height: 90vh;
   background-image: url("../assets/Slides/slide-1.jpg");
   border-radius: 10px;
 }
 
-.register-component-right-form-area{
+.register-component-right-form-area {
   width: 35vw;
   height: 90vh;
   border: 1px solid lightgray;
@@ -488,11 +491,11 @@ input[type=email]:focus {
   align-items: center;
 }
 
-.register-component-logo-area img{
+.register-component-logo-area img {
   width: 150px;
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -501,71 +504,71 @@ form{
   align-items: center;
 }
 
-.register-component-welcome-message h1{
+.register-component-welcome-message h1 {
   color: white;
   font-size: 24px;
 }
 
-.register-component-email-area{
+.register-component-email-area {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: white;
 }
 
-.register-component-email-area label{
+.register-component-email-area label {
   font-size: 12px;
 }
 
-.register-component-email-area input{
+.register-component-email-area input {
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
   border: none;
 }
 
-.register-component-password-area{
+.register-component-password-area {
   display: flex;
   flex-direction: column;
   color: white;
 }
 
-.register-component-password-area label{
+.register-component-password-area label {
   font-size: 12px;
 }
 
-.register-component-show-password-area{
+.register-component-show-password-area {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-.register-component-show-password-area input{
+.register-component-show-password-area input {
   width: 28vw;
   height: 5vh;
   border-radius: 5px;
   border: none;
 }
 
-.register-component-conform-password-area{
+.register-component-conform-password-area {
   display: flex;
   flex-direction: column;
   color: white;
 }
 
-.register-component-conform-password-area label{
+.register-component-conform-password-area label {
   font-size: 12px;
 }
 
-.register-component-conform-password-area input{
+.register-component-conform-password-area input {
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
   border: none;
 }
 
-.register-component-terms-and-conditions-area{
+.register-component-terms-and-conditions-area {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -575,11 +578,11 @@ form{
   width: 30vw;
 }
 
-.register-component-terms-and-conditions-area label{
+.register-component-terms-and-conditions-area label {
   font-size: 12px;
 }
 
-.register-component-next-button-area{
+.register-component-next-button-area {
   width: 100%;
   height: 10vh;
   display: flex;
@@ -587,7 +590,7 @@ form{
   align-items: center;
 }
 
-.register-component-next-button-area button{
+.register-component-next-button-area button {
   width: 30vw;
   height: 5vh;
   outline: none;
@@ -597,7 +600,7 @@ form{
   cursor: pointer;
 }
 
-.register-component-or-signup-area{
+.register-component-or-signup-area {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -605,12 +608,12 @@ form{
   color: white;
 }
 
-.register-component-dash-one{
+.register-component-dash-one {
   width: 10vw;
   border: 1px solid white;
 }
 
-.register-component-sign-up-with-google-button-area{
+.register-component-sign-up-with-google-button-area {
   width: 35vw;
   height: 5vh;
   display: flex;
@@ -618,7 +621,7 @@ form{
   align-items: center;
 }
 
-.register-component-sign-up-with-google-button{
+.register-component-sign-up-with-google-button {
   width: 25vw;
   height: 5vh;
   background-color: white;
@@ -630,15 +633,15 @@ form{
   cursor: pointer;
 }
 
-.register-component-sign-up-with-google-button img{
+.register-component-sign-up-with-google-button img {
   width: 20px;
 }
 
-.register-component-sign-up-with-google-button p{
+.register-component-sign-up-with-google-button p {
   font-size: 12px;
 }
 
-.register-component-already-have-an-account{
+.register-component-already-have-an-account {
   width: 35vw;
   height: 5vh;
   display: flex;
@@ -647,17 +650,17 @@ form{
   color: white;
 }
 
-.register-component-already-have-an-account p{
+.register-component-already-have-an-account p {
   font-size: 15px;
 }
 
-.register-component-already-have-an-account span{
+.register-component-already-have-an-account span {
   color: orange;
   text-decoration: underline;
   cursor: pointer;
 }
 
-.register-component-user-avatar-upload{
+.register-component-user-avatar-upload {
   width: 30vw;
   height: 10vh;
   color: white;
@@ -667,7 +670,7 @@ form{
   align-items: flex-start;
 }
 
-.register-component-user-avatar-upload label{
+.register-component-user-avatar-upload label {
   font-size: 12px;
 }
 
@@ -675,7 +678,7 @@ form{
   
 } */
 
-.register-component-name-area{
+.register-component-name-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -684,18 +687,18 @@ form{
   color: white;
 }
 
-.register-component-name-area label{
+.register-component-name-area label {
   font-size: 12px;
 }
 
-.register-component-name-area input{
+.register-component-name-area input {
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
   border: none;
 }
 
-.register-component-username-area{
+.register-component-username-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -704,18 +707,18 @@ form{
   color: white;
 }
 
-.register-component-username-area label{
+.register-component-username-area label {
   font-size: 12px;
 }
 
-.register-component-username-area input{
+.register-component-username-area input {
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
   border: none;
 }
 
-.register-component-public-user-id-area{
+.register-component-public-user-id-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -724,11 +727,11 @@ form{
   color: white;
 }
 
-.register-component-public-user-id-area label{
+.register-component-public-user-id-area label {
   font-size: 12px;
 }
 
-.register-component-public-user-id-area input{
+.register-component-public-user-id-area input {
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
@@ -736,14 +739,14 @@ form{
   color: lightgray;
 }
 
-.register-component-back-button-area{
+.register-component-back-button-area {
   width: 30vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.register-component-back-button-area button{
+.register-component-back-button-area button {
   border: 1px solid lightgray;
   background-color: transparent;
   color: white;
@@ -753,7 +756,7 @@ form{
   cursor: pointer;
 }
 
-.register-component-user-bio-area{
+.register-component-user-bio-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -762,18 +765,18 @@ form{
   color: white;
 }
 
-.register-component-user-bio-area label{
+.register-component-user-bio-area label {
   font-size: 12px;
 }
 
-.register-component-user-bio-area input{
+.register-component-user-bio-area input {
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
   border: none;
 }
 
-.register-component-country-area{
+.register-component-country-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -782,18 +785,18 @@ form{
   color: white;
 }
 
-.register-component-country-area label{
+.register-component-country-area label {
   font-size: 12px;
 }
 
-.register-component-country-area input{
+.register-component-country-area input {
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
   border: none;
 }
 
-.register-component-website-area{
+.register-component-website-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -802,18 +805,18 @@ form{
   color: white;
 }
 
-.register-component-website-area label{
+.register-component-website-area label {
   font-size: 12px;
 }
 
-.register-component-website-area input{
+.register-component-website-area input {
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
   border: none;
 }
 
-.register-component-liknked-in-link-area{
+.register-component-liknked-in-link-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -822,18 +825,18 @@ form{
   color: white;
 }
 
-.register-component-liknked-in-link-area label{
+.register-component-liknked-in-link-area label {
   font-size: 12px;
 }
 
-.register-component-liknked-in-link-area input{
+.register-component-liknked-in-link-area input {
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
   border: none;
 }
 
-.register-component-x-link-area{
+.register-component-x-link-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -842,18 +845,18 @@ form{
   color: white;
 }
 
-.register-component-x-link-area label{
+.register-component-x-link-area label {
   font-size: 12px;
 }
 
-.register-component-x-link-area input{
+.register-component-x-link-area input {
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
   border: none;
 }
 
-.register-component-insta-gram-link-area{
+.register-component-insta-gram-link-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -862,44 +865,44 @@ form{
   color: white;
 }
 
-.register-component-insta-gram-link-area label{
+.register-component-insta-gram-link-area label {
   font-size: 12px;
 }
 
-.register-component-insta-gram-link-area input{
+.register-component-insta-gram-link-area input {
   width: 30vw;
   height: 5vh;
   border-radius: 5px;
   border: none;
 }
 
-/* Register Component Style End */ 
+/* Register Component Style End */
 
+/* InsideNavbar Component Style Start */
 
-/* Home Component Style Start */
-
-.home-component{
+.home-component {
   width: 100%;
-  height: 100%;
+  height: 8vh;
 }
 
-.home-component-navbar-for-account-notification-and-others{
+.home-component-navbar-for-account-notification-and-others {
   display: flex;
   justify-content: space-around;
   align-items: center;
   color: white;
   width: 100%;
-  height: 8vh;
+  height: 100%;
   position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   background-color: #222222;
   transition: border-bottom 0.3s ease;
-
 }
 
-.home-component-navbar-user-with-date-and-uptime{
+home-component-navbar-for-account-notification-and-others.scrolled {
+  border-bottom: 1px solid rgb(161, 161, 161);
+}
+
+.home-component-navbar-user-with-date-and-uptime {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -908,24 +911,24 @@ form{
   height: 100%;
 }
 
-.home-component-navbar-user-with-date-and-uptime .uptime{
+.home-component-navbar-user-with-date-and-uptime .uptime {
   color: lightgreen;
   font-size: 12px;
 }
 
-.home-component-navbar-user-with-date-and-uptime img{
+.home-component-navbar-user-with-date-and-uptime img {
   width: 15px;
 }
 
-.home-component-navbar-user-with-date-and-uptime p{
+.home-component-navbar-user-with-date-and-uptime p {
   font-size: 14px;
 }
 
-.home-component-navbar-running-commands-area{
+.home-component-navbar-running-commands-area {
   width: 55vw;
 }
 
-.home-component-navbar-icons-area{
+.home-component-navbar-icons-area {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -934,7 +937,7 @@ form{
   gap: 20px;
 }
 
-.navbar-notifications-icon-area{
+.navbar-notifications-icon-area {
   width: 4vw;
   height: 100%;
   display: flex;
@@ -945,11 +948,11 @@ form{
   cursor: pointer;
 }
 
-.navbar-notifications-icon-area img{
+.navbar-notifications-icon-area img {
   width: 15px;
 }
 
-.navbar-logout-icon-area{
+.navbar-logout-icon-area {
   width: 4vw;
   height: 100%;
   display: flex;
@@ -959,29 +962,144 @@ form{
   cursor: pointer;
 }
 
-.navbar-logout-icon-area img{
+.navbar-logout-icon-area img {
   width: 15px;
 }
 
-home-component-navbar-for-account-notification-and-others.scrolled {
-  border-bottom: 1px solid rgb(161, 161, 161);
-}
-
-.home-component-main-content-area{
+.home-component-main-content-area {
   width: 100%;
   height: 100vh;
 }
 
-/* Home Component Style End */
+/* InsideNavbar Component Style End */
 
+/* RSS Reader Component Style Start */
+
+.rss-reader-content-area {
+  width: 100%;
+  height: 105vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rss-reader-input-content-area{
+  width: 90%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  gap: 20px;
+}
+
+.rss-reader-poster-style-input-bar {
+  width: 100%;
+  height: 50vh;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --color: rgba(114, 114, 114, 0.3);
+  background-color: #191a1a;
+  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+  background-size: 55px 55px;
+}
+
+.rss-reader-user-inputs{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+#announcement{
+  font-size: 12px; 
+  text-align: center;
+}
+
+.rss-reader-user-inputs p{
+  font-size: 14px;
+}
+
+.rss-reader-link-area{
+  height: 10vh;
+}
+
+.rss-reader-link-area label{
+  font-size: 12px;
+}
+
+.rss-reader-rows-area{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.rss-reader-audio-or-news-selector{
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.rss-selector{
+  width: 10vw;
+  height: 5vh;
+}
+
+.rss-selector select{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: none;
+}
+
+.rss-link-input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rss-link-input input{
+  width: 30vw;
+  height: 5vh;
+  border-radius: 10px;border: none;
+}
+
+.rss-reader-fetch-button{
+  width: 100%;
+  height: 5vh;
+}
+
+.rss-reader-fetch-button button{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: orange;
+  color: white;
+  font-weight: 500;
+}
+
+/* RSS Reader Component Style End */
 
 /* Responsive Design Style Start */
 
-@media (max-width: 768px){
-  .navbar-container{
+@media (max-width: 768px) {
+  .navbar-container {
     flex-direction: column-reverse;
   }
-  nav{
+  nav {
     width: 100%;
     height: 10vh;
     flex-direction: row;
@@ -989,185 +1107,185 @@ home-component-navbar-for-account-notification-and-others.scrolled {
     position: sticky;
     bottom: 0;
   }
-  .navbar-section-menus-area{
+  .navbar-section-menus-area {
     flex-direction: row;
   }
-  .content{
+  .content {
     width: 100%;
     height: 190vh;
     z-index: -1;
   }
-  .onboarding-component-onboarding-screens-content-area{
+  .onboarding-component-onboarding-screens-content-area {
     width: 100%;
   }
-  .onboarding-component-onboarding-screens-content-area{
+  .onboarding-component-onboarding-screens-content-area {
     flex-direction: column;
   }
-  .onboarding-component-onboarding-screens{
+  .onboarding-component-onboarding-screens {
     width: 90vw;
     height: 100%;
   }
-  .onboarding-component-slider-slide img{
+  .onboarding-component-slider-slide img {
     width: 90vw;
     height: 40vh;
   }
-  .onboarding-component-slides-text-area{
+  .onboarding-component-slides-text-area {
     width: 90vw;
   }
-  .onboarding-component-demo-music-player{
+  .onboarding-component-demo-music-player {
     width: 90vw;
   }
-  .onboarding-component-ads-content-area{
+  .onboarding-component-ads-content-area {
     width: 90vw;
   }
-  .onboarding-component-ads-content-area img{
+  .onboarding-component-ads-content-area img {
     width: 90vw;
   }
-  .login-component{
+  .login-component {
     flex-direction: column;
     width: 80vw;
     height: 90vh;
   }
-  .login-component-left-image-area{
-      width: 100%;
-      height: 20vh;
+  .login-component-left-image-area {
+    width: 100%;
+    height: 20vh;
   }
-  .login-component-right-form-area{
+  .login-component-right-form-area {
     width: 80vw;
   }
-  .login-component-username-area input{
+  .login-component-username-area input {
     width: 65vw;
   }
-  .login-component-form-password-inputs input{
+  .login-component-form-password-inputs input {
     width: 65vw;
   }
-  .login-component-random-quote{
+  .login-component-random-quote {
     width: 55vw;
   }
-  .register-component{
+  .register-component {
     height: 100%;
     width: 100%;
   }
-  .register-component-content-area{
+  .register-component-content-area {
     flex-direction: column;
     gap: 20px;
   }
-  .register-component-hamburger-type-area{
+  .register-component-hamburger-type-area {
     width: 100%;
   }
-  .register-component-left-content-area{
+  .register-component-left-content-area {
     width: 95vw;
     height: 30vh;
   }
-  .register-component-right-form-area{
+  .register-component-right-form-area {
     width: 95vw;
   }
-  .register-component-welcome-message{
+  .register-component-welcome-message {
     width: 100%;
   }
-  form{
+  form {
     width: 90%;
   }
-  .register-component-email-area{
+  .register-component-email-area {
     width: 100%;
   }
-  .register-component-email-area input{
+  .register-component-email-area input {
     width: 100%;
   }
-  .register-component-password-area{
+  .register-component-password-area {
     width: 100%;
   }
-  .register-component-show-password-area input{
+  .register-component-show-password-area input {
     width: 100%;
   }
-  .register-component-conform-password-area{
+  .register-component-conform-password-area {
     width: 100%;
   }
-  .register-component-conform-password-area input{
+  .register-component-conform-password-area input {
     width: 100%;
   }
-  .register-component-terms-and-conditions-area{
+  .register-component-terms-and-conditions-area {
     width: 100%;
   }
-  .register-component-dash-one{
+  .register-component-dash-one {
     width: 35vw;
   }
-  .register-component-sign-up-with-google-button-area{
+  .register-component-sign-up-with-google-button-area {
     width: 100%;
   }
-  .register-component-sign-up-with-google-button{
+  .register-component-sign-up-with-google-button {
     width: 50vw;
   }
-  .register-component-already-have-an-account{
+  .register-component-already-have-an-account {
     width: 100%;
   }
-  .register-component-user-avatar-upload{
+  .register-component-user-avatar-upload {
     width: 100%;
   }
-  .register-component-name-area{
+  .register-component-name-area {
     width: 100%;
   }
-  .register-component-name-area input{
+  .register-component-name-area input {
     width: 100%;
   }
-  .register-component-username-area{
+  .register-component-username-area {
     width: 100%;
   }
-  .register-component-username-area input{
+  .register-component-username-area input {
     width: 100%;
   }
-  .register-component-public-user-id-area{
+  .register-component-public-user-id-area {
     width: 100%;
   }
-  .register-component-public-user-id-area input{
+  .register-component-public-user-id-area input {
     width: 100%;
   }
-  .register-component-next-button-area{
+  .register-component-next-button-area {
     width: 100%;
   }
-  .register-component-next-button-area button{
+  .register-component-next-button-area button {
     width: 100%;
   }
-  .register-component-back-button-area{
+  .register-component-back-button-area {
     width: 100%;
   }
-  .register-component-back-button-area button{
+  .register-component-back-button-area button {
     width: 100%;
   }
-  .register-component-user-bio-area{
+  .register-component-user-bio-area {
     width: 100%;
   }
-  .register-component-user-bio-area input{
+  .register-component-user-bio-area input {
     width: 100%;
   }
-  .register-component-country-area{
+  .register-component-country-area {
     width: 100%;
   }
-  .register-component-country-area input{
+  .register-component-country-area input {
     width: 100%;
   }
-  .register-component-website-area{
+  .register-component-website-area {
     width: 100%;
   }
-  .register-component-website-area input{
+  .register-component-website-area input {
     width: 100%;
   }
-  .register-component-liknked-in-link-area{
+  .register-component-liknked-in-link-area {
     width: 100%;
   }
-  .register-component-liknked-in-link-area input{
+  .register-component-liknked-in-link-area input {
     width: 100%;
   }
-  .register-component-x-link-area{
+  .register-component-x-link-area {
     width: 100%;
   }
-  .register-component-x-link-area input{
+  .register-component-x-link-area input {
     width: 100%;
   }
-  .register-component-insta-gram-link-area{
+  .register-component-insta-gram-link-area {
     width: 100%;
   }
-  .register-component-insta-gram-link-area input{
+  .register-component-insta-gram-link-area input {
     width: 100%;
   }
 }
