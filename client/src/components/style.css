@@ -883,6 +883,8 @@ form {
 .home-component {
   width: 100%;
   height: 8vh;
+  position: sticky;
+  top: 0;
 }
 
 .home-component-navbar-for-account-notification-and-others {
