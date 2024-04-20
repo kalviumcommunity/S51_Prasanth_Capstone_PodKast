@@ -3,7 +3,6 @@ const User = require("../models/users.model");
 const app = express();
 
 const getRouter = express.Router();
-const postRouter = express.Router();
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -47,4 +46,4 @@ getRouter.get("/get/email/:email", async (req, res) => {
   }
 });
 
-module.exports = { getRouter, postRouter };
+module.exports = { getRouter };

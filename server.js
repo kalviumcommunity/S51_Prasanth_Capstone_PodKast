@@ -6,6 +6,7 @@ const { startDatabase, isConnected } = require("./config/db");
 const loginRouter = require("./routes/login.routes");
 const { getRouter } = require("./routes/routes");
 const registerRouter = require("./routes/register.routes");
+const postRouter = require("./routes/post.router");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use('/api', loginRouter);
 app.use('/api', registerRouter);
 app.use('/api/users', getRouter);
+app.use('/api/media', postRouter)
 app.use(cors());
 
 app.get("/", (req, res) => {

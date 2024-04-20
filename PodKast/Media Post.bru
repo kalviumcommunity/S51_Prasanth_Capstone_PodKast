@@ -1,0 +1,27 @@
+meta {
+  name: Media Post
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/api/media/post
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "content": "This is a test post for the social media platform.",
+    "likes": 1000,
+    "dislikes": 2,
+    "createdAt": "2023-10-01T12:00:00Z",
+    "podcast": {
+      "title": "The Journey of AI",
+      "audiosrc": "https://example.com/audio/the-journey-of-ai.mp3",
+      "artists": ["John Doe", "Jane Smith"],
+      "coverpic": "https://example.com/images/ai-podcast-cover.jpg"
+    }
+  }
+  
+}
