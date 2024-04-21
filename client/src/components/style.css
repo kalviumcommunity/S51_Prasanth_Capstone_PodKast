@@ -986,7 +986,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.rss-reader-input-content-area{
+.rss-reader-input-content-area {
   width: 90%;
   height: 100vh;
   display: flex;
@@ -1006,12 +1006,34 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
   --color: rgba(114, 114, 114, 0.3);
   background-color: #191a1a;
-  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
-      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+  background-image: linear-gradient(
+      0deg,
+      transparent 24%,
+      var(--color) 25%,
+      var(--color) 26%,
+      transparent 27%,
+      transparent 74%,
+      var(--color) 75%,
+      var(--color) 76%,
+      transparent 77%,
+      transparent
+    ),
+    linear-gradient(
+      90deg,
+      transparent 24%,
+      var(--color) 25%,
+      var(--color) 26%,
+      transparent 27%,
+      transparent 74%,
+      var(--color) 75%,
+      var(--color) 76%,
+      transparent 77%,
+      transparent
+    );
   background-size: 55px 55px;
 }
 
-.rss-reader-user-inputs{
+.rss-reader-user-inputs {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1019,24 +1041,24 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 20px;
 }
 
-#announcement{
-  font-size: 12px; 
+#announcement {
+  font-size: 12px;
   text-align: center;
 }
 
-.rss-reader-user-inputs p{
+.rss-reader-user-inputs p {
   font-size: 14px;
 }
 
-.rss-reader-link-area{
+.rss-reader-link-area {
   height: 10vh;
 }
 
-.rss-reader-link-area label{
+.rss-reader-link-area label {
   font-size: 12px;
 }
 
-.rss-reader-rows-area{
+.rss-reader-rows-area {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1044,7 +1066,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 20px;
 }
 
-.rss-reader-audio-or-news-selector{
+.rss-reader-audio-or-news-selector {
   width: 40vw;
   display: flex;
   flex-direction: column;
@@ -1053,36 +1075,37 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 20px;
 }
 
-.rss-selector{
+.rss-selector {
   width: 10vw;
   height: 5vh;
 }
 
-.rss-selector select{
+.rss-selector select {
   width: 100%;
   height: 100%;
   border-radius: 10px;
   border: none;
 }
 
-.rss-link-input{
+.rss-link-input {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.rss-link-input input{
+.rss-link-input input {
   width: 30vw;
   height: 5vh;
-  border-radius: 10px;border: none;
+  border-radius: 10px;
+  border: none;
 }
 
-.rss-reader-fetch-button{
+.rss-reader-fetch-button {
   width: 100%;
   height: 5vh;
 }
 
-.rss-reader-fetch-button button{
+.rss-reader-fetch-button button {
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -1094,6 +1117,736 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 }
 
 /* RSS Reader Component Style End */
+
+/* Home Component Style Start */
+
+.home-component-with-navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-conponent-content-area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 5px;
+  gap: 10px;
+}
+
+.home-component-left-stories-area {
+  width: 20vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: rgba(47, 47, 47, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
+.stories-headign-and-add-yours-area {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid rgb(144, 144, 144);
+}
+
+.story-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.story-heading img {
+  width: 15px;
+}
+
+.story-heading p {
+  font-size: 14px;
+}
+
+.add-yours {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 9vw;
+  height: 5vh;
+  border-radius: 5px;
+  background-color: orange;
+  color: black;
+  cursor: pointer;
+}
+
+.add-yours img {
+  width: 15px;
+}
+
+.add-yours p {
+  font-size: 14px;
+}
+
+.stories-area {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.home-component-center-post-area {
+  width: 43vw;
+  height: 90vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  background: rgba(47, 47, 47, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-component-center-div {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-component-write-your-post-section {
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-component-post-text-area {
+  width: 95%;
+  height: 95%;
+  background-color: #222222;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.home-component-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.home-component-user-avatar-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-image: url("../assets/Cover/audio-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home-component-text-area-inputs {
+  width: 25vw;
+  height: 5vh;
+}
+
+.home-component-text-area-inputs input {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
+
+.home-component-text-area-inputs input[type="text"]:focus {
+  border: none;
+}
+
+.home-component-audio-choose {
+  width: 3vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-component-audio-choose img {
+  cursor: pointer;
+}
+
+.home-component-send-button {
+  width: 5vw;
+  height: 100%;
+  border-left: 1px solid #454545;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-component-send-button img {
+  cursor: pointer;
+}
+
+.home-component-right-suggestions-area {
+  width: 30vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-component-posts-show-area {
+  width: 100%;
+  height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.home-component-artists-suggestions {
+  width: 100%;
+  height: 68vh;
+  border-radius: 10px;
+  background: rgba(47, 47, 47, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
+.home-component-top-area {
+  width: 100%;
+  height: 8vh;
+  border-bottom: 1px solid rgb(82, 82, 82);
+  border-radius: 10px 10px 0px 0px;
+  background-color: #222222;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.option-onee-artists-suggestions-area {
+  width: 10vw;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid rgb(114, 114, 114);
+  cursor: pointer;
+  color: lightgray;
+}
+
+.option-onee-artists-suggestions-area.active {
+  width: 10vw;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: orange;
+  color: black;
+  cursor: pointer;
+}
+
+.option-onee-artists-suggestions-area p {
+  font-size: 12px;
+}
+
+.option-two-queue-area.active {
+  width: 10vw;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: orange;
+  color: black;
+  cursor: pointer;
+}
+
+.option-two-queue-area {
+  width: 10vw;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid rgb(114, 114, 114);
+  cursor: pointer;
+  color: lightgray;
+}
+
+.option-two-queue-area p {
+  font-size: 12px;
+}
+
+.home-component-content-area-with-the-optionals {
+  width: 100%;
+  height: 60vh;
+  border-radius: 0px 0px 10px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+/* Home Component Style End */
+
+/* Stories Component Style Strat */
+
+.helpers-stories-content-area {
+  background-image: url("../assets/Slides/slide-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 270px;
+  height: 540px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.stories-bottom-like-username-area {
+  width: 100%;
+  height: 50px;
+  border-radius: 0px 0px 10px 10px;
+  background: rgba(47, 47, 47, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.users-name-avatar-area-and-time-frame {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.user-details-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-image: url("../assets/Cover/audio-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.username-and-time-frame-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#hours-gone {
+  font-size: 12px;
+}
+
+.like-and-dislike-area {
+  width: 70px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.like-and-dislike-area img {
+  width: 20px;
+  cursor: pointer;
+}
+
+/* Stories Component Style End */
+
+/* Posts Component Style Start */
+
+.helper-post-content-area {
+  width: 40vw;
+  height: 20vh;
+  border: 1px solid rgb(76, 76, 76);
+  background-color: #222222;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.helper-post-top-content-area {
+  width: 95%;
+  height: 4vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.border-text-demo-div {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(96, 96, 96);
+}
+
+.user-details-content-area {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 20vw;
+  height: 100%;
+  gap: 10px;
+}
+
+.user-avatar-area {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  background-image: url("../assets/Cover/audio-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.users-username-episode-title p {
+  font-size: 14px;
+}
+
+#tags {
+  font-size: 8px;
+}
+
+.menu-bar-with-total-time-frame {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 10vw;
+  height: 100%;
+  gap: 20px;
+}
+
+.menu-bar-with-total-time-frame p {
+  font-size: 12px;
+  color: lightgray;
+}
+
+.menu-bar-with-total-time-frame img {
+  width: 3px;
+  cursor: pointer;
+}
+
+.helper-post-main-player-details {
+  width: 95%;
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.podcast-main-details-with-play-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 30vw;
+  gap: 10px;
+  height: 100%;
+}
+
+.podcast-cover-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-image: url("../assets/Cover/audio-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.podcast-title-artissts-details p {
+  font-size: 14px;
+}
+
+#artists {
+  font-size: 10px;
+}
+
+.play-button-of-that-audio-uploaded {
+  width: 8vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-button-of-that-audio-uploaded button {
+  width: 70%;
+  height: 55%;
+  background-color: transparent;
+  border: 1px solid lightgray;
+  color: white;
+  border-radius: 5px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.play-button-of-that-audio-uploaded button:hover {
+  border: none;
+  background-color: orange;
+  color: black;
+}
+
+.helper-post-bottom-content-area {
+  width: 95%;
+  height: 4vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.no-of-likes-with-like-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 10vw;
+  height: 100%;
+  cursor: pointer;
+}
+
+.no-of-likes-with-like-button img {
+  width: 15px;
+}
+
+.no-of-likes-with-like-button p {
+  font-size: 12px;
+}
+
+.no-of-comments-recived-with-comments-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 10vw;
+  height: 100%;
+  cursor: pointer;
+}
+
+.no-of-comments-recived-with-comments-button img {
+  width: 15px;
+}
+
+.no-of-comments-recived-with-comments-button p {
+  font-size: 12px;
+}
+
+.no-of-shares-with-share-now-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 10vw;
+  height: 100%;
+  cursor: pointer;
+}
+
+.no-of-shares-with-share-now-button img {
+  width: 15px;
+}
+
+.no-of-shares-with-share-now-button p {
+  font-size: 12px;
+}
+
+/* Posts Component Style End */
+
+/* Queue Component Style Start */
+
+.helper-queue-content-area {
+  width: 100%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.helper-queue-next-one-area {
+  width: 95%;
+  height: 10vh;
+  background-color: #222222;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.helper-queue-podcast-cover-pic-and-title-with-artist-name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 17vw;
+  gap: 15px;
+  height: 100%;
+}
+
+.helper-queue-podcast-cover-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-image: url("../assets/Cover/audio-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.helper-queue-podcast-title-with-artists-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.helper-queue-podcast-title-with-artists-name {
+  font-size: 14px;
+}
+
+.helper-queue-two-buttons-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10vw;
+  height: 100%;
+  gap: 10px;
+}
+
+.helper-queue-two-buttons-area p {
+  font-size: 12px;
+  color: lightgray;
+}
+
+.helper-queue-two-buttons-area button {
+  width: 50px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 5px;
+  color: lightgray;
+  border: 1px solid lightgray;
+  cursor: pointer;
+}
+
+.helper-queue-two-buttons-area button:hover {
+  background-color: orange;
+  color: black;
+  border: none;
+}
+
+/* Queue Component Style End */
+
+/* Artists Component Style Start */
+
+.helper-artists-content-area {
+  width: 100%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.helper-artists-main-content-area-to-display-artists {
+  width: 95%;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222222;
+  border-radius: 10px;
+}
+
+.helper-user-etails-with-user-avatar {
+  width: 20vw;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.helper-srtists-user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-image: url("../assets/Cover/audio-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.helper-artists-users-details p {
+  font-size: 14px;
+}
+
+.helper-artists-view-progile-button {
+  width: 7vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.helper-artists-view-progile-button button {
+  width: 7vw;
+  height: 4vh;
+  background-color: transparent;
+  border: 1px solid rgb(88, 88, 88);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.helper-artists-view-progile-button button:hover {
+  border: none;
+  background-color: orange;
+  color: black;
+}
+
+/* Artists Component Style End */
 
 /* Responsive Design Style Start */
 
