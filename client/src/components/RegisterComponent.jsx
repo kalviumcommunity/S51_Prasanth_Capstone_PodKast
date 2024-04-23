@@ -108,7 +108,7 @@ function RegisterComponent() {
     try {
       // Check if the email already exists
       const response = await fetch(
-        `http://localhost:3000/api/users/get/email/${formData.email}`
+        `https://s51-prasanth-capstone-podkast.onrender.com/api/users/get/email/${formData.email}`
       );
       const data = await response.json();
 
@@ -174,7 +174,7 @@ function RegisterComponent() {
     try {
       // Check if the username already exists
       const response = await fetch(
-        `http://localhost:3000/api/users/get/${formData.username}`
+        `https://s51-prasanth-capstone-podkast.onrender.com/api/users/get/${formData.username}`
       );
       const data = await response.json();
 
@@ -218,7 +218,7 @@ function RegisterComponent() {
     console.log(formData);
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/register",
+        "https://s51-prasanth-capstone-podkast.onrender.com/api/register",
         formData, 
         {
           headers: {

@@ -8,7 +8,7 @@ function Artists() {
           <div className="helper-user-etails-with-user-avatar">
             <div className="helper-srtists-user-avatar"></div>
             <div className="helper-artists-users-details">
-              <p>@johndoe</p>
+              <p>@username</p>
               <p id="tags">Enna da Podcast</p>
             </div>
           </div>
