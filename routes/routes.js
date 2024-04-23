@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("../models/users.model");
+const Post = require("../models/post.model");
 const app = express();
 
 const getRouter = express.Router();
@@ -42,6 +43,17 @@ getRouter.get("/get/email/:email", async (req, res) => {
     res.status(200).json(caption);
   } catch (err) {
     console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+getRouter.get("/media", async (req, res) => {
+  res.header({ "Access-Control-Allow-Origin": "*" });
+  try {
+    const captions = await Post.find();
+    res.status(200).json(captions);
+  } catch (error) {
+    console.error(error.message);
     res.status(500).send("Internal Server Error");
   }
 });

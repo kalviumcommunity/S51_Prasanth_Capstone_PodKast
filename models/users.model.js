@@ -1,3 +1,4 @@
+const { ref } = require('joi');
 const mongoose = require('mongoose');
 
 // Define the schema for publicProfile
@@ -61,7 +62,11 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  posts:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'posts'
+  }]
 });
 
 // Create the User model

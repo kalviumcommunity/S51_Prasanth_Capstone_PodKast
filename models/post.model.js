@@ -28,10 +28,6 @@ const PostSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  dislikes: {
-    type: Number,
-    default: 0,
-  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -40,6 +36,16 @@ const PostSchema = new mongoose.Schema({
     type: PodcastSchema,
     required: false,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',
+    required: true,
+  },
+  postID: {
+    type: String,
+    unique: true,
+    required: true
+  }
 });
 
 const Post = mongoose.model('posts', PostSchema);

@@ -15,11 +15,32 @@ import Queue from "./Helpers/Queue";
 
 function HomeComponent() {
   const [activeSection, setActiveSection] = useState("artists");
+  const [postsData, setPostsData] = useState([]); // State to store posts data
+  const [loading, setLoading] = useState(true);
 
-  // Function to handle option clicks
   const handleOptionClick = (section) => {
     setActiveSection(section);
   };
+
+  useEffect(() => {
+    const fetchPostsData = async () => {
+        try {
+            const response = await fetch("https://s51-prasanth-capstone-podkast.onrender.com/api/users/media");
+            if (!response.ok) {
+                throw new Error("Failed to fetch posts data");
+            }
+            const data = await response.json();
+            setPostsData(data);
+            console.log('Fetched postsData:', data); // Log the fetched data
+        } catch (error) {
+            console.error("Error fetching posts data:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    fetchPostsData();
+}, []);
 
   return (
     <>
@@ -63,7 +84,11 @@ function HomeComponent() {
               </div>
             </div>
             <div className="home-component-posts-show-area">
-              <Posts />
+              {loading ? (
+                <div className="loading-spinner">Loading...</div> // Show loading indicator
+              ) : (
+                <Posts initialPostsData={postsData} />
+              )}
             </div>
           </div>
           <div className="home-component-right-suggestions-area">
@@ -87,13 +112,9 @@ function HomeComponent() {
                 </div>
               </div>
               <div className="home-component-content-area-with-the-optionals">
-                {activeSection === "artists" && (
-                  <Artists/>
-                )}
+                {activeSection === "artists" && <Artists />}
 
-                {activeSection === "queue" && (
-                  <Queue/>
-                )}
+                {activeSection === "queue" && <Queue />}
               </div>
             </div>
             <AudioPlayer songs={audioData} theme="light" />
