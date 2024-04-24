@@ -28,15 +28,15 @@ loginRouter.post("/login", async (req, res) => {
     }
 
     // Compare the provided password with the hashed password in the database
-    // const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
 
-    if (password !== user.password) {
-      return res.status(401).json({ error: "Invalid credentials" });
-    }
-
-    // if (!isPasswordValid) {
+    // if (password !== user.password) {
     //   return res.status(401).json({ error: "Invalid credentials" });
     // }
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
 
     // If the credentials are valid, generate a JWT
     const token = jwt.sign({ userId: user._id }, secret, { expiresIn: "1h" });

@@ -70,7 +70,7 @@ function LoginComponent() {
 
     try {
       const response = await axios.post(
-        "https://s51-prasanth-capstone-podkast.onrender.com/api/login",
+        "http://localhost:3000/api/login",
         { username, password }
       );
       const { token } = response.data;
