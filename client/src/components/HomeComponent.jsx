@@ -12,11 +12,13 @@ import AudioPlayer from "podkast-audio-player";
 import { audioData } from "./AudioData";
 import Artists from "./Helpers/Artists";
 import Queue from "./Helpers/Queue";
+import AudioPopup from "./Helpers/AudioPopup";
 
 function HomeComponent() {
   const [activeSection, setActiveSection] = useState("artists");
   const [postsData, setPostsData] = useState([]); // State to store posts data
   const [loading, setLoading] = useState(true);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const handleOptionClick = (section) => {
     setActiveSection(section);
@@ -24,27 +26,33 @@ function HomeComponent() {
 
   useEffect(() => {
     const fetchPostsData = async () => {
-        try {
-            const response = await fetch("https://s51-prasanth-capstone-podkast.onrender.com/api/users/media");
-            if (!response.ok) {
-                throw new Error("Failed to fetch posts data");
-            }
-            const data = await response.json();
-            setPostsData(data);
-            console.log('Fetched postsData:', data); // Log the fetched data
-        } catch (error) {
-            console.error("Error fetching posts data:", error);
-        } finally {
-            setLoading(false);
+      try {
+        const response = await fetch(
+          "https://s51-prasanth-capstone-podkast.onrender.com/api/users/media"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch posts data");
         }
+        const data = await response.json();
+        setPostsData(data);
+        console.log("Fetched postsData:", data); // Log the fetched data
+      } catch (error) {
+        console.error("Error fetching posts data:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchPostsData();
-}, []);
+  }, []);
+
+  const togglePopup = () => {
+    setIsPopupVisible(!isPopupVisible);
+  };
 
   return (
     <>
-      <div className="home-component-with-navbar">
+      <div className={`home-component-with-navbar ${isPopupVisible ? "blur-background" : ""}`}>
         <InsideNavbar />
         <div className="home-conponent-content-area">
           <div className="home-component-left-stories-area">
@@ -74,7 +82,7 @@ function HomeComponent() {
                       />
                     </div>
                     <div className="home-component-audio-choose">
-                      <img src={Microphone} alt="" />
+                      <img src={Microphone} alt="" onClick={togglePopup} />
                     </div>
                     <div className="home-component-send-button">
                       <img src={Send} alt="" />
@@ -121,6 +129,11 @@ function HomeComponent() {
           </div>
         </div>
       </div>
+      {isPopupVisible && (
+        <div className="navbar-component-popup-area">
+          <AudioPopup onclose={togglePopup}/>
+        </div>
+      )}
     </>
   );
 }

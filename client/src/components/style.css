@@ -1876,6 +1876,170 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 /* Artists Component Style End */
 
+/* Artists Component Style End */
+
+.audio-popup-content-area{
+  width: 30vw;
+  height: 35vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.audio-popup-heading-area{
+  width: 100%;
+  text-align: center;
+}
+
+.audio-popup-inputs-field-area form{
+  width: 25vw;
+  height: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.audio-popup-form-choose-file{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  gap: 10px;
+}
+
+.audio-popup-form-choose-file label{
+  font-size: 12px;
+}
+
+.audio-popup-form-choose-cover-pic{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  gap: 10px;
+}
+
+.audio-popup-form-choose-cover-pic label{
+  font-size: 12px;
+}
+
+.audio-popup-podcast-name{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  gap: 10px;
+}
+
+.audio-popup-podcast-name label{
+  font-size: 12px;
+}
+
+.audio-popup-podcast-name input{
+  width: 100%;
+  height: 4vh;
+  border-radius: 5px;
+  border: none;
+}
+
+.audio-popup-podcast-artists{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 15vh;
+  gap: 10px;
+}
+
+.audio-popup-podcast-artists label{
+  font-size: 12px;
+}
+
+.audio-popup-podcast-artists input{
+  width: 100%;
+  height: 4vh;
+  border-radius: 5px;
+  border: none;
+}
+
+.artist-tags{
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.artist-tag{
+  width: 100%;
+  height: 25px;
+  background-color: orange;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+}
+
+.artist-tag span{
+  font-size: 12px;
+  color: black;
+}
+
+.artist-tag p{
+  cursor: pointer;
+  font-size: 12px;
+  color: black;
+  font-weight: 800;
+}
+
+.audio-popup-save-button{
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.audio-popup-save-button button{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: orange;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.audio-popup-cancel-button{
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.audio-popup-cancel-button button{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  cursor: pointer;
+}
+
+/* Artists Component Style End */
+
 /* Responsive Design Style Start */
 
 @media (max-width: 768px) {

@@ -29,15 +29,22 @@ function Posts({ initialPostsData = [] }) {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch("https://s51-prasanth-capstone-podkast.onrender.com/api/users/get");
+        const response = await fetch(
+          "http://localhost:3000/api/users/get"
+        );
         if (!response.ok) {
-          throw new Error("Failed to fetch user data");
+          console.error("Failed to fetch user data: ", response.statusText);
+          return;
         }
+
         const data = await response.json();
+
+        // Create a map of users using their IDs as keys
         const usersMap = data.reduce((map, user) => {
-          map[user.id] = user;
+          map[user._id] = user;
           return map;
         }, {});
+
         setUsersData(usersMap);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -54,7 +61,7 @@ function Posts({ initialPostsData = [] }) {
 
       // Make an API call to update the like count in the database
       const response = await fetch(
-        `https://s51-prasanth-capstone-podkast.onrender.com/api/media/posts/${postID}`,
+        `http://localhost:3000/api/media/posts/${postID}`,
         {
           method: "PATCH",
           headers: {
@@ -102,8 +109,7 @@ function Posts({ initialPostsData = [] }) {
     <>
       {Array.isArray(postsData) && postsData.length > 0 ? (
         postsData.map((post, index) => {
-          const user = usersData[post.userId];
-
+          const postOwner = usersData[post.user];
           // Determine the current liked state for the post
           const isLiked = likedPosts[post.postID] || false;
 
@@ -115,12 +121,17 @@ function Posts({ initialPostsData = [] }) {
                     className="user-avatar-area"
                     style={{
                       backgroundImage:
-                        user && user.avatar ? `url(${user.avatar})` : "",
+                        postOwner && postOwner.avatar
+                          ? `url(${postOwner.avatar})`
+                          : "",
                     }}
                   ></div>
                   <div className="users-username-episode-title">
                     <p>
-                      @{user && user.username ? user.username : "Unknown User"}
+                      @
+                      {postOwner && postOwner.username
+                        ? postOwner.username
+                        : "Unknown User"}
                     </p>
                     <p id="tags">{post.postID}</p>
                   </div>
