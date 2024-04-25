@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./style.css";
 
 // Components
@@ -25,13 +25,15 @@ import SettingDarkIcon from "../assets/Icons/Setting-Dark.svg";
 import UserIcon from "../assets/Icons/Profile.svg";
 import LoginComponent from "./LoginComponent";
 import OnboardingComponent from "./OnboardingComponent";
+import { AuthContext } from "./AuthContext";
 
-function Navbar({ isLoggedIn }) {
+function Navbar() {
   const [activeIcon, setActiveIcon] = useState("home");
   const [showPopup, setShowPopup] = useState(false);
   const [isNewVisitor, setIsNewVisitor] = useState(false);
   const [userAvatar, setUserAvatar] = useState(null);
-  const [showOptions, setShowOptions] = useState(false);
+
+  const { isLoggedIn } = useContext(AuthContext)
 
   const iconComponentMap = {
     home: {
@@ -89,14 +91,6 @@ function Navbar({ isLoggedIn }) {
     };
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("avatar");
-  };
-
-  const handleAvatarClick = () => {
-    setShowOptions(!showOptions);
-  };
 
   return (
     <div className="navbar-container">
@@ -132,7 +126,6 @@ function Navbar({ isLoggedIn }) {
               src={userAvatar}
               alt="user-avatar"
               className="user-avatar"
-              onClick={handleAvatarClick}
               title="User Settings"
             />
           ) : (
@@ -144,16 +137,9 @@ function Navbar({ isLoggedIn }) {
             />
           )}
         </div>
-        {showOptions && (
-          <div className="user-options">
-            <div className="option" onClick={handleLogout}>
-              Logout
-            </div>
-          </div>
-        )}
         {showPopup && (
           <div className="navbar-component-popup-area">
-            <LoginComponent/>
+            <LoginComponent popupClose={togglePopup}/>
           </div>
         )}
       </nav>

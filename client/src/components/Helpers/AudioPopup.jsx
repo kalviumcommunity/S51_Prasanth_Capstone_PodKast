@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import { storage } from "../firebase"; // Import Firebase Storage from your configuration file
+import React, { useState, useContext, useEffect } from "react";
+import { storage, auth } from "../firebase"; // Import Firebase Storage from your configuration file
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import necessary functions from Firebase Storage
+import { AuthContext } from "../AuthContext"; // Import AuthContext to check user authentication
+import { toast } from "react-toastify";
 
 function AudioPopup({ onClose }) {
+  const { isLoggedIn } = useContext(AuthContext); // Access the AuthContext to check authentication status
   const [artists, setArtists] = useState([]);
   const [currentArtist, setCurrentArtist] = useState("");
   const [formData, setFormData] = useState({
@@ -20,7 +23,10 @@ function AudioPopup({ onClose }) {
   const handleArtistKeyPress = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
-      if (currentArtist.trim() !== "" && !artists.includes(currentArtist.trim())) {
+      if (
+        currentArtist.trim() !== "" &&
+        !artists.includes(currentArtist.trim())
+      ) {
         setArtists([...artists, currentArtist.trim()]);
         setCurrentArtist("");
       }
@@ -32,7 +38,6 @@ function AudioPopup({ onClose }) {
     setArtists(artists.filter((artist) => artist !== artistToDelete));
   };
 
-  // Handle form input changes
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
@@ -56,7 +61,10 @@ function AudioPopup({ onClose }) {
 
       // Upload the cover picture file to Firebase Storage
       const coverPicRef = ref(storage, `coverpics/${Date.now()}.jpg`);
-      const coverPicUploadResult = await uploadBytes(coverPicRef, formData.coverpic);
+      const coverPicUploadResult = await uploadBytes(
+        coverPicRef,
+        formData.coverpic
+      );
       const coverPicURL = await getDownloadURL(coverPicUploadResult.ref);
 
       // Create an object with the form data and the list of artists
@@ -77,6 +85,7 @@ function AudioPopup({ onClose }) {
       onClose();
     } catch (error) {
       console.error("Error saving podcast:", error);
+      toast.error(`Error saving podcast: ${error.message}`);
     }
   };
 
@@ -138,9 +147,7 @@ function AudioPopup({ onClose }) {
               {artists.map((artist, index) => (
                 <div key={index} className="artist-tag">
                   <span>{artist}</span>
-                  <p onClick={() => handleArtistDelete(artist)}>
-                    ×
-                  </p>
+                  <p onClick={() => handleArtistDelete(artist)}>×</p>
                 </div>
               ))}
             </div>
