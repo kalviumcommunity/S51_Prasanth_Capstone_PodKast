@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import EyeShow from "../assets/Icons/Eye-Show.svg";
 import EyeHide from "../assets/Icons/Eye-Hide.svg";
+import { AuthContext } from "./AuthContext";
 
 const quotes = [
   "The only way to do great work is to love what you do.",
@@ -22,35 +23,36 @@ const quotes = [
   "The only way to do great work is to do what you love.",
 ];
 
-function LoginComponent() {
+function LoginComponent({ popupClose }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isPopupOpen, setIsPopupOpen] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [randomQuote, setRandomQuote] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
+  const { setIsLoggedIn } = useContext(AuthContext);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if token exists in local storage and is valid
-    const token = localStorage.getItem("token");
-    if (token) {
-      // Validate the token (e.g., check expiration)
-      // If the token is expired, remove it from local storage
-      const decodedToken = jwtDecode(token); // Use jwtDecode instead of jwt.decode
-      if (decodedToken && decodedToken.exp * 1000 < Date.now()) {
-        localStorage.removeItem("token");
-      } else {
-        // Token is valid, close the popup
-        setIsPopupOpen(false);
-      }
-    }
-
     const randomIndex = Math.floor(Math.random() * quotes.length);
     setRandomQuote(quotes[randomIndex]);
-  }, []);
+
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        if (decodedToken.exp * 1000 > Date.now()) {
+          // Token is valid, close the popup and set isLoggedIn to true
+          setIsLoggedIn(true);
+          popupClose();
+        }
+      } catch (error) {
+        localStorage.removeItem("token"); // Remove invalid token
+      }
+    }
+  }, [popupClose, setIsLoggedIn]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,7 +61,7 @@ function LoginComponent() {
     setPasswordError("");
 
     // Validate input fields
-    if (username.trim() === "") {
+    if (username.trim() === "") { 
       setUsernameError("Username is required");
       return;
     }
@@ -69,14 +71,15 @@ function LoginComponent() {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/login",
-        { username, password }
-      );
+      const response = await axios.post("http://localhost:3000/api/login", {
+        username,
+        password,
+      });
       const { token } = response.data;
       localStorage.setItem("token", token);
       toast.success("Login successful!");
-      setIsPopupOpen(false);
+      setIsLoggedIn(true)
+      popupClose();
     } catch (error) {
       toast.error("Invalid username or password");
     }
@@ -87,78 +90,83 @@ function LoginComponent() {
   };
 
   const handleRegisterNow = () => {
-    navigate('/register')
-  }
+    navigate("/register");
+  };
 
   return (
     <>
-      {isPopupOpen && (
-        <div className="login-component">
-          <div className="login-component-left-image-area"></div>
-          <div className="login-component-right-form-area">
-            <div className="login-component-close-popup-button">
-              <p>Press (ESC) to Close.</p>
+      <div className="login-component">
+        <div className="login-component-left-image-area"></div>
+        <div className="login-component-right-form-area">
+          <div className="login-component-close-popup-button">
+            <p>Press (ESC) to Close.</p>
+          </div>
+          <div className="login-component-logo-area">
+            <img src={Logo} alt="podkast-logo" />
+          </div>
+          <form className="login-form" onSubmit={handleSubmit}>
+            <div className="login-component-welcome-message-area">
+              <h1>Welcome Back,😍</h1>
             </div>
-            <div className="login-component-logo-area">
-              <img src={Logo} alt="podkast-logo" />
+            <h1 className="login-component-random-quote">
+              &quot;{randomQuote}&quot;
+            </h1>
+            <div className="login-component-username-area">
+              <label htmlFor="username">Username:</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={username}
+                placeholder="rj_prasanthu"
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              {usernameError && (
+                <p className="error-message">{usernameError}</p>
+              )}
             </div>
-            <form className="login-form" onSubmit={handleSubmit}>
-              <div className="login-component-welcome-message-area">
-                <h1>Welcome Back,😍</h1>
-              </div>
-              <h1 className="login-component-random-quote">
-                &quot;{randomQuote}&quot;
-              </h1>
-              <div className="login-component-username-area">
-                <label htmlFor="username">Username:</label>
+            <div className="login-component-password-area">
+              <label htmlFor="password">Password:</label>
+              <div className="login-component-form-password-inputs">
                 <input
-                  type="text"
-                  id="username"
-                  name="username"
-                  value={username}
-                  placeholder="rj_prasanthu"
-                  onChange={(e) => setUsername(e.target.value)}
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
-                {usernameError && <p className="error-message">{usernameError}</p>}
+                <img
+                  src={showPassword ? EyeHide : EyeShow}
+                  alt="toggle-password"
+                  className="password-toggle-icon"
+                  onClick={togglePasswordVisibility}
+                />
               </div>
-              <div className="login-component-password-area">
-                <label htmlFor="password">Password:</label>
-                <div className="login-component-form-password-inputs">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    id="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <img
-                    src={showPassword ? EyeHide : EyeShow}
-                    alt="toggle-password"
-                    className="password-toggle-icon"
-                    onClick={togglePasswordVisibility}
-                  />
-                </div>
-                {passwordError && <p className="error-message">{passwordError}</p>}
-              </div>
-              <div className="login-component-remember-me-and-forget-password-area">
-                <div className="login-component-remember-me-button">
-                  <input type="checkbox" name="remember-me" id="remember-me" />
-                  <label htmlFor="remember-me">Remember Me</label>
-                </div>
-                <div className="login-component-forget-password-button">
-                  <p>Forget Password?</p>
-                </div>
-              </div>
-              <div className="login-component-form-submit-button">
-                <button className="poppins-bold">Login</button>
-              </div>
-            </form>
-            <div className="login-component-redirect-to-register-component">
-              <p>Don&apos;t have an account? <span onClick={handleRegisterNow}>Register Now!</span></p>
+              {passwordError && (
+                <p className="error-message">{passwordError}</p>
+              )}
             </div>
+            <div className="login-component-remember-me-and-forget-password-area">
+              <div className="login-component-remember-me-button">
+                <input type="checkbox" name="remember-me" id="remember-me" />
+                <label htmlFor="remember-me">Remember Me</label>
+              </div>
+              <div className="login-component-forget-password-button">
+                <p>Forget Password?</p>
+              </div>
+            </div>
+            <div className="login-component-form-submit-button">
+              <button className="poppins-bold">Login</button>
+            </div>
+          </form>
+          <div className="login-component-redirect-to-register-component">
+            <p>
+              Don&apos;t have an account?{" "}
+              <span onClick={handleRegisterNow}>Register Now!</span>
+            </p>
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

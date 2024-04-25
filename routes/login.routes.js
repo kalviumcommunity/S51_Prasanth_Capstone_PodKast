@@ -32,6 +32,7 @@ loginRouter.post("/login", async (req, res) => {
 
     // if (password !== user.password) {
     //   return res.status(401).json({ error: "Invalid credentials" });
+
     // }
 
     if (!isPasswordValid) {

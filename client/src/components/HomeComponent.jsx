@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import InsideNavbar from "./InsideNavbar";
 
 import Story from "../assets/Icons/Story.svg";
@@ -13,6 +13,7 @@ import { audioData } from "./AudioData";
 import Artists from "./Helpers/Artists";
 import Queue from "./Helpers/Queue";
 import AudioPopup from "./Helpers/AudioPopup";
+import { AuthContext } from "./AuthContext";
 
 function HomeComponent() {
   const [activeSection, setActiveSection] = useState("artists");
@@ -49,6 +50,7 @@ function HomeComponent() {
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible);
   };
+
 
   return (
     <>

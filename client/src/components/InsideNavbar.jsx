@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import Verified from "../assets/Icons/Verified.svg";
 import Notification from "../assets/Icons/Notification.svg";
 import Logout from "../assets/Icons/Logout.svg";
 import SettingComponent from "./RSSComponent";
+import { AuthContext } from "./AuthContext";
 
 function InsideNavbar() {
   const [currentDate, setCurrentDate] = useState("");
   const [uptime, setUptime] = useState("00:00:00");
   const [isScrolling, setIsScrolling] = useState(false);
+
+  const { setIsLoggedIn } = useContext(AuthContext)
 
   useEffect(() => {
     // Function to update the current date and time
@@ -54,6 +57,12 @@ function InsideNavbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("avatar");
+    setIsLoggedIn(false)
+  };
+
   return (
     <>
       <div className="home-component">
@@ -70,7 +79,7 @@ function InsideNavbar() {
               <img src={Notification} alt="notification-icon" />
             </div>
             <div className="navbar-logout-icon-area">
-              <img src={Logout} alt="logout-icon" />
+              <img src={Logout} alt="logout-icon" onClick={handleLogout}/>
             </div>
           </div>
         </div>

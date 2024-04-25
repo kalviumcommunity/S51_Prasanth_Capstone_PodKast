@@ -1,18 +1,20 @@
-import React from "react"
-import { BrowserRouter } from "react-router-dom"
-import AllRouter from "./AllRoutes"
-import { ToastContainer } from "react-toastify"
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import AllRouter from "./AllRoutes";
+import { ToastContainer } from "react-toastify";
+import { AuthProvider } from "./components/AuthContext";
 
 function App() {
-  
   return (
     <>
-      <BrowserRouter>
-      <ToastContainer/>
-        <AllRouter/>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <ToastContainer />
+          <AllRouter />
+        </BrowserRouter>
+      </AuthProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
