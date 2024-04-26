@@ -69,8 +69,8 @@ function InsideNavbar() {
         <div className={`home-component-navbar-for-account-notification-and-others${isScrolling ? " scrolled" : ""}`}>
           <div className="home-component-navbar-user-with-date-and-uptime">
             <img src={Verified} alt="verified-icon" />
-            <p>Hey, User</p>
-            <p>{currentDate}</p>
+            <p id="username-area">Hey, User</p>
+            <p id="current-date">{currentDate}</p>
             <p className="uptime">{uptime} Uptime</p>
           </div>
           <div className="home-component-navbar-running-commands-area"></div>
