@@ -93,13 +93,17 @@ function LoginComponent({ popupClose }) {
     navigate("/register");
   };
 
+  const handleESC = () => {
+    popupClose();
+  }
+
   return (
     <>
       <div className="login-component">
         <div className="login-component-left-image-area"></div>
         <div className="login-component-right-form-area">
           <div className="login-component-close-popup-button">
-            <p>Press (ESC) to Close.</p>
+            <p onClick={handleESC}>Press (ESC) to Close. or Press this</p>
           </div>
           <div className="login-component-logo-area">
             <img src={Logo} alt="podkast-logo" />

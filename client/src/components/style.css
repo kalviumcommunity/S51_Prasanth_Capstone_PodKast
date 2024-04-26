@@ -15,6 +15,12 @@ nav {
   border-right: 1px solid rgb(81, 81, 81);
 }
 
+.nav-bar-con-tai-ner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .navbar-section-logo-area {
   display: flex;
   justify-content: center;
@@ -74,7 +80,6 @@ nav {
   width: 100vw;
   height: 100vh;
   background-color: #222222;
-  overflow-y: auto;
 }
 
 .navbar-component-popup-area {
@@ -2043,8 +2048,15 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 /* Responsive Design Style Start */
 
 @media (max-width: 768px) {
+  .nav-bar-con-tai-ner{
+    display: contents;
+  }
   .navbar-container {
     flex-direction: column-reverse;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    height: 100%;
   }
   nav {
     width: 100%;
@@ -2059,8 +2071,8 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   }
   .content {
     width: 100%;
-    height: 190vh;
-    z-index: -1;
+    height: 100%;
+    z-index: -2;
   }
   .onboarding-component-onboarding-screens-content-area {
     width: 100%;
@@ -2099,6 +2111,9 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   }
   .login-component-right-form-area {
     width: 80vw;
+  }
+  .login-component-close-popup-button p{
+    cursor: pointer;
   }
   .login-component-username-area input {
     width: 65vw;
@@ -2234,6 +2249,112 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   }
   .register-component-insta-gram-link-area input {
     width: 100%;
+  }
+  .home-component{
+    z-index: 100;
+    position: sticky;
+    top: 0;
+  }
+  .home-component-navbar-user-with-date-and-uptime{
+    width: 70vw;
+  }
+  .home-component-navbar-running-commands-area{
+    display: none;
+  }
+  .home-component-navbar-icons-area{
+    width: 23vw;
+  }
+  .navbar-notifications-icon-area{
+    width: 10vw;
+  }
+  .home-component-with-navbar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .home-conponent-content-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .home-component-left-stories-area{
+    width: 87vw;
+  }
+  .add-yours{
+    width: 30vw;
+  }
+  .home-component-center-post-area{
+    width: 87vw;
+  }
+  .home-component-inputs{
+    width: 100%;
+  }
+  .home-component-text-area-inputs{
+    width: 50vw;
+  }
+  .home-component-send-button{
+    width: 70px;
+  }
+  .helper-post-content-area{
+    width: 80vw;
+  }
+  .user-avatar-area{
+    width: 30px;
+    height: 30px;
+  }
+  .user-details-content-area{
+    width: 30vw;
+    height: 100%;
+  }
+  .menu-bar-with-total-time-frame{
+    width: 25vw;
+  }
+  .helper-post-podcsat-details-withhh{
+    width: 60vw;
+  }
+  .play-button-of-that-audio-uploaded{
+    width: 20vw;
+  }
+  .no-of-likes-with-like-button{
+    width: 20vw;
+  }
+  .no-of-comments-recived-with-comments-button{
+    width: 20vw;
+  }
+  .no-of-shares-with-share-now-button{
+    width: 20vw;
+  }
+  .home-component-right-suggestions-area{
+    width: 87vw;
+  }
+  .option-onee-artists-suggestions-area{
+    width: 30vw;
+  }
+  .option-onee-artists-suggestions-area.active{
+    width: 30vw;
+  }
+  .option-two-queue-area{
+    width: 30vw;
+  }
+  .option-two-queue-area.active{
+    width: 30vw;
+  }
+  .helper-user-etails-with-user-avatar{
+    width: 60vw;
+  }
+  .helper-artists-view-progile-button{
+    width: 20vw;
+  }
+  .helper-artists-view-progile-button button{
+    width: 90px;
+  }
+  .helper-queue-podcast-cover-pic-and-title-with-artist-name{
+    width: 50vw;
+  }
+  .helper-queue-two-buttons-area{
+    width: 30vw;
   }
 }
 

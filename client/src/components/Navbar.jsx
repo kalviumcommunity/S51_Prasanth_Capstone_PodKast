@@ -33,7 +33,7 @@ function Navbar() {
   const [isNewVisitor, setIsNewVisitor] = useState(false);
   const [userAvatar, setUserAvatar] = useState(null);
 
-  const { isLoggedIn } = useContext(AuthContext)
+  const { isLoggedIn } = useContext(AuthContext);
 
   const iconComponentMap = {
     home: {
@@ -91,66 +91,69 @@ function Navbar() {
     };
   }, []);
 
-
   return (
-    <div className="navbar-container">
-      <nav>
-        <div className="navbar-section-logo-area">
-          <img src={Logo} alt="" />
-        </div>
-        <div className="navbar-section-menus-area">
-          {Object.keys(iconComponentMap).map((icon) => (
-            <div
-              key={icon}
-              className={
-                activeIcon === icon
-                  ? "navbar-menu-active"
-                  : "navbar-menu-in-active"
-              }
-              onClick={() => handleIconClick(icon)}
-            >
-              <img
-                src={
-                  activeIcon === icon
-                    ? iconComponentMap[icon].icon.dark
-                    : iconComponentMap[icon].icon.light
-                }
-                alt={`${icon}-icon`}
-              />
+    <>
+      <div className="nav-bar-con-tai-ner">
+        <div className="navbar-container">
+          <nav>
+            <div className="navbar-section-logo-area">
+              <img src={Logo} alt="" />
             </div>
-          ))}
-        </div>
-        <div className="navbar-login-content-area">
-          {isLoggedIn && userAvatar ? (
-            <img
-              src={userAvatar}
-              alt="user-avatar"
-              className="user-avatar"
-              title="User Settings"
-            />
-          ) : (
-            <img
-              src={UserIcon}
-              alt="user-icon"
-              onClick={togglePopup}
-              title="User Settings"
-            />
-          )}
+            <div className="navbar-section-menus-area">
+              {Object.keys(iconComponentMap).map((icon) => (
+                <div
+                  key={icon}
+                  className={
+                    activeIcon === icon
+                      ? "navbar-menu-active"
+                      : "navbar-menu-in-active"
+                  }
+                  onClick={() => handleIconClick(icon)}
+                >
+                  <img
+                    src={
+                      activeIcon === icon
+                        ? iconComponentMap[icon].icon.dark
+                        : iconComponentMap[icon].icon.light
+                    }
+                    alt={`${icon}-icon`}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="navbar-login-content-area">
+              {isLoggedIn && userAvatar ? (
+                <img
+                  src={userAvatar}
+                  alt="user-avatar"
+                  className="user-avatar"
+                  title="User Settings"
+                />
+              ) : (
+                <img
+                  src={UserIcon}
+                  alt="user-icon"
+                  onClick={togglePopup}
+                  title="User Settings"
+                />
+              )}
+            </div>
+          </nav>
         </div>
         {showPopup && (
           <div className="navbar-component-popup-area">
-            <LoginComponent popupClose={togglePopup}/>
+            <LoginComponent popupClose={togglePopup} />
           </div>
         )}
-      </nav>
-      <div className={`content ${showPopup ? "blur-background" : ""}`}>
-        {isNewVisitor ? (
-          <OnboardingComponent />
-        ) : (
-          React.createElement(iconComponentMap[activeIcon].component)
-        )}
+        <div className={`content ${showPopup ? "blur-background" : ""}`}>
+          {isNewVisitor ? (
+            <OnboardingComponent />
+          ) : (
+            React.createElement(iconComponentMap[activeIcon].component)
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
