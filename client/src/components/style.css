@@ -1232,7 +1232,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 .home-component-center-div {
   width: 100%;
-  height: 15vh;
+  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1330,7 +1330,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 .home-component-posts-show-area {
   width: 100%;
   height: 80vh;
-  overflow-y: auto;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1507,7 +1507,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 .helper-post-content-area {
   width: 40vw;
-  height: 25vh;
+  height: 100%;
   border: 1px solid rgb(76, 76, 76);
   background-color: #222222;
   border-radius: 10px;
@@ -1516,6 +1516,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   justify-content: space-around;
   align-items: center;
   gap: 10px;
+  overflow: auto;
 }
 
 .helper-post-top-content-area {
@@ -1542,9 +1543,9 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 }
 
 .user-avatar-area {
-  width: 35px;
-  height: 35px;
-  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
   background-image: url("../assets/Cover/audio-1.jpg");
   background-repeat: no-repeat;
   background-size: cover;

@@ -57,6 +57,17 @@ postRouter.post('/post', async (req, res) => {
     }
 });
 
+postRouter.get("/posts/get/:postID", async (req, res) => {
+    try {
+      const { postID } = req.params;
+      const user = await Post.findOne({ postID: postID });
+      res.status(200).json(user);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Internal Server Error");
+    }
+  });
+
 // PATCH route to like a post
 postRouter.patch('/post/like/:postID/:publicUserID', async (req, res) => {
   const { postID, publicUserID } = req.params;

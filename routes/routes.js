@@ -35,6 +35,17 @@ getRouter.get("/get/:username", async (req, res) => {
   }
 });
 
+getRouter.get("/get/userid/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const caption = await User.findById(userId);
+    res.status(200).json(caption);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 getRouter.get("/get/email/:email", async (req, res) => {
   res.header({ "Access-Control-Allow-Origin": "*" });
   try {

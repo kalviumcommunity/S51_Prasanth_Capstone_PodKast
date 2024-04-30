@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
+import { jwtDecode } from "jwt-decode";
+import { toast } from "react-toastify";
 
 import Menu from "./assets/Menu.svg";
 import Like from "./assets/Heart.svg";
@@ -8,76 +10,128 @@ import Share from "./assets/Send.svg";
 import Comments from "./assets/Message.svg";
 
 function Posts({ initialPostsData = [] }) {
-  // Declare the state variables
-  const [postsData, setPostsData] = useState(initialPostsData); // State to store posts data
-  const [usersData, setUsersData] = useState({}); // State to store user data
-  const [likedPosts, setLikedPosts] = useState({}); // State to track liked posts
+  const [postsData, setPostsData] = useState(initialPostsData);
+  const [usersData, setUsersData] = useState({});
+  const [likedPosts, setLikedPosts] = useState(new Set()); // Use a Set for liked posts
+  const [publicUserID, setPublicUserID] = useState("");
 
+  // Fetch user data and liked posts when the component mounts
   useEffect(() => {
-    const storedLikedPosts = localStorage.getItem("likedPosts");
-    if (storedLikedPosts) {
-      setLikedPosts(JSON.parse(storedLikedPosts));
-    }
-  }, []);
+    const fetchUserDataAndLikedPosts = async () => {
+      const token = localStorage.getItem("token");
 
-  // When saving `likedPosts` to local storage
-  useEffect(() => {
-    localStorage.setItem("likedPosts", JSON.stringify(likedPosts));
-  }, [likedPosts]);
+      if (!token) {
+        toast.error("User is not logged in: Token is missing.");
+        return;
+      }
 
-  // Fetch user data when the component mounts
-  useEffect(() => {
-    const fetchUserData = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:3000/api/users/get"
+        // Decode the token to get the userId
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.userId;
+
+        // Fetch user data using userId
+        const userResponse = await fetch(
+          `http://localhost:3000/api/users/get/userid/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
-        if (!response.ok) {
-          console.error("Failed to fetch user data: ", response.statusText);
+
+        if (!userResponse.ok) {
+          console.error("Failed to fetch user data:", userResponse.statusText);
           return;
         }
 
-        const data = await response.json();
+        const userData = await userResponse.json();
+        setPublicUserID(userData.publicUserID);
+
+        // Fetch liked posts of the user
+        const likedPostsResponse = await fetch(
+          `http://localhost:3000/api/users/get/userid/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!likedPostsResponse.ok) {
+          console.error(
+            "Failed to fetch liked posts data:",
+            likedPostsResponse.statusText
+          );
+          return;
+        }
+
+        const likedPostsData = await likedPostsResponse.json();
+
+        // Store the user's liked posts in a Set
+        setLikedPosts(new Set(likedPostsData.likedPosts));
+
+        // Fetch all users data
+        const usersResponse = await fetch(
+          "http://localhost:3000/api/users/get",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!usersResponse.ok) {
+          console.error("Failed to fetch user data:", usersResponse.statusText);
+          return;
+        }
+
+        const usersData = await usersResponse.json();
 
         // Create a map of users using their IDs as keys
-        const usersMap = data.reduce((map, user) => {
+        const usersMap = usersData.reduce((map, user) => {
           map[user._id] = user;
           return map;
         }, {});
 
         setUsersData(usersMap);
       } catch (error) {
-        console.error("Error fetching user data:", error);
+        console.error("Error fetching data:", error);
       }
     };
 
-    fetchUserData();
+    fetchUserDataAndLikedPosts();
   }, []);
 
   // Function to handle like/dislike toggle
   const handleLikeClick = async (postID, isLiked) => {
-    try {
-      const updatedLikeCount = isLiked ? -1 : 1;
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("No authentication token found.");
+      return;
+    }
 
-      // Make an API call to update the like count in the database
-      const response = await fetch(
-        `http://localhost:3000/api/media/posts/${postID}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ likeCountChange: updatedLikeCount }),
-        }
-      );
+    try {
+      const endpoint = isLiked
+        ? `http://localhost:3000/api/media/post/dislike/${postID}/${publicUserID}`
+        : `http://localhost:3000/api/media/post/like/${postID}/${publicUserID}`;
+
+      // Make the request to like or dislike the post
+      const response = await fetch(endpoint, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       if (!response.ok) {
-        throw new Error("Failed to update like count");
+        throw new Error("Failed to update like count.");
       }
 
       const updatedPost = await response.json();
 
-      // Update the local state to reflect the new like count
+      // Update the posts data and liked posts state
       setPostsData((prevPostsData) =>
         prevPostsData.map((post) => {
           if (post.postID === postID) {
@@ -90,18 +144,18 @@ function Posts({ initialPostsData = [] }) {
         })
       );
 
-      // Update the liked state and save it to local storage
+      // Update the liked posts state based on the like or dislike action
       setLikedPosts((prevLikedPosts) => {
-        const newLikedPosts = {
-          ...prevLikedPosts,
-          [postID]: !isLiked,
-        };
-        // Save newLikedPosts to local storage
-        localStorage.setItem("likedPosts", JSON.stringify(newLikedPosts));
-        return newLikedPosts;
+        const updatedLikedPosts = new Set(prevLikedPosts);
+        if (isLiked) {
+          updatedLikedPosts.delete(postID);
+        } else {
+          updatedLikedPosts.add(postID);
+        }
+        return updatedLikedPosts;
       });
     } catch (error) {
-      console.error("Error updating like count:", error);
+      toast.error(`Error updating like count: ${error.message}`);
     }
   };
 
@@ -111,7 +165,7 @@ function Posts({ initialPostsData = [] }) {
         postsData.map((post, index) => {
           const postOwner = usersData[post.user];
           // Determine the current liked state for the post
-          const isLiked = likedPosts[post.postID] || false;
+          const isLiked = likedPosts.has(post.postID);
 
           return (
             <div key={index} className="helper-post-content-area">
@@ -174,11 +228,13 @@ function Posts({ initialPostsData = [] }) {
                 </div>
               </div>
               <div className="helper-post-bottom-content-area">
-                <div className="no-of-likes-with-like-button">
+                <div
+                  className="no-of-likes-with-like-button"
+                  onClick={() => handleLikeClick(post.postID, isLiked)}
+                >
                   <img
                     src={isLiked ? DisLike : Like}
                     alt={isLiked ? "Dislike" : "Like"}
-                    onClick={() => handleLikeClick(post.postID, isLiked)}
                   />
                   <p>{post.likes} Likes</p>
                 </div>

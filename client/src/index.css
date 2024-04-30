@@ -114,3 +114,12 @@
   font-weight: 900;
   font-style: italic;
 }
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #393939;
+  border-radius: 10px;
+}
