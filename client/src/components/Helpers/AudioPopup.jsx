@@ -1,11 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
-import { storage, auth } from "../firebase"; // Import Firebase Storage from your configuration file
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import necessary functions from Firebase Storage
-import { AuthContext } from "../AuthContext"; // Import AuthContext to check user authentication
+import { AuthContext } from "../AuthContext";
 import { toast } from "react-toastify";
+import { Buffer } from "buffer";
+import backblazeConfig from "../backblaze";
 
 function AudioPopup({ onClose }) {
-  const { isLoggedIn } = useContext(AuthContext); // Access the AuthContext to check authentication status
+  const { isLoggedIn } = useContext(AuthContext);
+  const [b2Auth, setB2Auth] = useState(null);
   const [artists, setArtists] = useState([]);
   const [currentArtist, setCurrentArtist] = useState("");
   const [formData, setFormData] = useState({
@@ -13,6 +14,45 @@ function AudioPopup({ onClose }) {
     coverpic: null,
     title: "",
   });
+
+  useEffect(() => {
+    const authorizeWithBackend = async () => {
+      if (!isLoggedIn) {
+        return;
+      }
+
+      const applicationKeyId = backblazeConfig.applicationKeyId;
+      const applicationKey = backblazeConfig.applicationKey;
+      const credentials = Buffer.from(
+        `${applicationKeyId}:${applicationKey}`
+      ).toString("base64");
+
+      try {
+        const response = await fetch("http://localhost:3000/api/authorize-b2", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ credentials }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          console.log("Authorized with Backblaze B2");
+          setB2Auth(data); // Store B2 authorization data
+        } else {
+          console.error("Error authorizing with Backblaze B2:", data.error);
+          toast.error(`Error authorizing with Backblaze B2: ${data.error}`);
+        }
+      } catch (error) {
+        console.error("Error making request:", error);
+        toast.error(`Error making request: ${error.message}`);
+      }
+    };
+
+    authorizeWithBackend();
+  }, [isLoggedIn]);
 
   // Handle the input change for the artist field
   const handleArtistChange = (event) => {
@@ -51,34 +91,58 @@ function AudioPopup({ onClose }) {
     }
   };
 
-  // Upload audio and cover pic files to Firebase Storage
+  // Upload audio and cover pic files to Backblaze B2
   const uploadFiles = async () => {
     try {
-      // Upload the audio file to Firebase Storage
-      const audioRef = ref(storage, `audios/${Date.now()}.mp3`);
-      const audioUploadResult = await uploadBytes(audioRef, formData.audiosrc);
-      const audioURL = await getDownloadURL(audioUploadResult.ref);
+      if (!b2Auth) {
+        console.error("B2 authorization data is not available.");
+        toast.error("Authorization data is not available.");
+        return;
+      }
 
-      // Upload the cover picture file to Firebase Storage
-      const coverPicRef = ref(storage, `coverpics/${Date.now()}.jpg`);
-      const coverPicUploadResult = await uploadBytes(
-        coverPicRef,
-        formData.coverpic
-      );
-      const coverPicURL = await getDownloadURL(coverPicUploadResult.ref);
+      const authToken = b2Auth.authorizationToken;
+      const apiUrl = "http://localhost:3000/api/upload";
 
-      // Create an object with the form data and the list of artists
+      // Check if the files are present
+      if (!formData.audiosrc || !formData.coverpic) {
+        toast.error("Both audio and cover picture files must be provided.");
+        return;
+      }
+
+      // Prepare FormData for audio and cover picture file upload
+      const formDataObject = new FormData();
+      formDataObject.append("audiosrc", formData.audiosrc);
+      formDataObject.append("coverpic", formData.coverpic);
+
+      // Upload both files through backend proxy
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+        body: formDataObject,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error uploading files:", errorData.error);
+        toast.error(`Error uploading files: ${errorData.error}`);
+        return;
+      }
+
+      const data = await response.json();
+      const audioURL = data.audioURL;
+      const coverPicURL = data.coverURL;
+
+      // Create podcast details and save to session storage
       const podcastDetails = {
         audiosrc: audioURL,
         coverpic: coverPicURL,
         title: formData.title,
-        artists: artists,
+        artists,
       };
 
-      // Convert the podcast details object to a JSON string
       const podcastDetailsJSON = JSON.stringify(podcastDetails);
-
-      // Save the podcast details in session storage
       sessionStorage.setItem("podcastDetails", podcastDetailsJSON);
 
       // Close the popup
@@ -92,6 +156,12 @@ function AudioPopup({ onClose }) {
   // Handle form submission
   const handleSavePodcast = (event) => {
     event.preventDefault();
+
+    if (!formData.audiosrc || !formData.coverpic) {
+      toast.error("Please select an audio source and a cover picture.");
+      return;
+    }
+
     uploadFiles();
   };
 

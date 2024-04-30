@@ -48,7 +48,7 @@ function HomeComponent() {
   }, []);
 
   const togglePopup = () => {
-    setIsPopupVisible(!isPopupVisible);
+    setIsPopupVisible((prevShowPopup) => !prevShowPopup);
   };
 
 

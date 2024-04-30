@@ -57,41 +57,61 @@ postRouter.post("/post", async (req, res) => {
 });
 
 // PATCH route to update post by postID
-postRouter.patch("/posts/:id", async (req, res) => {
+postRouter.patch('/post/like/:postID', async (req, res) => {
+  const { postID } = req.params;
+  const userID = req.user._id; // Get the logged-in user's ID
+
   try {
-    // Extract the post ID from the request URL
-    const postId = req.params.id;
-
-    // Extract the update fields from the request body
-    const { likeCountChange } = req.body;
-
-    // Validate likeCountChange is a number
-    if (typeof likeCountChange !== "number") {
-      return res.status(400).json({ error: "Invalid like count change" });
-    }
-
-    // Find the post by ID and update it
-    const post = await Post.findOne({ postID: postId });
+    const post = await Post.findById(postID);
 
     if (!post) {
-      return res.status(404).json({ error: "Post not found" });
+      return res.status(404).json({ error: 'Post not found' });
     }
 
-    // Update the like count
-    post.likes += likeCountChange;
-
-    // Ensure likes are not negative
-    if (post.likes < 0) {
-      post.likes = 0;
+    // Check if the user has already liked the post
+    if (post.likedBy.includes(userID)) {
+      return res.status(400).json({ error: 'User has already liked the post' });
     }
+
+    // Add the user's ID to the likedBy array and increment likes
+    post.likedBy.push(userID);
+    post.likes += 1;
 
     // Save the updated post
     await post.save();
 
-    // Return the updated post as the response
-    res.json(post);
+    res.json({ message: 'Liked the post', likes: post.likes });
   } catch (error) {
-    console.error("Error updating post:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Handle unlike action
+postRouter.patch('/post/unlike/:postID', async (req, res) => {
+  const { postID } = req.params;
+  const userID = req.user._id; // Get the logged-in user's ID
+
+  try {
+    const post = await Post.findById(postID);
+
+    if (!post) {
+      return res.status(404).json({ error: 'Post not found' });
+    }
+
+    // Check if the user has not liked the post
+    if (!post.likedBy.includes(userID)) {
+      return res.status(400).json({ error: 'User has not liked the post' });
+    }
+
+    // Remove the user's ID from the likedBy array and decrement likes
+    post.likedBy.pull(userID);
+    post.likes -= 1;
+
+    // Save the updated post
+    await post.save();
+
+    res.json({ message: 'Unliked the post', likes: post.likes });
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
