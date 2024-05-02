@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 import "./style.css";
 
 // Components
@@ -32,7 +33,6 @@ function Navbar() {
   const [showPopup, setShowPopup] = useState(false);
   const [isNewVisitor, setIsNewVisitor] = useState(false);
   const [userAvatar, setUserAvatar] = useState(null);
-
   const { isLoggedIn } = useContext(AuthContext);
 
   const iconComponentMap = {
@@ -59,14 +59,52 @@ function Navbar() {
   };
 
   useEffect(() => {
+    if (isLoggedIn) {
+      const token = localStorage.getItem("token");
+
+      // Check if the token exists
+      if (!token) {
+        console.error("User is not logged in: Token is missing.");
+        return;
+      }
+
+      // Decode the token to get the user ID
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.userId;
+
+      // Fetch the user's data using their ID
+      const fetchUserAvatar = async () => {
+        try {
+          const response = await fetch(
+            `http://localhost:3000/api/users/get/userid/${userId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          if (!response.ok) {
+            console.error("Failed to fetch user data:", response.statusText);
+            return;
+          }
+
+          const data = await response.json();
+          setUserAvatar(data.avatar); // Set the user's avatar URL
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      };
+
+      fetchUserAvatar();
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
     const visitedBefore = localStorage.getItem("visitedBefore");
     if (!visitedBefore) {
       setIsNewVisitor(true);
       localStorage.setItem("visitedBefore", true);
-    }
-    const avatar = localStorage.getItem("avatar");
-    if (avatar) {
-      setUserAvatar(avatar);
     }
   }, []);
 
