@@ -1,17 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 
 import Verified from "../assets/Icons/Verified.svg";
 import Notification from "../assets/Icons/Notification.svg";
 import Logout from "../assets/Icons/Logout.svg";
 import SettingComponent from "./RSSComponent";
 import { AuthContext } from "./AuthContext";
+import { toast } from "react-toastify";
 
 function InsideNavbar() {
   const [currentDate, setCurrentDate] = useState("");
   const [uptime, setUptime] = useState("00:00:00");
-  const [isScrolling, setIsScrolling] = useState(false);
-
-  const { setIsLoggedIn } = useContext(AuthContext)
+  const [userName, setUserName] = useState("");
+  const { setIsLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     // Function to update the current date and time
@@ -44,32 +45,59 @@ function InsideNavbar() {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolling(true);
-      } else {
-        setIsScrolling(false);
+    const fetchUserName = async () => {
+      const token = localStorage.getItem("token");
+
+      // Check if the token exists
+      if (!token) {
+        toast.error("User is not logged in: Token is missing.");
+        return;
+      }
+
+      // Decode the token to get the user ID
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.userId;
+
+      try {
+        // Fetch the user's data using their ID
+        const response = await fetch(
+          `http://localhost:3000/api/users/get/userid/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          console.error("Failed to fetch user data:", response.statusText);
+          return;
+        }
+
+        const data = await response.json();
+        setUserName(data.name); // Set the user's name in state
+      } catch (error) {
+        console.error("Error fetching user data:", error);
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
+    fetchUserName();
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("avatar");
-    setIsLoggedIn(false)
+    localStorage.removeItem("loginTime");
+    setIsLoggedIn(false);
+    toast.success("Logout successfull");
   };
 
   return (
     <>
       <div className="home-component">
-        <div className={`home-component-navbar-for-account-notification-and-others${isScrolling ? " scrolled" : ""}`}>
+        <div className="home-component-navbar-for-account-notification-and-others">
           <div className="home-component-navbar-user-with-date-and-uptime">
             <img src={Verified} alt="verified-icon" />
-            <p id="username-area">Hey, User</p>
+            <p id="username-area">Hey, {userName}</p>
             <p id="current-date">{currentDate}</p>
             <p className="uptime">{uptime} Uptime</p>
           </div>
@@ -79,7 +107,7 @@ function InsideNavbar() {
               <img src={Notification} alt="notification-icon" />
             </div>
             <div className="navbar-logout-icon-area">
-              <img src={Logout} alt="logout-icon" onClick={handleLogout}/>
+              <img src={Logout} alt="logout-icon" onClick={handleLogout} />
             </div>
           </div>
         </div>

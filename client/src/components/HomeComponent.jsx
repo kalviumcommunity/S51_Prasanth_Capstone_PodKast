@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import InsideNavbar from "./InsideNavbar";
+import { jwtDecode } from "jwt-decode";
 
 import Story from "../assets/Icons/Story.svg";
 import Add from "../assets/Icons/Add.svg";
 import Microphone from "../assets/Icons/Microphone.svg";
 import Send from "../assets/Icons/Send.svg";
 
+import InsideNavbar from "./InsideNavbar";
 import Stories from "./Helpers/Stories";
 import Posts from "./Helpers/Posts";
 import AudioPlayer from "podkast-audio-player";
@@ -20,6 +21,7 @@ function HomeComponent() {
   const [postsData, setPostsData] = useState([]); // State to store posts data
   const [loading, setLoading] = useState(true);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [userAvatar, setUserAvatar] = useState("");
 
   const handleOptionClick = (section) => {
     setActiveSection(section);
@@ -29,14 +31,17 @@ function HomeComponent() {
     const fetchPostsData = async () => {
       try {
         const response = await fetch(
-          "https://s51-prasanth-capstone-podkast.onrender.com/api/users/media"
+          "http://localhost:3000/api/users/media"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch posts data");
         }
         const data = await response.json();
+
+        // Sort the posts data by creation date in descending order (most recent first)
+        data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setPostsData(data);
-        console.log("Fetched postsData:", data); // Log the fetched data
+        console.log("Fetched postsData:", data);
       } catch (error) {
         console.error("Error fetching posts data:", error);
       } finally {
@@ -47,14 +52,55 @@ function HomeComponent() {
     fetchPostsData();
   }, []);
 
+  useEffect(() => {
+    const fetchUserAvatar = async () => {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        console.error("User is not logged in: Token is missing.");
+        return;
+      }
+
+      // Decode the token to get the user ID
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.userId;
+
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/users/get/userid/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          console.error("Failed to fetch user data:", response.statusText);
+          return;
+        }
+
+        const userData = await response.json();
+        setUserAvatar(userData.avatar); // Set the user's avatar URL
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserAvatar();
+  }, []);
+
   const togglePopup = () => {
     setIsPopupVisible((prevShowPopup) => !prevShowPopup);
   };
 
-
   return (
     <>
-      <div className={`home-component-with-navbar ${isPopupVisible ? "blur-background" : ""}`}>
+      <div
+        className={`home-component-with-navbar ${
+          isPopupVisible ? "blur-background" : ""
+        }`}
+      >
         <InsideNavbar />
         <div className="home-conponent-content-area">
           <div className="home-component-left-stories-area">
@@ -75,7 +121,12 @@ function HomeComponent() {
               <div className="home-component-write-your-post-section">
                 <div className="home-component-post-text-area">
                   <div className="home-component-inputs">
-                    <div className="home-component-user-avatar-img"></div>
+                    <div
+                      className="home-component-user-avatar-img"
+                      style={{
+                        backgroundImage: `url(${userAvatar})`,
+                      }}
+                    ></div>
                     <div className="home-component-text-area-inputs">
                       <input
                         type="text"
@@ -133,7 +184,7 @@ function HomeComponent() {
       </div>
       {isPopupVisible && (
         <div className="navbar-component-popup-area">
-          <AudioPopup onclose={togglePopup}/>
+          <AudioPopup onclose={togglePopup} />
         </div>
       )}
     </>

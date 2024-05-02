@@ -183,8 +183,8 @@ function Posts({ initialPostsData = [] }) {
                   <div className="users-username-episode-title">
                     <p>
                       @
-                      {postOwner && postOwner.username
-                        ? postOwner.username
+                      {postOwner && postOwner.name
+                        ? postOwner.name
                         : "Unknown User"}
                     </p>
                     <p id="tags">{post.postID}</p>
