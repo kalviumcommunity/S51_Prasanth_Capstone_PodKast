@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import Menu from "./assets/Menu.svg";
 import Like from "./assets/Heart.svg";
@@ -14,6 +15,8 @@ function Posts({ initialPostsData = [] }) {
   const [usersData, setUsersData] = useState({});
   const [likedPosts, setLikedPosts] = useState(new Set()); // Use a Set for liked posts
   const [publicUserID, setPublicUserID] = useState("");
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   // Fetch user data and liked posts when the component mounts
   useEffect(() => {
@@ -70,6 +73,7 @@ function Posts({ initialPostsData = [] }) {
 
         // Store the user's liked posts in a Set
         setLikedPosts(new Set(likedPostsData.likedPosts));
+        setUsername(userData.username);
 
         // Fetch all users data
         const usersResponse = await fetch(
@@ -102,6 +106,11 @@ function Posts({ initialPostsData = [] }) {
 
     fetchUserDataAndLikedPosts();
   }, []);
+
+  const handleAvatarClick = () => {
+    // Navigate to the user's profile page when the avatar is clicked
+    navigate(`/user/profile/${username}`);
+  };
 
   // Function to handle like/dislike toggle
   const handleLikeClick = async (postID, isLiked) => {
@@ -179,6 +188,7 @@ function Posts({ initialPostsData = [] }) {
                           ? `url(${postOwner.avatar})`
                           : "",
                     }}
+                    onClick={handleAvatarClick}
                   ></div>
                   <div className="users-username-episode-title">
                     <p>
@@ -205,7 +215,7 @@ function Posts({ initialPostsData = [] }) {
                     <div
                       className="podcast-cover-pic"
                       style={{
-                        backgroundImage: `url(${post.podcast.coverPic})`,
+                        backgroundImage: `url(${post.podcast.coverpic})`,
                       }}
                     ></div>
                     <div className="podcast-title-artissts-details">

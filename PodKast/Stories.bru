@@ -1,0 +1,20 @@
+meta {
+  name: Stories
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://localhost:3000/api/story/post
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "user": "6628f70c7a7ccd5f5f72f20f",
+    "media": "https://example.com/videos/story2.mp4",
+    "createdAt": "2023-10-05T10:00:00Z",
+    "expiry": "2023-10-06T10:00:00Z"
+  }
+}
