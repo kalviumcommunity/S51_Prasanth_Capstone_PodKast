@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 import "./style.css";
 
 // Components
@@ -33,7 +34,9 @@ function Navbar() {
   const [showPopup, setShowPopup] = useState(false);
   const [isNewVisitor, setIsNewVisitor] = useState(false);
   const [userAvatar, setUserAvatar] = useState(null);
+  const [username, setUsername] = useState("");
   const { isLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const iconComponentMap = {
     home: {
@@ -91,6 +94,7 @@ function Navbar() {
 
           const data = await response.json();
           setUserAvatar(data.avatar); // Set the user's avatar URL
+          setUsername(data.username); // Set the user's avatar URL
         } catch (error) {
           console.error("Error fetching user data:", error);
         }
@@ -129,6 +133,11 @@ function Navbar() {
     };
   }, []);
 
+  const handleAvatarClick = () => {
+    // Navigate to the user's profile page when the avatar is clicked
+    navigate(`/user/profile/${username}`);
+  };
+
   return (
     <>
       <div className="nav-bar-con-tai-ner">
@@ -166,6 +175,7 @@ function Navbar() {
                   alt="user-avatar"
                   className="user-avatar"
                   title="User Settings"
+                  onClick={handleAvatarClick}
                 />
               ) : (
                 <img

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom"
 
 import Story from "../assets/Icons/Story.svg";
 import Add from "../assets/Icons/Add.svg";
@@ -22,6 +23,8 @@ function HomeComponent() {
   const [loading, setLoading] = useState(true);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [userAvatar, setUserAvatar] = useState("");
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   const handleOptionClick = (section) => {
     setActiveSection(section);
@@ -41,7 +44,6 @@ function HomeComponent() {
         // Sort the posts data by creation date in descending order (most recent first)
         data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setPostsData(data);
-        console.log("Fetched postsData:", data);
       } catch (error) {
         console.error("Error fetching posts data:", error);
       } finally {
@@ -82,6 +84,7 @@ function HomeComponent() {
 
         const userData = await response.json();
         setUserAvatar(userData.avatar); // Set the user's avatar URL
+        setUsername(userData.username); // Set the user's avatar URL
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -92,6 +95,11 @@ function HomeComponent() {
 
   const togglePopup = () => {
     setIsPopupVisible((prevShowPopup) => !prevShowPopup);
+  };
+
+  const handleAvatarClick = () => {
+    // Navigate to the user's profile page when the avatar is clicked
+    navigate(`/user/profile/${username}`);
   };
 
   return (
@@ -126,6 +134,7 @@ function HomeComponent() {
                       style={{
                         backgroundImage: `url(${userAvatar})`,
                       }}
+                      onClick={handleAvatarClick}
                     ></div>
                     <div className="home-component-text-area-inputs">
                       <input
@@ -146,7 +155,7 @@ function HomeComponent() {
             </div>
             <div className="home-component-posts-show-area">
               {loading ? (
-                <div className="loading-spinner">Loading...</div> // Show loading indicator
+                <div className="loading-spinner"></div> // Show loading indicator
               ) : (
                 <Posts initialPostsData={postsData} />
               )}

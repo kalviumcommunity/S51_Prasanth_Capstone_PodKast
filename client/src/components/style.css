@@ -15,7 +15,7 @@ nav {
   border-right: 1px solid rgb(81, 81, 81);
 }
 
-.nav-bar-con-tai-ner{
+.nav-bar-con-tai-ner {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1273,6 +1273,8 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   background-image: url("../assets/Cover/audio-1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  cursor: pointer;
 }
 
 .home-component-text-area-inputs {
@@ -1550,6 +1552,8 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   background-image: url("../assets/Cover/audio-1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  cursor: pointer;
 }
 
 .users-username-episode-title p {
@@ -1589,11 +1593,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.helper-post-main-player-details{
+.helper-post-main-player-details {
   width: 100%;
 }
 
-.helper-post-podcsat-details-withhh{
+.helper-post-podcsat-details-withhh {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -1615,6 +1619,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   background-image: url("../assets/Cover/audio-1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 .podcast-title-artissts-details p {
@@ -1625,7 +1630,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   font-size: 10px;
 }
 
-.helper-post-main-player-post-text{
+.helper-post-main-player-post-text {
   width: 95%;
   height: 100%;
   display: flex;
@@ -1633,7 +1638,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-#posttext{
+#posttext {
   width: 100%;
   text-align: left;
   font-size: 12px;
@@ -1822,6 +1827,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  gap: 20px;
 }
 
 .helper-artists-main-content-area-to-display-artists {
@@ -1885,7 +1891,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 /* Artists Component Style End */
 
-.audio-popup-content-area{
+.audio-popup-content-area {
   width: 30vw;
   height: 35vw;
   display: flex;
@@ -1895,12 +1901,12 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.audio-popup-heading-area{
+.audio-popup-heading-area {
   width: 100%;
   text-align: center;
 }
 
-.audio-popup-inputs-field-area form{
+.audio-popup-inputs-field-area form {
   width: 25vw;
   height: 30vw;
   display: flex;
@@ -1910,7 +1916,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 20px;
 }
 
-.audio-popup-form-choose-file{
+.audio-popup-form-choose-file {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1919,11 +1925,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.audio-popup-form-choose-file label{
+.audio-popup-form-choose-file label {
   font-size: 12px;
 }
 
-.audio-popup-form-choose-cover-pic{
+.audio-popup-form-choose-cover-pic {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1932,11 +1938,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.audio-popup-form-choose-cover-pic label{
+.audio-popup-form-choose-cover-pic label {
   font-size: 12px;
 }
 
-.audio-popup-podcast-name{
+.audio-popup-podcast-name {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1945,18 +1951,18 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.audio-popup-podcast-name label{
+.audio-popup-podcast-name label {
   font-size: 12px;
 }
 
-.audio-popup-podcast-name input{
+.audio-popup-podcast-name input {
   width: 100%;
   height: 4vh;
   border-radius: 5px;
   border: none;
 }
 
-.audio-popup-podcast-artists{
+.audio-popup-podcast-artists {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1966,18 +1972,18 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.audio-popup-podcast-artists label{
+.audio-popup-podcast-artists label {
   font-size: 12px;
 }
 
-.audio-popup-podcast-artists input{
+.audio-popup-podcast-artists input {
   width: 100%;
   height: 4vh;
   border-radius: 5px;
   border: none;
 }
 
-.artist-tags{
+.artist-tags {
   width: 100%;
   height: 5vh;
   display: flex;
@@ -1986,7 +1992,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.artist-tag{
+.artist-tag {
   width: 100%;
   height: 25px;
   background-color: orange;
@@ -1997,19 +2003,19 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.artist-tag span{
+.artist-tag span {
   font-size: 12px;
   color: black;
 }
 
-.artist-tag p{
+.artist-tag p {
   cursor: pointer;
   font-size: 12px;
   color: black;
   font-weight: 800;
 }
 
-.audio-popup-save-button{
+.audio-popup-save-button {
   width: 100%;
   height: 5vh;
   display: flex;
@@ -2017,7 +2023,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.audio-popup-save-button button{
+.audio-popup-save-button button {
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -2027,7 +2033,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   cursor: pointer;
 }
 
-.audio-popup-cancel-button{
+.audio-popup-cancel-button {
   width: 100%;
   height: 5vh;
   display: flex;
@@ -2035,7 +2041,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.audio-popup-cancel-button button{
+.audio-popup-cancel-button button {
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -2047,10 +2053,47 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 /* Artists Component Style End */
 
+/* Loaders Style Start */
+
+.loading-spinner {
+  width: 45px;
+  height: 40px;
+  background: linear-gradient(
+      #0000 calc(1 * 100% / 6),
+      #fff 0 calc(3 * 100% / 6),
+      #0000 0
+    ),
+    linear-gradient(
+      #0000 calc(2 * 100% / 6),
+      #fff 0 calc(4 * 100% / 6),
+      #0000 0
+    ),
+    linear-gradient(
+      #0000 calc(3 * 100% / 6),
+      #fff 0 calc(5 * 100% / 6),
+      #0000 0
+    );
+  background-size: 10px 400%;
+  background-repeat: no-repeat;
+  animation: matrix 1s infinite linear;
+}
+
+@keyframes matrix {
+  0% {
+    background-position: 0% 100%, 50% 100%, 100% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%, 50% 0%, 100% 0%;
+  }
+}
+
+/* Loaders Style End */
+
 /* Responsive Design Style Start */
 
 @media (max-width: 768px) {
-  .nav-bar-con-tai-ner{
+  .nav-bar-con-tai-ner {
     display: contents;
   }
   .navbar-container {
@@ -2114,7 +2157,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   .login-component-right-form-area {
     width: 80vw;
   }
-  .login-component-close-popup-button p{
+  .login-component-close-popup-button p {
     cursor: pointer;
   }
   .login-component-username-area input {
@@ -2252,110 +2295,110 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   .register-component-insta-gram-link-area input {
     width: 100%;
   }
-  .home-component{
+  .home-component {
     z-index: 100;
     position: sticky;
     top: 0;
   }
-  .home-component-navbar-user-with-date-and-uptime{
+  .home-component-navbar-user-with-date-and-uptime {
     width: 70vw;
   }
-  .home-component-navbar-running-commands-area{
+  .home-component-navbar-running-commands-area {
     display: none;
   }
-  .home-component-navbar-icons-area{
+  .home-component-navbar-icons-area {
     width: 23vw;
   }
-  .navbar-notifications-icon-area{
+  .navbar-notifications-icon-area {
     width: 10vw;
   }
-  .home-component-with-navbar{
+  .home-component-with-navbar {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .home-conponent-content-area{
+  .home-conponent-content-area {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .home-component-left-stories-area{
+  .home-component-left-stories-area {
     width: 87vw;
   }
-  .add-yours{
+  .add-yours {
     width: 30vw;
   }
-  .home-component-center-post-area{
+  .home-component-center-post-area {
     width: 87vw;
   }
-  .home-component-inputs{
+  .home-component-inputs {
     width: 100%;
   }
-  .home-component-text-area-inputs{
+  .home-component-text-area-inputs {
     width: 50vw;
   }
-  .home-component-send-button{
+  .home-component-send-button {
     width: 70px;
   }
-  .helper-post-content-area{
+  .helper-post-content-area {
     width: 80vw;
   }
-  .user-avatar-area{
+  .user-avatar-area {
     width: 30px;
     height: 30px;
   }
-  .user-details-content-area{
+  .user-details-content-area {
     width: 30vw;
     height: 100%;
   }
-  .menu-bar-with-total-time-frame{
+  .menu-bar-with-total-time-frame {
     width: 25vw;
   }
-  .helper-post-podcsat-details-withhh{
+  .helper-post-podcsat-details-withhh {
     width: 60vw;
   }
-  .play-button-of-that-audio-uploaded{
+  .play-button-of-that-audio-uploaded {
     width: 20vw;
   }
-  .no-of-likes-with-like-button{
+  .no-of-likes-with-like-button {
     width: 20vw;
   }
-  .no-of-comments-recived-with-comments-button{
+  .no-of-comments-recived-with-comments-button {
     width: 20vw;
   }
-  .no-of-shares-with-share-now-button{
+  .no-of-shares-with-share-now-button {
     width: 20vw;
   }
-  .home-component-right-suggestions-area{
+  .home-component-right-suggestions-area {
     width: 87vw;
   }
-  .option-onee-artists-suggestions-area{
+  .option-onee-artists-suggestions-area {
     width: 30vw;
   }
-  .option-onee-artists-suggestions-area.active{
+  .option-onee-artists-suggestions-area.active {
     width: 30vw;
   }
-  .option-two-queue-area{
+  .option-two-queue-area {
     width: 30vw;
   }
-  .option-two-queue-area.active{
+  .option-two-queue-area.active {
     width: 30vw;
   }
-  .helper-user-etails-with-user-avatar{
+  .helper-user-etails-with-user-avatar {
     width: 60vw;
   }
-  .helper-artists-view-progile-button{
+  .helper-artists-view-progile-button {
     width: 20vw;
   }
-  .helper-artists-view-progile-button button{
+  .helper-artists-view-progile-button button {
     width: 90px;
   }
-  .helper-queue-podcast-cover-pic-and-title-with-artist-name{
+  .helper-queue-podcast-cover-pic-and-title-with-artist-name {
     width: 50vw;
   }
-  .helper-queue-two-buttons-area{
+  .helper-queue-two-buttons-area {
     width: 30vw;
   }
 }

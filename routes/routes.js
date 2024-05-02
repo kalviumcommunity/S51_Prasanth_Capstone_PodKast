@@ -58,6 +58,25 @@ getRouter.get("/get/email/:email", async (req, res) => {
   }
 });
 
+getRouter.get("/get/username/:username", async (req, res) => {
+  try {
+    const { username } = req.params;
+
+    // Fetch the user based on their username
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Return the user's data (excluding sensitive information such as password)
+    res.status(200).json(user);
+  } catch (err) {
+    console.error("Error fetching user:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 getRouter.get("/media", async (req, res) => {
   res.header({ "Access-Control-Allow-Origin": "*" });
   try {
