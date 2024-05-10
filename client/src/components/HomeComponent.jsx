@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import Story from "../assets/Icons/Story.svg";
 import Add from "../assets/Icons/Add.svg";
@@ -10,93 +11,150 @@ import Send from "../assets/Icons/Send.svg";
 import InsideNavbar from "./InsideNavbar";
 import Stories from "./Helpers/Stories";
 import Posts from "./Helpers/Posts";
-import AudioPlayer from "podkast-audio-player";
-import { audioData } from "./AudioData";
 import Artists from "./Helpers/Artists";
 import Queue from "./Helpers/Queue";
 import AudioPopup from "./Helpers/AudioPopup";
-import { AuthContext } from "./AuthContext";
+import AudioPlayer from "podkast-audio-player";
+import useQueueData from "./AudioData";
 
 function HomeComponent() {
   const [activeSection, setActiveSection] = useState("artists");
-  const [postsData, setPostsData] = useState([]); // State to store posts data
+  const [postsData, setPostsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [userAvatar, setUserAvatar] = useState("");
   const [username, setUsername] = useState("");
+  const [publicUserID, setPublicUserID] = useState("");
+  const [queue, setQueue] = useState([]);
   const navigate = useNavigate();
+  const { queueData } = useQueueData();
 
-  const handleOptionClick = (section) => {
-    setActiveSection(section);
+  console.log("Queue", queueData);
+
+  const fetchUserData = async (userId, token) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/users/get/userid/${userId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        const userData = await response.json();
+        setPublicUserID(userData.publicUserID);
+        setUserAvatar(userData.avatar);
+        setUsername(userData.username);
+      } else {
+        throw new Error("Failed to fetch user data");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      toast.error(`Failed to fetch user data: ${error.message}`);
+    }
   };
 
-  useEffect(() => {
-    const fetchPostsData = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/api/users/media");
-        if (!response.ok) {
-          throw new Error("Failed to fetch posts data");
+  // Fetch Queue Data
+  const fetchQueueData = async (publicUserID, token) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/users/${publicUserID}/queue`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-        const data = await response.json();
+      );
 
-        // Sort the posts data by creation date in descending order (most recent first)
+      if (response.ok) {
+        const queueData = await response.json();
+        setQueue(queueData.queue);
+      } else {
+        throw new Error("Failed to fetch queue data");
+      }
+    } catch (error) {
+      console.error("Error fetching queue data:", error);
+      toast.error(`Failed to fetch queue data: ${error.message}`);
+    }
+  };
+
+  // Fetch Posts Data
+  const fetchPostsData = async (token) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/users/media", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
         data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setPostsData(data);
-      } catch (error) {
-        console.error("Error fetching posts data:", error);
-      } finally {
-        setLoading(false);
+      } else {
+        throw new Error("Failed to fetch posts data");
       }
-    };
+    } catch (error) {
+      console.error("Error fetching posts data:", error);
+      toast.error(`Failed to fetch posts data: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchPostsData();
-  }, []);
-
+  // Call the fetch functions in useEffect
   useEffect(() => {
-    const fetchUserAvatar = async () => {
-      const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.warning("Please login or sign up to turn off privacy mode.");
+      return;
+    }
 
-      if (!token) {
-        console.error("User is not logged in: Token is missing.");
-        return;
-      }
+    const decodedToken = jwtDecode(token);
+    const userId = decodedToken.userId;
 
-      // Decode the token to get the user ID
-      const decodedToken = jwtDecode(token);
-      const userId = decodedToken.userId;
+    fetchUserData(userId, token);
+    if (publicUserID) {
+      fetchQueueData(publicUserID, token);
+    }
+    fetchPostsData(token);
+  }, [publicUserID, navigate]);
 
-      try {
-        const response = await fetch(
-          `http://localhost:3000/api/users/get/userid/${userId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        if (!response.ok) {
-          console.error("Failed to fetch user data:", response.statusText);
-          return;
+  const removeTrackFromQueue = async (trackId) => {
+    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/users/${publicUserID}/queue/${trackId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
         }
+      );
 
-        const userData = await response.json();
-        setUserAvatar(userData.avatar); // Set the user's avatar URL
-        setUsername(userData.username); // Set the user's avatar URL
-      } catch (error) {
-        console.error("Error fetching user data:", error);
+      if (!response.ok) {
+        throw new Error("Failed to remove track from queue");
       }
-    };
 
-    fetchUserAvatar();
-  }, []);
+      setQueue((prevQueue) =>
+        prevQueue.filter((track) => track._id !== trackId)
+      );
+      toast.success("Track removed from queue");
+    } catch (error) {
+      console.error("Error removing track from queue:", error);
+      toast.error(`Failed to remove track from queue: ${error.message}`);
+    }
+  };
 
   const togglePopup = () => {
     setIsPopupVisible((prevShowPopup) => !prevShowPopup);
   };
 
   const handleAvatarClick = () => {
-    // Navigate to the user's profile page when the avatar is clicked
     navigate(`/user/profile/${username}`);
   };
 
@@ -129,9 +187,7 @@ function HomeComponent() {
                   <div className="home-component-inputs">
                     <div
                       className="home-component-user-avatar-img"
-                      style={{
-                        backgroundImage: `url(${userAvatar})`,
-                      }}
+                      style={{ backgroundImage: `url(${userAvatar})` }}
                       onClick={handleAvatarClick}
                     ></div>
                     <div className="home-component-text-area-inputs">
@@ -153,7 +209,7 @@ function HomeComponent() {
             </div>
             <div className="home-component-posts-show-area">
               {loading ? (
-                <div className="loading-spinner"></div> // Show loading indicator
+                <div className="loading-spinner"></div>
               ) : (
                 <Posts initialPostsData={postsData} />
               )}
@@ -166,7 +222,7 @@ function HomeComponent() {
                   className={`option-onee-artists-suggestions-area ${
                     activeSection === "artists" ? "active" : ""
                   }`}
-                  onClick={() => handleOptionClick("artists")}
+                  onClick={() => setActiveSection("artists")}
                 >
                   <p>Podcast Artists</p>
                 </div>
@@ -174,7 +230,7 @@ function HomeComponent() {
                   className={`option-two-queue-area ${
                     activeSection === "queue" ? "active" : ""
                   }`}
-                  onClick={() => handleOptionClick("queue")}
+                  onClick={() => setActiveSection("queue")}
                 >
                   <p>Queue</p>
                 </div>
@@ -182,18 +238,23 @@ function HomeComponent() {
               <div className="home-component-content-area-with-the-optionals">
                 {activeSection === "artists" && <Artists />}
 
-                {activeSection === "queue" && <Queue />}
+                {activeSection === "queue" && (
+                  <Queue
+                    queue={queue}
+                    removeTrackFromQueue={removeTrackFromQueue}
+                  />
+                )}
               </div>
             </div>
             <div className="home-component-audio-player">
-              <AudioPlayer songs={audioData} theme="light" />
+              <AudioPlayer songs={queueData} theme="light" />
             </div>
           </div>
         </div>
       </div>
       {isPopupVisible && (
         <div className="navbar-component-popup-area">
-          <AudioPopup onclose={togglePopup} />
+          <AudioPopup onClose={togglePopup} />
         </div>
       )}
     </>

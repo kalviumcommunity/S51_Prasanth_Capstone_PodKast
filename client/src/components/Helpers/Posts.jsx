@@ -168,6 +168,31 @@ function Posts({ initialPostsData = [] }) {
     }
   };
 
+  const addToQueue = async (audioTrack) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/users/${publicUserID}/queue`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify(audioTrack),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to add audio track to queue");
+      }
+
+      toast.success("Added to queue!");
+    } catch (error) {
+      console.error("Error adding to queue:", error);
+      toast.error("Failed to add to queue");
+    }
+  };
+
   return (
     <>
       {Array.isArray(postsData) && postsData.length > 0 ? (
@@ -225,9 +250,15 @@ function Posts({ initialPostsData = [] }) {
                   </div>
                   <div className="play-button-of-that-audio-uploaded">
                     <button
-                      onClick={() =>
-                        console.log(`Playing audio: ${post.audioSrc}`)
-                      }
+                      onClick={() => {
+                        const audioTrack = {
+                          audioSrc: post.podcast.audiosrc,
+                          title1: post.podcast.title,
+                          title2: post.podcast.artists,
+                          coverpic: post.podcast.coverpic,
+                        };
+                        addToQueue(audioTrack);
+                      }}
                     >
                       Listen Now
                     </button>
