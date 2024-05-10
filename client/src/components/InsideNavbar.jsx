@@ -50,7 +50,6 @@ function InsideNavbar() {
 
       // Check if the token exists
       if (!token) {
-        toast.error("User is not logged in: Token is missing.");
         return;
       }
 
