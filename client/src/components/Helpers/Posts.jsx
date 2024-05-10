@@ -24,7 +24,7 @@ function Posts({ initialPostsData = [] }) {
       const token = localStorage.getItem("token");
 
       if (!token) {
-        toast.error("User is not logged in: Token is missing.");
+        toast.warning("Please Login or Signup to turn off Privacy Mode.");
         return;
       }
 
@@ -116,7 +116,7 @@ function Posts({ initialPostsData = [] }) {
   const handleLikeClick = async (postID, isLiked) => {
     const token = localStorage.getItem("token");
     if (!token) {
-      toast.error("No authentication token found.");
+      toast.error("Please Login or Signup to turn off Privacy Mode");
       return;
     }
 

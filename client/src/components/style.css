@@ -679,10 +679,6 @@ form {
   font-size: 12px;
 }
 
-/* .register-component-user-avatar-upload input{
-  
-} */
-
 .register-component-name-area {
   display: flex;
   flex-direction: column;
@@ -1429,6 +1425,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   overflow-y: auto;
 }
 
+.home-component-audio-player{
+  width: 30vw;
+  height: 21vh;
+}
+
 /* Home Component Style End */
 
 /* Stories Component Style Strat */
@@ -1437,6 +1438,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   background-image: url("../assets/Slides/slide-1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   width: 270px;
   height: 540px;
   border-radius: 10px;
@@ -1889,7 +1891,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 /* Artists Component Style End */
 
-/* Artists Component Style End */
+/* Audio Popup Component Style Start */
 
 .audio-popup-content-area {
   width: 30vw;
@@ -2051,7 +2053,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   cursor: pointer;
 }
 
-/* Artists Component Style End */
+/* Audio Popup Component Style End */
 
 /* Loaders Style Start */
 
@@ -2089,6 +2091,72 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 }
 
 /* Loaders Style End */
+
+/* User Profile Component Style Start */
+
+.user-profile-component-content-area {
+  width: 100vw;
+  height: 100vh;
+  background-color: #222222;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  color: white;
+}
+
+.user-profile-component-first-content-area{
+  width: 95vw;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: rgba(47, 47, 47, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+}
+
+.first-content-area-left-side-content{
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  height: 100%;
+}
+
+.first-content-area-left-side-user-avatar-name-username-no-of-posts{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  width: 30vw;
+  height: 100%;
+}
+
+.first-content-area-left-side-user-avatar-name-username{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.first-content-area-left-side-user-avatar{
+  width: 150px;
+  height: 150px;
+  background-image: url("../assets/Cover/audio-1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+/* User Profile Component Style End */
 
 /* Responsive Design Style Start */
 

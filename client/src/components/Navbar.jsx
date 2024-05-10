@@ -18,12 +18,12 @@ import HomeIcon from "../assets/Icons/Home.svg";
 import HomeDarkIcon from "../assets/Icons/Home-Dark.svg";
 import SearchIcon from "../assets/Icons/Search.svg";
 import SearchDarkIcon from "../assets/Icons/Search-Dark.svg";
-import MessageIcon from "../assets/Icons/Message.svg";
-import MessageDarkIcon from "../assets/Icons/Message-Dark.svg";
+import SettingIcon from "../assets/Icons/Setting.svg";
+import SettingDarkIcon from "../assets/Icons/Setting-Dark.svg";
 import GameIcon from "../assets/Icons/PS5.svg";
 import GameDarkIcon from "../assets/Icons/PS5-Dark.svg";
-import SettingIocn from "../assets/Icons/Setting.svg";
-import SettingDarkIcon from "../assets/Icons/Setting-Dark.svg";
+import RSSIcon from "../assets/Icons/RSS.svg";
+import RSSDarkIcon from "../assets/Icons/RSS-Dark.svg";
 import UserIcon from "../assets/Icons/Profile.svg";
 import LoginComponent from "./LoginComponent";
 import OnboardingComponent from "./OnboardingComponent";
@@ -49,7 +49,7 @@ function Navbar() {
     },
     message: {
       component: MessageComponent,
-      icon: { light: MessageIcon, dark: MessageDarkIcon },
+      icon: { light: SettingIcon, dark: SettingDarkIcon },
     },
     game: {
       component: GameComponent,
@@ -57,7 +57,7 @@ function Navbar() {
     },
     setting: {
       component: RSSComponent,
-      icon: { light: SettingIocn, dark: SettingDarkIcon },
+      icon: { light: RSSIcon, dark: RSSDarkIcon },
     },
   };
 

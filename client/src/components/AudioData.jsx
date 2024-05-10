@@ -17,20 +17,16 @@ export const audioData = [
   },
   {
     audioSrc: AudioTwo,
-    title1: "Title 2",
-    title2: "Artist 2",
-    coverpic: AudioCoverPicTwo,
+    title1: 'Title 1',
+    title2: 'Artist 1',
+    coverpic: AudioCoverPicTwo
   },
   {
     audioSrc: AudioThree,
-    title1: "Title 2",
-    title2: "Artist 2",
-    coverpic: AudioCoverPicThree,
+    title1: 'Title 1',
+    title2: 'Artist 1',
+    coverpic: AudioCoverPicThree
   },
 ];
 
-function AudioData() {
-  return <></>;
-}
-
-export default AudioData;
+export default {audioData};

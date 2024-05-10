@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 import Story from "../assets/Icons/Story.svg";
 import Add from "../assets/Icons/Add.svg";
@@ -33,9 +33,7 @@ function HomeComponent() {
   useEffect(() => {
     const fetchPostsData = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:3000/api/users/media"
-        );
+        const response = await fetch("http://localhost:3000/api/users/media");
         if (!response.ok) {
           throw new Error("Failed to fetch posts data");
         }
@@ -187,7 +185,9 @@ function HomeComponent() {
                 {activeSection === "queue" && <Queue />}
               </div>
             </div>
-            <AudioPlayer songs={audioData} theme="light" />
+            <div className="home-component-audio-player">
+              <AudioPlayer songs={audioData} theme="light" />
+            </div>
           </div>
         </div>
       </div>
