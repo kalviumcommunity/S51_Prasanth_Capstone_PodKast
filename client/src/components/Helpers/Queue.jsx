@@ -4,7 +4,7 @@ function Queue({ queue, removeTrackFromQueue }) {
   return (
     <div className="helper-queue-content-area">
       {queue.length > 0 ? (
-        queue.map((track) => (
+        queue.map((track, index) => (
           <div key={track._id} className="helper-queue-next-one-area">
             <div className="helper-queue-podcast-cover-pic-and-title-with-artist-name">
               <div
@@ -17,7 +17,7 @@ function Queue({ queue, removeTrackFromQueue }) {
               </div>
             </div>
             <div className="helper-queue-two-buttons-area">
-              <p>Upcoming</p>
+              <p className={index === 0 ? "text-running" : "text-upcoming"}>{index === 0 ? 'Running' : 'Upcoming'}</p>
               <button onClick={() => removeTrackFromQueue(track._id)}>
                 Remove
               </button>

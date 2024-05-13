@@ -199,6 +199,7 @@ function Posts({ initialPostsData = [] }) {
         postsData.map((post, index) => {
           const postOwner = usersData[post.user];
           // Determine the current liked state for the post
+          const podcast = post.podcast || {};
           const isLiked = likedPosts.has(post.postID);
 
           return (
@@ -252,10 +253,10 @@ function Posts({ initialPostsData = [] }) {
                     <button
                       onClick={() => {
                         const audioTrack = {
-                          audioSrc: post.podcast.audiosrc,
-                          title1: post.podcast.title,
-                          title2: post.podcast.artists,
-                          coverpic: post.podcast.coverpic,
+                          audioSrc: podcast.audiosrc,
+                          title1: podcast.title,
+                          title2: podcast.artists,
+                          coverpic: podcast.coverpic,
                         };
                         addToQueue(audioTrack);
                       }}

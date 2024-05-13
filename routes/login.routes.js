@@ -30,11 +30,6 @@ loginRouter.post("/login", async (req, res) => {
     // Compare the provided password with the hashed password in the database
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
-    // if (password !== user.password) {
-    //   return res.status(401).json({ error: "Invalid credentials" });
-
-    // }
-
     if (!isPasswordValid) {
       return res.status(401).json({ error: "Invalid credentials" });
     }

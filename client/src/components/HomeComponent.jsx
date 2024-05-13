@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import AudioPlayer from "podkast-audio-player";
 
 import Story from "../assets/Icons/Story.svg";
 import Add from "../assets/Icons/Add.svg";
@@ -14,8 +15,7 @@ import Posts from "./Helpers/Posts";
 import Artists from "./Helpers/Artists";
 import Queue from "./Helpers/Queue";
 import AudioPopup from "./Helpers/AudioPopup";
-import AudioPlayer from "podkast-audio-player";
-import useQueueData from "./AudioData";
+import { useQueueData } from "./AudioData";
 
 function HomeComponent() {
   const [activeSection, setActiveSection] = useState("artists");
@@ -27,9 +27,7 @@ function HomeComponent() {
   const [publicUserID, setPublicUserID] = useState("");
   const [queue, setQueue] = useState([]);
   const navigate = useNavigate();
-  const { queueData } = useQueueData();
-
-  console.log("Queue", queueData);
+  const { queueData, isLoading } = useQueueData();
 
   const fetchUserData = async (userId, token) => {
     try {
@@ -70,7 +68,7 @@ function HomeComponent() {
 
       if (response.ok) {
         const queueData = await response.json();
-        setQueue(queueData.queue);
+        setQueue(queueData.queue || []);
       } else {
         throw new Error("Failed to fetch queue data");
       }
@@ -104,7 +102,6 @@ function HomeComponent() {
     }
   };
 
-  // Call the fetch functions in useEffect
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -157,6 +154,10 @@ function HomeComponent() {
   const handleAvatarClick = () => {
     navigate(`/user/profile/${username}`);
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -247,7 +248,11 @@ function HomeComponent() {
               </div>
             </div>
             <div className="home-component-audio-player">
-              <AudioPlayer songs={queueData} theme="light" />
+              {queueData !== null ? (
+                <AudioPlayer songs={queueData} theme="light" />
+              ) : (
+                <div>No songs in queue</div>
+              )}
             </div>
           </div>
         </div>
