@@ -3,6 +3,7 @@ import { formatDistanceToNow } from "date-fns";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import CommentsPopup from "./CommentsPopup";
 
 import Menu from "./assets/Menu.svg";
 import Like from "./assets/Heart.svg";
@@ -16,6 +17,8 @@ function Posts({ initialPostsData = [] }) {
   const [likedPosts, setLikedPosts] = useState(new Set()); // Use a Set for liked posts
   const [publicUserID, setPublicUserID] = useState("");
   const [username, setUsername] = useState("");
+  const [showCommentsPopup, setShowCommentsPopup] = useState(false); // State to manage the comments popup
+  const [selectedPost, setSelectedPost] = useState(null); // State to store the selected post for comments
   const navigate = useNavigate();
 
   // Fetch user data and liked posts when the component mounts
@@ -193,6 +196,12 @@ function Posts({ initialPostsData = [] }) {
     }
   };
 
+  const handleCommentsClick = (post) => {
+    // Open the comments popup when the comments box is clicked
+    setSelectedPost(post);
+    setShowCommentsPopup(true);
+  };
+
   return (
     <>
       {Array.isArray(postsData) && postsData.length > 0 ? (
@@ -280,9 +289,18 @@ function Posts({ initialPostsData = [] }) {
                   />
                   <p>{post.likes} Likes</p>
                 </div>
-                <div className="no-of-comments-recived-with-comments-button">
+                <div
+                  className="no-of-comments-recived-with-comments-button"
+                  onClick={() => handleCommentsClick(post)}
+                >
                   <img src={Comments} alt="Comments" />
-                  <p>{post.comments} Comments</p>
+                  <p>
+                    {" "}
+                    {post.comments.length > 999
+                      ? `${(post.comments.length / 1000).toFixed(1)}K`
+                      : post.comments.length}{" "}
+                    Comments
+                  </p>
                 </div>
                 <div className="no-of-shares-with-share-now-button">
                   <img src={Share} alt="Share" />
@@ -294,6 +312,14 @@ function Posts({ initialPostsData = [] }) {
         })
       ) : (
         <p>No posts available</p>
+      )}
+      {showCommentsPopup && (
+        <div className="navbar-component-popup-area">
+          <CommentsPopup
+            post={selectedPost}
+            onClose={() => setShowCommentsPopup(false)}
+          />
+        </div>
       )}
     </>
   );
