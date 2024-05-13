@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const CommentSchema = require("./comments.model");
 
 const PodcastSchema = new mongoose.Schema({
   title: {
@@ -50,7 +51,11 @@ const PostSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: true
-  }
+  },
+  comments: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'comments'
+  }],
 });
 
 const Post = mongoose.model('posts', PostSchema);

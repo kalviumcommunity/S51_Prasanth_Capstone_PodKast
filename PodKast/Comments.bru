@@ -1,0 +1,18 @@
+meta {
+  name: Comments
+  type: http
+  seq: 9
+}
+
+post {
+  url: http://localhost:3000/api/media/post/2b6c38e3-0767-4ae5-9ae5-c14cea61c1bf/comment
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "content" : "Test Comment",
+    "publicUserID" : "3d1ed27beddd42998be140a1fa4f7f48"
+  }
+}
