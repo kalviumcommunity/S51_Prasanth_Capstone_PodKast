@@ -2181,6 +2181,223 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 /* User Profile Component Style End */
 
+/* Comments Popup Component Style Start */
+
+.comments-left-right-area{
+  width: 40vw;
+  height: 80vh;
+  overflow: scroll;
+}
+
+.comments-top-area{
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.gap-provider{
+  width: 20vw;
+}
+
+.comments-top-area img{
+  width: 12px;
+  cursor: pointer;
+}
+
+.add-your-comments-area{
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.comment-input-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.comment-input-area label{
+  font-size: 12px;
+}
+
+.add-your-comments-area input{
+  width: 35vw;
+  height: 30px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid lightgray;
+}
+
+.add-your-comments-area img{
+  cursor: pointer;
+  width: 20px;
+}
+
+.comments-content-area{
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+
+.comments-content{
+  width: 35vw;
+  height: 20vh;
+  border-radius: 10px;
+  background-color: #191a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-area-comments-content{
+  width: 100%;
+  height: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-details-comments{
+  width: 20vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.user-details-comments p{
+  font-size: 12px;
+}
+
+#public-user-id{
+  color: lightgray;
+}
+
+.gap-provider-two{
+  width: 10vw;
+}
+
+.user-avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-image: url("../assets/Cover/audio-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.delete-icon img{
+  width: 15px;
+  cursor: pointer;
+}
+
+.center-area-comments-content{
+  width: 90%;
+  height: 6vh;
+}
+
+.center-area-comments-content p{
+  font-size: 12px;
+}
+
+.bottom-area-comments-content{
+  width: 90%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.like-comment{
+  width: 10vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.like-comment img{
+  width: 15px;
+}
+
+.like-comment p{
+  font-size: 12px;
+}
+
+.edit-comment{
+  width: 10vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.edit-comment img{
+  width: 15px;
+}
+
+.edit-comment p{
+  font-size: 12px;
+}
+
+.comments-liked-by{
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.liked-by-content-area{
+  width: 95%;
+  height: 8vh;
+  background-color: #191a1a;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.user-details-liked-by{
+  width: 20vw;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-details-liked-by p{
+  font-size: 12px;
+}
+
+.gap-provider-three{
+  width: 12vw;
+}
+
+#liked-by{
+  font-size: 12px;
+  color: green;
+}
+
+/* Comments Popup Component Style End */
+
 /* Responsive Design Style Start */
 
 @media (max-width: 768px) {
