@@ -1425,7 +1425,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   overflow-y: auto;
 }
 
-.home-component-audio-player{
+.home-component-audio-player {
   width: 30vw;
   height: 21vh;
 }
@@ -1798,11 +1798,10 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 .helper-queue-two-buttons-area p {
   font-size: 12px;
-  color: lightgray;
 }
 
 .helper-queue-two-buttons-area button {
-  width: 50px;
+  width: 70px;
   height: 30px;
   background-color: transparent;
   border-radius: 5px;
@@ -1816,6 +1815,30 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   background-color: orange;
   color: black;
   border: none;
+}
+
+.text-running {
+  color: #008000;
+  text-align: center;
+  animation: blink-text 1s linear infinite;
+}
+
+.text-upcoming{
+  color: lightgray;
+}
+
+@keyframes blink-text {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 10;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Queue Component Style End */
@@ -2106,7 +2129,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.user-profile-component-first-content-area{
+.user-profile-component-first-content-area {
   width: 95vw;
   height: 30vh;
   display: flex;
@@ -2121,7 +2144,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.first-content-area-left-side-content{
+.first-content-area-left-side-content {
   border: 1px solid white;
   display: flex;
   justify-content: center;
@@ -2130,7 +2153,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   height: 100%;
 }
 
-.first-content-area-left-side-user-avatar-name-username-no-of-posts{
+.first-content-area-left-side-user-avatar-name-username-no-of-posts {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2139,14 +2162,14 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   height: 100%;
 }
 
-.first-content-area-left-side-user-avatar-name-username{
+.first-content-area-left-side-user-avatar-name-username {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
 
-.first-content-area-left-side-user-avatar{
+.first-content-area-left-side-user-avatar {
   width: 150px;
   height: 150px;
   background-image: url("../assets/Cover/audio-1.jpg");

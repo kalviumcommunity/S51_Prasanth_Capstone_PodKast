@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AudioPlayer from "podkast-audio-player";
 
-import { audioData } from "./AudioData";
+import useQueueData from "./AudioData";
 
 import SlideOne from "../assets/Slides/slide-1.jpg";
 import SlideTwo from "../assets/Slides/slide-2.jpg";
@@ -11,6 +11,7 @@ function OnboardingComponent() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentAdSlide, setCurrentAdSlide] = useState(0);
   const totalSlides = 3;
+  const { queueData } = useQueueData();
 
   useEffect(() => {
     const onboardingInterval = setInterval(() => {
@@ -83,7 +84,7 @@ function OnboardingComponent() {
         <div className="onboarding-component-right-content-area">
           <div className="onboarding-component-demo-music-player">
             <AudioPlayer
-              songs={audioData} theme="light"/>
+              songs={queueData} theme="light"/>
           </div>
           <div className="onboarding-component-ads-content-area">
             {adsImages.map((image, index) => (

@@ -73,6 +73,17 @@ const userSchema = new mongoose.Schema({
     type: [String],
     default: [],
   },
+  queue: {
+    type: [
+      {
+        audioSrc: { type: String, required: true },
+        title1: { type: String, required: true },
+        title2: { type: [String], required: false },
+        coverpic: { type: String, required: false },
+      },
+    ],
+    default: [],
+  }
 });
 
 // Create the User model
