@@ -212,7 +212,9 @@ function HomeComponent() {
               {loading ? (
                 <div className="loading-spinner"></div>
               ) : (
-                <Posts initialPostsData={postsData} />
+                <div className="lot-of-post-content-area">
+                  <Posts initialPostsData={postsData} />
+                </div>
               )}
             </div>
           </div>

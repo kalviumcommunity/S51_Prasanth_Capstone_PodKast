@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 
+import default_audio from "../assets/audio/audio-1.mp3"
+
 // Default queue data
 const defaultQueueData = [
     {
-        audioSrc: "default-audio.mp3",
+        audioSrc: default_audio,
         title1: "Default Track",
         title2: "Artist",
         coverpic: "default-coverpic.jpg",
