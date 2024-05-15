@@ -56,7 +56,7 @@ function CommentsPopup({ post, onClose }) {
         const data = await response.json();
         const commentsWithUserData = await Promise.all(
           data.comments.map(async (comment) => {
-            try {9
+            try {
               const userResponse = await fetch(
                 `http://localhost:3000/api/users/get/userid/${comment.user}`,
                 {
