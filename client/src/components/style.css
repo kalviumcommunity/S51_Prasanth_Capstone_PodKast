@@ -2808,6 +2808,15 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: lightgray;
 }
 
+.random-health-tips{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Search Component Style End */
 
 /* Responsive Design Style Start */
