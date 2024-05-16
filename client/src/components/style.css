@@ -1510,7 +1510,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 /* Posts Component Style Start */
 
-.lot-of-post-content-area{
+.lot-of-post-content-area {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1832,7 +1832,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   animation: blink-text 1s linear infinite;
 }
 
-.text-upcoming{
+.text-upcoming {
   color: lightgray;
 }
 
@@ -2192,13 +2192,13 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 /* Comments Popup Component Style Start */
 
-.comments-left-right-area{
+.comments-left-right-area {
   width: 40vw;
   height: 80vh;
   overflow: scroll;
 }
 
-.comments-top-area{
+.comments-top-area {
   width: 100%;
   height: 5vh;
   display: flex;
@@ -2206,16 +2206,16 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.gap-provider{
+.gap-provider {
   width: 20vw;
 }
 
-.comments-top-area img{
+.comments-top-area img {
   width: 12px;
   cursor: pointer;
 }
 
-.add-your-comments-area{
+.add-your-comments-area {
   width: 100%;
   height: 10vh;
   display: flex;
@@ -2223,18 +2223,18 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.comment-input-area{
+.comment-input-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
 
-.comment-input-area label{
+.comment-input-area label {
   font-size: 12px;
 }
 
-.add-your-comments-area input{
+.add-your-comments-area input {
   width: 35vw;
   height: 30px;
   border-radius: 5px;
@@ -2243,12 +2243,12 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   border: 1px solid lightgray;
 }
 
-.add-your-comments-area img{
+.add-your-comments-area img {
   cursor: pointer;
   width: 20px;
 }
 
-.comments-content-area{
+.comments-content-area {
   width: 100%;
   max-height: max-content;
   display: flex;
@@ -2258,7 +2258,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 20px;
 }
 
-.comments-content{
+.comments-content {
   width: 35vw;
   height: 20vh;
   border-radius: 10px;
@@ -2270,7 +2270,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.top-area-comments-content{
+.top-area-comments-content {
   width: 100%;
   height: 6vh;
   display: flex;
@@ -2278,7 +2278,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.user-details-comments{
+.user-details-comments {
   width: 20vw;
   display: flex;
   justify-content: flex-start;
@@ -2286,19 +2286,19 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 20px;
 }
 
-.user-details-comments p{
+.user-details-comments p {
   font-size: 12px;
 }
 
-#public-user-id{
+#public-user-id {
   color: lightgray;
 }
 
-.gap-provider-two{
+.gap-provider-two {
   width: 10vw;
 }
 
-.user-avatar{
+.user-avatar {
   width: 40px;
   height: 40px;
   border-radius: 10px;
@@ -2307,21 +2307,21 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   background-size: cover;
 }
 
-.delete-icon img{
+.delete-icon img {
   width: 15px;
   cursor: pointer;
 }
 
-.center-area-comments-content{
+.center-area-comments-content {
   width: 90%;
   height: 6vh;
 }
 
-.center-area-comments-content p{
+.center-area-comments-content p {
   font-size: 12px;
 }
 
-.bottom-area-comments-content{
+.bottom-area-comments-content {
   width: 90%;
   height: 5vh;
   display: flex;
@@ -2330,7 +2330,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 20px;
 }
 
-.like-comment{
+.like-comment {
   width: 10vw;
   justify-content: center;
   align-items: center;
@@ -2339,15 +2339,15 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   cursor: pointer;
 }
 
-.like-comment img{
+.like-comment img {
   width: 15px;
 }
 
-.like-comment p{
+.like-comment p {
   font-size: 12px;
 }
 
-.edit-comment{
+.edit-comment {
   width: 10vw;
   justify-content: center;
   align-items: center;
@@ -2356,15 +2356,15 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   cursor: pointer;
 }
 
-.edit-comment img{
+.edit-comment img {
   width: 15px;
 }
 
-.edit-comment p{
+.edit-comment p {
   font-size: 12px;
 }
 
-.comments-liked-by{
+.comments-liked-by {
   width: 100%;
   height: 30vh;
   display: flex;
@@ -2373,7 +2373,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.liked-by-content-area{
+.liked-by-content-area {
   width: 95%;
   height: 8vh;
   background-color: #191a1a;
@@ -2383,7 +2383,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.user-details-liked-by{
+.user-details-liked-by {
   width: 20vw;
   height: 100%;
   display: flex;
@@ -2392,15 +2392,15 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 20px;
 }
 
-.user-details-liked-by p{
+.user-details-liked-by p {
   font-size: 12px;
 }
 
-.gap-provider-three{
+.gap-provider-three {
   width: 12vw;
 }
 
-#liked-by{
+#liked-by {
   font-size: 12px;
   color: green;
 }
@@ -2409,7 +2409,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 /* Search Component Style Start */
 
-.search-component-content-area{
+.search-component-content-area {
   width: 100%;
   height: 100%;
   display: flex;
@@ -2419,7 +2419,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.search-component-top-search-area{
+.search-component-top-search-area {
   width: 95%;
   height: 10vh;
   display: flex;
@@ -2433,7 +2433,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.search-component-search-bar{
+.search-component-search-bar {
   width: 50vw;
   height: 6vh;
   display: flex;
@@ -2442,11 +2442,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.search-component-search-bar p{
+.search-component-search-bar p {
   color: lightgray;
 }
 
-.search-component-search-bar input{
+.search-component-search-bar input {
   width: 100%;
   height: 100%;
   border-radius: 5px;
@@ -2459,7 +2459,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   border: none;
 }
 
-.search-component-search-button{
+.search-component-search-button {
   height: 6vh;
   width: 6vw;
   display: flex;
@@ -2468,7 +2468,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   cursor: pointer;
 }
 
-.search-component-search-img{
+.search-component-search-img {
   height: 100%;
   width: 18vw;
   display: flex;
@@ -2476,7 +2476,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.top-search-peoples{
+.top-search-peoples {
   width: 15vw;
   height: 5vh;
   border: 1px solid #454545;
@@ -2488,16 +2488,16 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.top-search-peoples p{
+.top-search-peoples p {
   font-size: 12px;
 }
 
-#publicUserID{
+#publicUserID {
   font-size: 8px;
   color: lightgray;
 }
 
-.search-component-main-content-area{
+.search-component-main-content-area {
   width: 91vw;
   height: 75vh;
   display: flex;
@@ -2506,7 +2506,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.search-component-main-content-left-area{
+.search-component-main-content-left-area {
   width: 50vw;
   height: 75vh;
   border-radius: 10px;
@@ -2521,7 +2521,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.user-search-has-the-searched-word{
+.user-search-has-the-searched-word {
   margin: 10px;
   width: 45vw;
   height: 10vh;
@@ -2533,7 +2533,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   background-color: #222222;
 }
 
-.user-avatar-and-user-details-area{
+.user-avatar-and-user-details-area {
   width: 20vw;
   height: 100%;
   display: flex;
@@ -2542,11 +2542,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.user-details p{
+.user-details p {
   font-size: 14px;
 }
 
-.show-the-details-button{
+.show-the-details-button {
   height: 100%;
   width: 5vw;
   display: flex;
@@ -2555,7 +2555,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   cursor: pointer;
 }
 
-.search-component-main-content-right-area{
+.search-component-main-content-right-area {
   width: 40vw;
   height: 75vh;
   border-radius: 10px;
@@ -2571,7 +2571,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.search-component-right-area-top-content{
+.search-component-right-area-top-content {
   width: 100%;
   height: 30vh;
   display: flex;
@@ -2580,7 +2580,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.top-content-parten-area{
+.top-content-parten-area {
   width: 100%;
   height: 65%;
   display: flex;
@@ -2611,7 +2611,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   }
 }
 
-.top-content-user-avatar{
+.top-content-user-avatar {
   width: 10vw;
   height: 10vw;
   border-radius: 20px;
@@ -2623,7 +2623,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   margin-top: 45px;
 }
 
-.search-component-right-area-down-content{
+.search-component-right-area-down-content {
   width: 100%;
   height: 50vh;
   display: flex;
@@ -2633,7 +2633,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.down-content-user-bio{
+.down-content-user-bio {
   width: 100%;
   height: 15vh;
   display: flex;
@@ -2642,7 +2642,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.down-content-user-bio p{
+.down-content-user-bio p {
   width: 95%;
   font-size: 14px;
   color: lightgray;
@@ -2656,12 +2656,12 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   background-color: #222222;
 }
 
-.user-bio-content-area p{
+.user-bio-content-area p {
   margin: 10px;
   font-size: 12px;
 }
 
-.user-location-and-website-link{
+.user-location-and-website-link {
   width: 100%;
   height: 8vh;
   display: flex;
@@ -2670,7 +2670,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 20px;
 }
 
-.user-location{
+.user-location {
   width: 18vw;
   height: 5vh;
   display: flex;
@@ -2679,15 +2679,15 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.user-location img{
+.user-location img {
   width: 12px;
 }
 
-.user-location p{
+.user-location p {
   font-size: 12px;
 }
 
-.user-website{
+.user-website {
   width: 18vw;
   height: 5vh;
   display: flex;
@@ -2696,73 +2696,20 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.user-website img{
+.user-website img {
   width: 12px;
 }
 
-.user-website p{
+.user-website p {
   font-size: 12px;
 }
 
-.user-website p:hover{
+.user-website p:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-.user-instagram-and-linkedin-link{
-  width: 100%;
-  height: 8vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px; 
-}
-
-.user-instagram{
-  width: 18vw;
-  height: 5vh;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
-}
-
-.user-instagram p{
-  font-size: 12px;
-}
-
-.user-instagram img{
-  width: 12px;
-}
-
-.user-instagram p:hover{
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.user-linkedin{
-  width: 18vw;
-  height: 5vh;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-}
-
-.user-linkedin p{
-  font-size: 12px;
-}
-
-.user-linkedin img{
-  width: 12px;
-}
-
-.user-linkedin p:hover{
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.user-x-and-publicuser-id-area{
+.user-instagram-and-linkedin-link {
   width: 100%;
   height: 8vh;
   display: flex;
@@ -2771,7 +2718,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 20px;
 }
 
-.user-x{
+.user-instagram {
   width: 18vw;
   height: 5vh;
   display: flex;
@@ -2780,20 +2727,73 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.user-x p{
+.user-instagram p {
   font-size: 12px;
 }
 
-.user-x img{
+.user-instagram img {
   width: 12px;
 }
 
-.user-x p:hover{
+.user-instagram p:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-.user-publicUserID{
+.user-linkedin {
+  width: 18vw;
+  height: 5vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-linkedin p {
+  font-size: 12px;
+}
+
+.user-linkedin img {
+  width: 12px;
+}
+
+.user-linkedin p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.user-x-and-publicuser-id-area {
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-x {
+  width: 18vw;
+  height: 5vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-x p {
+  font-size: 12px;
+}
+
+.user-x img {
+  width: 12px;
+}
+
+.user-x p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.user-publicUserID {
   width: 18vw;
   height: 5vh;
   background-color: #222222;
@@ -2802,13 +2802,13 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   overflow-y: scroll;
 }
 
-.user-publicUserID p{
+.user-publicUserID p {
   margin: 10px;
   font-size: 10px;
   color: lightgray;
 }
 
-.random-health-tips{
+.random-health-tips {
   width: 100%;
   height: 100%;
   display: flex;
@@ -2817,7 +2817,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.suggestions-content-area{
+.suggestions-content-area {
   width: 93%;
   display: flex;
   flex-direction: column;
@@ -2825,12 +2825,12 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.suggestions-content-area #related-search{
+.suggestions-content-area #related-search {
   font-size: 12px;
   color: lightgray;
 }
 
-.suggestion-with-username-area-container{
+.suggestion-with-username-area-container {
   margin: 10px;
   width: 45vw;
   height: 10vh;
@@ -2842,22 +2842,22 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   background-color: #222222;
 }
 
-.suggestion-with-username-area-container p{
+.suggestion-with-username-area-container p {
   font-size: 12px;
   width: 90px;
 }
 
-#click-to-search{
+#click-to-search {
   color: lightgray;
   font-size: 10px;
 }
 
-#click-to-search:hover{
+#click-to-search:hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-.user-not-found-area{
+.user-not-found-area {
   width: 100%;
   height: 70vh;
   display: flex;
@@ -2866,11 +2866,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.user-not-found-area img{
+.user-not-found-area img {
   width: 400px;
 }
 
-.share-with-your-friend{
+.share-with-your-friend {
   width: 15vw;
   height: 5vh;
   border: 1px solid #454545;
@@ -2882,15 +2882,385 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.share-with-your-friend img{
+.share-with-your-friend img {
   width: 15px;
 }
 
-.share-with-your-friend p{
+.share-with-your-friend p {
   font-size: 12px;
 }
 
 /* Search Component Style End */
+
+/* Setting Component Style Start */
+
+.settings-component-main-content-area{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.settings-component-left-side-panel-area{
+  width: 20vw;
+  height: 90vh;
+  border-radius: 10px;
+  background: rgba(47, 47, 47, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.settings-component-profile-setting-container{
+  width: 90%;
+  height: 6vh;
+  border: 1px solid #454545;
+  border-radius: 10px;
+  background-color: #222222;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.settings-component-profile-setting-container img{
+  width: 10px;
+}
+
+.settings-component-profile-setting-container p{
+  font-size: 12px;
+  width: 150px;
+}
+
+.setting-component-account-setting-container{
+  width: 90%;
+  height: 6vh;
+  border: 1px solid #454545;
+  border-radius: 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.setting-component-account-setting-container img{
+  width: 15px;
+}
+
+.setting-component-account-setting-container p{
+  font-size: 12px;
+  width: 150px;
+}
+
+.setting-component-right-side-panel-area{
+  width: 70vw;
+  height: 90vh;
+  border-radius: 10px;
+  background: rgba(47, 47, 47, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.setting-component-right-panel-profile-seting-container{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-setting-container-profile-avatar-and-cover-art-area{
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-component-user-avatar-pattern{
+  width: 100%;
+  height: 20vh;
+  border-radius: 10px 10px 0px 0px;
+  --s: 140px; 
+  --_g: #0000 52%, #170409 54% 57%, #0000 59%;
+  background: radial-gradient(farthest-side at -33.33% 50%, var(--_g)) 0
+      calc(var(--s) / 2),
+    radial-gradient(farthest-side at 50% 133.33%, var(--_g)) calc(var(--s) / 2)
+      0,
+    radial-gradient(farthest-side at 133.33% 50%, var(--_g)),
+    radial-gradient(farthest-side at 50% -33.33%, var(--_g)), #67917a;
+  background-size: calc(var(--s) / 4.667) var(--s),
+    var(--s) calc(var(--s) / 4.667);
+}
+
+.profile-component-user-avatar{
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  background-image: url("../assets/Cover/audio-1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 50px;
+  border-radius: 100px;
+}
+
+.profile-component-users-username-and-publicuserid{
+  width: 95%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.profile-component-users-username-and-publicuserid p{
+  font-size: 14px;
+}
+
+.profile-setting-container-changeable-datas-area{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-seting-component{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.chaneable-data-area-name-container{
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.chaneable-data-area-name-container label{
+  font-size: 12px;
+}
+
+.chaneable-data-area-name-container input{
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+}
+
+.changeable-data-area-bio-area{
+  width: 90%;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.changeable-data-area-bio-area label{
+  font-size: 12px;
+}
+
+.changeable-data-area-bio-area input{
+  width: 100%;
+  height: 10vh;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+}
+
+.changeable-data-area-location-area{
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.changeable-data-area-location-area label{
+  font-size: 12px;
+}
+
+.changeable-data-area-location-area input{
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+}
+
+.changeable-data-area-website-area{
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.changeable-data-area-website-area label{
+  font-size: 12px;
+}
+
+.changeable-data-area-website-area input{
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+}
+
+.changeable-data-area-instagram-area{
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.changeable-data-area-instagram-area label{
+  font-size: 12px;
+}
+
+.changeable-data-area-instagram-area input{
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+}
+
+.changeable-data-area-x-area{
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.changeable-data-area-x-area label{
+  font-size: 12px;
+}
+
+.changeable-data-area-x-area input{
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+}
+
+.changeable-data-area-linkedin-area{
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.changeable-data-area-linkedin-area label{
+  font-size: 12px;
+}
+
+.changeable-data-area-linkedin-area input{
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+}
+
+.changeable-data-area-buttons{
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.changeable-data-area-buttons .save-button{
+  width: 15vw;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 10px;
+  background-color: orange;
+  cursor: pointer;
+}
+
+.changeable-data-area-buttons .cancel-button{
+  width: 15vw;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 10px;
+  background-color: #222222;
+  color: white;
+  cursor: pointer;
+}
+
+.form-action-patterns-for-ux{
+  width: 5%;
+  height: 100%;
+  border-radius: 10px 0px 0px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #121212; /* Fallback for browsers that don't support gradients */
+  background: linear-gradient(
+    135deg,
+    #121212 25%,
+    #1a1a1a 25%,
+    #1a1a1a 50%,
+    #121212 50%,
+    #121212 75%,
+    #1a1a1a 75%,
+    #1a1a1a
+  );
+  background-size: 40px 40px;
+
+  /* Animation */
+  animation: move 4s linear infinite;
+}
+
+/* Setting Component Style End */
 
 /* Responsive Design Style Start */
 
