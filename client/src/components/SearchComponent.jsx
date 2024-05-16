@@ -7,13 +7,17 @@ import Instagram from "../assets/Social/Instagram.svg";
 import LinkedIn from "../assets/Social/Linkedin.svg";
 import X from "../assets/Social/X.svg";
 import Right from "../assets/Icons/Right.svg";
-import RandomOne from "../assets/Slides/random-1.svg"
+import Left from "../assets/Icons/Left.svg";
+import Invite from "../assets/Icons/Invite.svg";
+import RandomOne from "../assets/Slides/random-1.svg";
+import UserNotFound from "../assets/Slides/Virtual reality-cuate.svg";
 
 function SearchComponent() {
   const [searchUsername, setSearchUsername] = useState("");
   const [searchedUser, setSearchedUser] = useState(null);
   const [randomUser, setRandomUser] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
+  const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     fetchAllUsers();
@@ -52,7 +56,36 @@ function SearchComponent() {
   };
 
   const handleShowDetails = () => {
-    setShowDetails(true);
+    setShowDetails((prevState) => !prevState);
+  };
+
+  const handleInputChange = (event) => {
+    const input = event.target.value;
+    setSearchUsername(input);
+
+    if (input.trim() === "") {
+      setSearchedUser(null);
+      setSuggestions([]);
+    } else {
+      fetchSuggestions(input);
+    }
+  };
+
+  const handleSuggestionClick = (username) => {
+    setSearchUsername(username);
+  };
+
+  const fetchSuggestions = (input) => {
+    fetch(`http://localhost:3000/api/users/suggestions/${input}`)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Failed to fetch suggestions");
+        }
+      })
+      .then((data) => setSuggestions(data))
+      .catch((error) => console.error("Error fetching suggestions:", error));
   };
 
   return (
@@ -67,7 +100,7 @@ function SearchComponent() {
               id="search"
               placeholder="Search by username..."
               value={searchUsername}
-              onChange={(e) => setSearchUsername(e.target.value)}
+              onChange={handleInputChange}
             />
           </div>
           <div
@@ -103,11 +136,39 @@ function SearchComponent() {
                   className="show-the-details-button"
                   onClick={handleShowDetails}
                 >
-                  <img src={Right} alt="" />
+                  <img src={showDetails ? `${Left}` : `${Right}`} alt="" />
                 </div>
               </div>
+            ) : suggestions ? (
+              <div className="suggestions-content-area">
+                <p id="related-search">Related Users</p>
+                {suggestions.length > 0 ? (
+                  suggestions.map((suggestion, index) => (
+                    <div
+                      className="suggestion-with-username-area-container"
+                      key={index}
+                    >
+                      <p>{suggestion}</p>
+                      <p
+                        id="click-to-search"
+                        onClick={() => handleSuggestionClick(suggestion)}
+                      >
+                        Click to search
+                      </p>
+                    </div>
+                  ))
+                ) : (
+                  <div className="user-not-found-area">
+                    <img src={UserNotFound} alt="" />
+                    <div className="share-with-your-friend">
+                      <img src={Invite} alt="" />
+                      <p>Invite your Friends! 🎉</p>
+                    </div>
+                  </div>
+                )}
+              </div>
             ) : (
-              <p>No Data</p>
+              <p>No daaata</p>
             )}
           </div>
           {showDetails && searchedUser ? (
@@ -159,10 +220,10 @@ function SearchComponent() {
             </div>
           ) : (
             <div className="search-component-main-content-right-area">
-                <div className="random-health-tips">
-                    <img src={RandomOne} alt="" />
-                    <p>Hi</p>
-                </div>
+              <div className="random-health-tips">
+                <img src={RandomOne} alt="" />
+                <p>Hi</p>
+              </div>
             </div>
           )}
         </div>
