@@ -46,6 +46,19 @@ getRouter.get("/get/userid/:userId", async (req, res) => {
   }
 });
 
+getRouter.get('/suggestions/:input', async (req, res) => {
+  try {
+    const input = req.params.input.toLowerCase();
+    const suggestions = await User.find({ username: { $regex: `^${input}`, $options: 'i' } });
+    const usernames = suggestions.map(user => user.username);
+    res.json(usernames);
+  } catch (error) {
+    console.error("Error fetching suggestions:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
 getRouter.get("/get/email/:email", async (req, res) => {
   res.header({ "Access-Control-Allow-Origin": "*" });
   try {

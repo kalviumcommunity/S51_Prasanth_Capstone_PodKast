@@ -2808,6 +2808,88 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: lightgray;
 }
 
+.random-health-tips{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.suggestions-content-area{
+  width: 93%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.suggestions-content-area #related-search{
+  font-size: 12px;
+  color: lightgray;
+}
+
+.suggestion-with-username-area-container{
+  margin: 10px;
+  width: 45vw;
+  height: 10vh;
+  border: 1px solid #454545;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 8px;
+  background-color: #222222;
+}
+
+.suggestion-with-username-area-container p{
+  font-size: 12px;
+  width: 90px;
+}
+
+#click-to-search{
+  color: lightgray;
+  font-size: 10px;
+}
+
+#click-to-search:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.user-not-found-area{
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-not-found-area img{
+  width: 400px;
+}
+
+.share-with-your-friend{
+  width: 15vw;
+  height: 5vh;
+  border: 1px solid #454545;
+  background-color: #222222;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.share-with-your-friend img{
+  width: 15px;
+}
+
+.share-with-your-friend p{
+  font-size: 12px;
+}
+
 /* Search Component Style End */
 
 /* Responsive Design Style Start */
