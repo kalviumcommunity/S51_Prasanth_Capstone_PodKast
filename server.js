@@ -10,6 +10,7 @@ const postRouter = require("./routes/post.router");
 const authorizePostRouter = require("./routes/authorize.post.route");
 const uploadRouter = require("./routes/media.upload.routes");
 const queueRouter = require("./routes/queue.route");
+const settingsRouter = require("./routes/settings.routes");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -30,6 +31,7 @@ app.use('/api/media', postRouter);
 app.use('/api', authorizePostRouter);
 app.use('/api', uploadRouter);
 app.use('/api', queueRouter);
+app.use('/api', settingsRouter);
 app.use(cors());
 
 app.get("/", (req, res) => {
