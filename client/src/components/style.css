@@ -2894,7 +2894,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 /* Setting Component Style Start */
 
-.settings-component-main-content-area{
+.settings-component-main-content-area {
   width: 100%;
   height: 100%;
   display: flex;
@@ -2904,7 +2904,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.settings-component-left-side-panel-area{
+.settings-component-left-side-panel-area {
   width: 20vw;
   height: 90vh;
   border-radius: 10px;
@@ -2918,52 +2918,46 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.settings-component-profile-setting-container{
+.settings-component-profile-setting-container,
+.setting-component-account-setting-container {
   width: 90%;
   height: 6vh;
   border: 1px solid #454545;
   border-radius: 10px;
-  background-color: #222222;
   margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  background-color: #222222;
 }
 
-.settings-component-profile-setting-container img{
+.settings-component-profile-setting-container.active,
+.setting-component-account-setting-container.active {
+  border-color: #ffffff;
+  background-color: #333333;
+}
+
+.settings-component-profile-setting-container img {
   width: 10px;
 }
 
-.settings-component-profile-setting-container p{
+.settings-component-profile-setting-container p {
   font-size: 12px;
   width: 150px;
 }
 
-.setting-component-account-setting-container{
-  width: 90%;
-  height: 6vh;
-  border: 1px solid #454545;
-  border-radius: 10px;
-  margin: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-}
-
-.setting-component-account-setting-container img{
+.setting-component-account-setting-container img {
   width: 15px;
 }
 
-.setting-component-account-setting-container p{
+.setting-component-account-setting-container p {
   font-size: 12px;
   width: 150px;
 }
 
-.setting-component-right-side-panel-area{
+.setting-component-right-side-panel-area {
   width: 70vw;
   height: 90vh;
   border-radius: 10px;
@@ -2978,7 +2972,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   overflow-y: scroll;
 }
 
-.setting-component-right-panel-profile-seting-container{
+.setting-component-right-panel-profile-seting-container {
   width: 100%;
   height: max-content;
   display: flex;
@@ -2988,7 +2982,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.profile-setting-container-profile-avatar-and-cover-art-area{
+.profile-setting-container-profile-avatar-and-cover-art-area {
   width: 100%;
   height: 30vh;
   display: flex;
@@ -2997,11 +2991,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.profile-component-user-avatar-pattern{
+.profile-component-user-avatar-pattern {
   width: 100%;
   height: 20vh;
   border-radius: 10px 10px 0px 0px;
-  --s: 140px; 
+  --s: 140px;
   --_g: #0000 52%, #170409 54% 57%, #0000 59%;
   background: radial-gradient(farthest-side at -33.33% 50%, var(--_g)) 0
       calc(var(--s) / 2),
@@ -3013,7 +3007,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
     var(--s) calc(var(--s) / 4.667);
 }
 
-.profile-component-user-avatar{
+.profile-component-user-avatar {
   width: 150px;
   height: 150px;
   position: absolute;
@@ -3025,7 +3019,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   border-radius: 100px;
 }
 
-.profile-component-users-username-and-publicuserid{
+.profile-component-users-username-and-publicuserid {
   width: 95%;
   height: 10vh;
   display: flex;
@@ -3033,11 +3027,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-end;
 }
 
-.profile-component-users-username-and-publicuserid p{
+.profile-component-users-username-and-publicuserid p {
   font-size: 14px;
 }
 
-.profile-setting-container-changeable-datas-area{
+.profile-setting-container-changeable-datas-area {
   width: 100%;
   height: max-content;
   display: flex;
@@ -3045,7 +3039,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.profile-seting-component{
+.profile-seting-component {
   width: 100%;
   height: max-content;
   display: flex;
@@ -3055,7 +3049,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.chaneable-data-area-name-container{
+.chaneable-data-area-name-container {
   width: 90%;
   height: 8vh;
   display: flex;
@@ -3064,11 +3058,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.chaneable-data-area-name-container label{
+.chaneable-data-area-name-container label {
   font-size: 12px;
 }
 
-.chaneable-data-area-name-container input{
+.chaneable-data-area-name-container input {
   width: 100%;
   height: 5vh;
   border: 1px solid #454545;
@@ -3077,7 +3071,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.changeable-data-area-bio-area{
+.changeable-data-area-bio-area {
   width: 90%;
   height: 10vh;
   display: flex;
@@ -3086,11 +3080,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.changeable-data-area-bio-area label{
+.changeable-data-area-bio-area label {
   font-size: 12px;
 }
 
-.changeable-data-area-bio-area input{
+.changeable-data-area-bio-area input {
   width: 100%;
   height: 10vh;
   border: 1px solid #454545;
@@ -3099,7 +3093,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.changeable-data-area-location-area{
+.changeable-data-area-location-area {
   width: 90%;
   height: 8vh;
   display: flex;
@@ -3108,11 +3102,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.changeable-data-area-location-area label{
+.changeable-data-area-location-area label {
   font-size: 12px;
 }
 
-.changeable-data-area-location-area input{
+.changeable-data-area-location-area input {
   width: 100%;
   height: 5vh;
   border: 1px solid #454545;
@@ -3121,7 +3115,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.changeable-data-area-website-area{
+.changeable-data-area-website-area {
   width: 90%;
   height: 8vh;
   display: flex;
@@ -3130,11 +3124,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.changeable-data-area-website-area label{
+.changeable-data-area-website-area label {
   font-size: 12px;
 }
 
-.changeable-data-area-website-area input{
+.changeable-data-area-website-area input {
   width: 100%;
   height: 5vh;
   border: 1px solid #454545;
@@ -3143,7 +3137,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.changeable-data-area-instagram-area{
+.changeable-data-area-instagram-area {
   width: 90%;
   height: 8vh;
   display: flex;
@@ -3152,11 +3146,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.changeable-data-area-instagram-area label{
+.changeable-data-area-instagram-area label {
   font-size: 12px;
 }
 
-.changeable-data-area-instagram-area input{
+.changeable-data-area-instagram-area input {
   width: 100%;
   height: 5vh;
   border: 1px solid #454545;
@@ -3165,7 +3159,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.changeable-data-area-x-area{
+.changeable-data-area-x-area {
   width: 90%;
   height: 8vh;
   display: flex;
@@ -3174,11 +3168,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.changeable-data-area-x-area label{
+.changeable-data-area-x-area label {
   font-size: 12px;
 }
 
-.changeable-data-area-x-area input{
+.changeable-data-area-x-area input {
   width: 100%;
   height: 5vh;
   border: 1px solid #454545;
@@ -3187,7 +3181,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.changeable-data-area-linkedin-area{
+.changeable-data-area-linkedin-area {
   width: 90%;
   height: 8vh;
   display: flex;
@@ -3196,11 +3190,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.changeable-data-area-linkedin-area label{
+.changeable-data-area-linkedin-area label {
   font-size: 12px;
 }
 
-.changeable-data-area-linkedin-area input{
+.changeable-data-area-linkedin-area input {
   width: 100%;
   height: 5vh;
   border: 1px solid #454545;
@@ -3209,7 +3203,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.changeable-data-area-buttons{
+.changeable-data-area-buttons {
   width: 90%;
   height: 8vh;
   display: flex;
@@ -3217,7 +3211,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.changeable-data-area-buttons .save-button{
+.changeable-data-area-buttons .save-button {
   width: 15vw;
   height: 5vh;
   border: 1px solid #454545;
@@ -3226,7 +3220,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   cursor: pointer;
 }
 
-.changeable-data-area-buttons .cancel-button{
+.changeable-data-area-buttons .cancel-button {
   width: 15vw;
   height: 5vh;
   border: 1px solid #454545;
@@ -3236,7 +3230,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   cursor: pointer;
 }
 
-.form-action-patterns-for-ux{
+.form-action-patterns-for-ux {
   width: 5%;
   height: 100%;
   border-radius: 10px 0px 0px 10px;
@@ -3259,6 +3253,173 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   /* Animation */
   animation: move 4s linear infinite;
 }
+
+.setting-component-right-panel-account-setting-container{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.account-setting-container-header{
+  width: 100%;
+  height: 25vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --s: 60px;
+  --c1: #180a22;
+  --c2: #5b42f3;
+  --_g: radial-gradient(
+    25% 25% at 25% 25%,
+    var(--c1) 99%,
+    rgba(0, 0, 0, 0) 101%
+  );
+  background: var(--_g) var(--s) var(--s) / calc(2 * var(--s))
+      calc(2 * var(--s)),
+    var(--_g) 0 0 / calc(2 * var(--s)) calc(2 * var(--s)),
+    radial-gradient(50% 50%, var(--c2) 98%, rgba(0, 0, 0, 0)) 0 0 / var(--s)
+      var(--s),
+    repeating-conic-gradient(var(--c2) 0 50%, var(--c1) 0 100%)
+      calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);
+}
+
+.account-setting-container-content{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.account-setting-component{
+  width: 100%;
+  height: 62vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.account-data-area-email-container{
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.account-data-area-email-container label{
+  font-size: 12px;
+}
+
+.account-data-area-email-container input{
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+}
+
+.account-data-area-old-password-area{
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.account-data-area-old-password-area label{
+  font-size: 12px;
+}
+
+.account-data-area-old-password-area input{
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+}
+
+.account-data-area-password-area{
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.account-data-area-password-area label{
+  font-size: 12px;
+}
+
+.account-data-area-password-area input{
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+}
+
+.account-data-area-confirm-password-area{
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.account-data-area-confirm-password-area label{
+  font-size: 12px;
+}
+
+.account-data-area-confirm-password-area input{
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+}
+
+.account-data-area-buttons {
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.account-data-area-buttons .save-button {
+  width: 15vw;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 10px;
+  background-color: orange;
+  cursor: pointer;
+}
+
+.account-data-area-buttons .cancel-button {
+  width: 15vw;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 10px;
+  background-color: #222222;
+  color: white;
+  cursor: pointer;
+}
+
 
 /* Setting Component Style End */
 
