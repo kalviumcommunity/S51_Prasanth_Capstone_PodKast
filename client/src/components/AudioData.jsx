@@ -17,8 +17,8 @@ const defaultQueueData = [
 
 export const useQueueData = () => {
     const [queueData, setQueueData] = useState(defaultQueueData);
-    const [isLoading, setIsLoading] = useState(true); // To track loading state
-
+    const [isLoading, setIsLoading] = useState(true);
+    
     // Fetch queue data function
     const fetchQueueData = async (publicUserID, token) => {
         try {

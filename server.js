@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
+require("./cornjobs/cleanup")
 const { startDatabase, isConnected } = require("./config/db");
 const loginRouter = require("./routes/login.routes");
 const { getRouter } = require("./routes/routes");
@@ -11,6 +12,7 @@ const authorizePostRouter = require("./routes/authorize.post.route");
 const uploadRouter = require("./routes/media.upload.routes");
 const queueRouter = require("./routes/queue.route");
 const settingsRouter = require("./routes/settings.routes");
+const storyUploadRouter = require("./routes/stories.routes");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -30,6 +32,7 @@ app.use('/api/users', getRouter);
 app.use('/api/media', postRouter);
 app.use('/api', authorizePostRouter);
 app.use('/api', uploadRouter);
+app.use('/api', storyUploadRouter);
 app.use('/api', queueRouter);
 app.use('/api', settingsRouter);
 app.use(cors());

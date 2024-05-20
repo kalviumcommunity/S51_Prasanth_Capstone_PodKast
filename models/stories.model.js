@@ -1,40 +1,25 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const StorySchema = new mongoose.Schema({
-  user: {
+const storySchema = new mongoose.Schema({
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+    ref: 'User',
+    required: true
   },
-  media: {
+  imageUrl: {
     type: String,
-    default: "",
-    validate: {
-      validator: function (value) {
-        if (value === "") {
-          return true;
-        }
-        // Here, you might want to add specific checks for video and image URLs
-        // based on your application needs. For instance, checking file extensions or content types.
-        return true; // Return true if the value is a valid media URL
-      },
-      message: "Media must be a valid URL for an image or video.",
-    },
+    required: true
   },
   createdAt: {
     type: Date,
     default: Date.now,
-  },
-  expiry: {
-    type: Date,
-  },
+    expires: '24h' // TTL index to automatically delete documents after 24 hours
+  }
 });
 
-StorySchema.methods.isActive = function () {
-  const now = new Date();
-  return now < this.expiry;
-};
+// Ensure the TTL index is created on the createdAt field
+storySchema.index({ createdAt: 1 }, { expireAfterSeconds: 86400 });
 
-const Story = mongoose.model("stories", StorySchema);
+const Story = mongoose.model('Story', storySchema);
 
 module.exports = Story;
