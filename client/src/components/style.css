@@ -3692,6 +3692,9 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   .helper-post-podcsat-details-withhh {
     width: 60vw;
   }
+  .user-avatar-area {
+    width: 10vw;
+  }
   .play-button-of-that-audio-uploaded {
     width: 20vw;
   }
@@ -3733,6 +3736,70 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   }
   .helper-queue-two-buttons-area {
     width: 30vw;
+  }
+  .home-component-audio-player {
+    width: 90vw;
+  }
+  .search-component-main-content-area {
+    flex-direction: column;
+    height: 150vh;
+  }
+  .search-component-main-content-left-area {
+    width: 95vw;
+  }
+  .search-component-search-img {
+    display: none;
+  }
+  .suggestion-with-username-area-container {
+    width: 84vw;
+  }
+  .user-search-has-the-searched-word {
+    width: 90vw;
+  }
+  .user-avatar {
+    width: 60px;
+  }
+  .search-component-main-content-right-area {
+    width: 95vw;
+  }
+  .top-content-user-avatar {
+    width: 30vw;
+    height: 20vh;
+  }
+  .user-location {
+    width: 45vw;
+  }
+  .user-website {
+    width: 40vw;
+  }
+  .user-instagram {
+    width: 45vw;
+  }
+  .user-linkedin {
+    width: 40vw;
+  }
+  .user-x {
+    width: 45vw;
+  }
+  .user-publicUserID {
+    width: 40vw;
+  }
+  .settings-component-main-content-area {
+    flex-direction: column;
+  }
+  .settings-component-left-side-panel-area {
+    width: 95vw;
+    height: 18vh;
+  }
+  .setting-component-right-side-panel-area {
+    width: 95vw;
+  }
+  .share-with-your-friend {
+    width: 40vw;
+  }
+  .rss-reader-link-area {
+    width: 100%;
+    border: 1px solid;
   }
 }
 
