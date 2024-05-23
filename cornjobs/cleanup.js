@@ -2,7 +2,7 @@
 const cron = require('node-cron');
 const mongoose = require('mongoose');
 const axios = require('axios');
-const Story = require('./models/Story');
+const Story = require('../models/stories.model');
 require('dotenv').config();
 
 // Connect to MongoDB

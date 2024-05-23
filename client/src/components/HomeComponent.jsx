@@ -16,12 +16,14 @@ import Artists from "./Helpers/Artists";
 import Queue from "./Helpers/Queue";
 import AudioPopup from "./Helpers/AudioPopup";
 import { useQueueData } from "./AudioData";
+import StoryPopup from "./Helpers/StoryPopup";
 
 function HomeComponent() {
   const [activeSection, setActiveSection] = useState("artists");
   const [postsData, setPostsData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isAudioPopupVisible, setIsAudioPopupVisible] = useState(false);
+  const [isStoryPopupVisible, setIsStoryPopupVisible] = useState(false);
   const [userAvatar, setUserAvatar] = useState("");
   const [username, setUsername] = useState("");
   const [publicUserID, setPublicUserID] = useState("");
@@ -147,10 +149,13 @@ function HomeComponent() {
     }
   };
 
-  const togglePopup = () => {
-    setIsPopupVisible((prevShowPopup) => !prevShowPopup);
+  const togglePopup = (type) => {
+    if (type === "audio") {
+      setIsAudioPopupVisible((prev) => !prev);
+    } else if (type === "story") {
+      setIsStoryPopupVisible((prev) => !prev);
+    }
   };
-
   const handleAvatarClick = () => {
     navigate(`/user/profile/${username}`);
   };
@@ -163,7 +168,7 @@ function HomeComponent() {
     <>
       <div
         className={`home-component-with-navbar ${
-          isPopupVisible ? "blur-background" : ""
+          isAudioPopupVisible || isStoryPopupVisible ? "blur-background" : ""
         }`}
       >
         <InsideNavbar />
@@ -174,7 +179,7 @@ function HomeComponent() {
                 <img src={Story} alt="" />
                 <p>Launch</p>
               </div>
-              <div className="add-yours">
+              <div className="add-yours" onClick={() => togglePopup("story")} >
                 <img src={Add} alt="" />
                 <p>New Launch</p>
               </div>
@@ -199,7 +204,7 @@ function HomeComponent() {
                       />
                     </div>
                     <div className="home-component-audio-choose">
-                      <img src={Microphone} alt="" onClick={togglePopup} />
+                      <img src={Microphone} alt="" onClick={() => togglePopup("audio")} />
                     </div>
                     <div className="home-component-send-button">
                       <img src={Send} alt="" />
@@ -259,9 +264,14 @@ function HomeComponent() {
           </div>
         </div>
       </div>
-      {isPopupVisible && (
+      {isAudioPopupVisible && (
         <div className="navbar-component-popup-area">
-          <AudioPopup onClose={togglePopup} />
+          <AudioPopup onClose={() => togglePopup("audio")} />
+        </div>
+      )}
+      {isStoryPopupVisible && (
+        <div className="navbar-component-popup-area">
+          <StoryPopup onClose={() => togglePopup("story")} />
         </div>
       )}
     </>

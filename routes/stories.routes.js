@@ -1,4 +1,3 @@
-// routes/upload.js
 const express = require('express');
 const axios = require('axios');
 const fileUpload = require('express-fileupload');
@@ -30,7 +29,7 @@ storyUploadRouter.post('/upload/story', async (req, res) => {
       return res.status(400).json({ error: 'Missing required image file.' });
     }
 
-    const imageFile = req.files.image;
+    const imageFile = req.files.image; // Corrected key name
 
     // Get upload URL and authorization token
     const { uploadUrl, authorizationToken } = await getUploadUrl();
@@ -69,6 +68,31 @@ storyUploadRouter.post('/upload/story', async (req, res) => {
   } catch (error) {
     console.error('Error uploading image to Backblaze B2:', error);
     res.status(500).json({ error: error.message });
+  }
+});
+
+storyUploadRouter.post('/stories/:storyId/like', async (req, res) => {
+  try {
+    const story = await Story.findById(req.params.storyId);
+    if (!story) {
+      return res.status(404).json({ error: 'Story not found' });
+    }
+
+    story.isLiked = !story.isLiked;
+    await story.save();
+
+    res.json({ message: story.isLiked ? 'Story liked' : 'Story disliked' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to update like status' });
+  }
+});
+
+storyUploadRouter.get('/stories', async (req, res) => {
+  try {
+    const stories = await Story.find().sort({ createdAt: -1 });
+    res.json(stories);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch stories' });
   }
 });
 

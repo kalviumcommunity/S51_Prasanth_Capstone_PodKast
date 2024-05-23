@@ -3254,7 +3254,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   animation: move 4s linear infinite;
 }
 
-.setting-component-right-panel-account-setting-container{
+.setting-component-right-panel-account-setting-container {
   width: 100%;
   height: max-content;
   display: flex;
@@ -3264,7 +3264,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.account-setting-container-header{
+.account-setting-container-header {
   width: 100%;
   height: 25vh;
   display: flex;
@@ -3287,7 +3287,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
       calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);
 }
 
-.account-setting-container-content{
+.account-setting-container-content {
   width: 100%;
   height: max-content;
   display: flex;
@@ -3295,7 +3295,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: center;
 }
 
-.account-setting-component{
+.account-setting-component {
   width: 100%;
   height: 62vh;
   display: flex;
@@ -3305,7 +3305,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.account-data-area-email-container{
+.account-data-area-email-container {
   width: 90%;
   height: 8vh;
   display: flex;
@@ -3314,11 +3314,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.account-data-area-email-container label{
+.account-data-area-email-container label {
   font-size: 12px;
 }
 
-.account-data-area-email-container input{
+.account-data-area-email-container input {
   width: 100%;
   height: 5vh;
   border: 1px solid #454545;
@@ -3327,7 +3327,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.account-data-area-old-password-area{
+.account-data-area-old-password-area {
   width: 90%;
   height: 8vh;
   display: flex;
@@ -3336,11 +3336,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.account-data-area-old-password-area label{
+.account-data-area-old-password-area label {
   font-size: 12px;
 }
 
-.account-data-area-old-password-area input{
+.account-data-area-old-password-area input {
   width: 100%;
   height: 5vh;
   border: 1px solid #454545;
@@ -3349,7 +3349,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.account-data-area-password-area{
+.account-data-area-password-area {
   width: 90%;
   height: 8vh;
   display: flex;
@@ -3358,11 +3358,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.account-data-area-password-area label{
+.account-data-area-password-area label {
   font-size: 12px;
 }
 
-.account-data-area-password-area input{
+.account-data-area-password-area input {
   width: 100%;
   height: 5vh;
   border: 1px solid #454545;
@@ -3371,7 +3371,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   color: white;
 }
 
-.account-data-area-confirm-password-area{
+.account-data-area-confirm-password-area {
   width: 90%;
   height: 8vh;
   display: flex;
@@ -3380,11 +3380,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.account-data-area-confirm-password-area label{
+.account-data-area-confirm-password-area label {
   font-size: 12px;
 }
 
-.account-data-area-confirm-password-area input{
+.account-data-area-confirm-password-area input {
   width: 100%;
   height: 5vh;
   border: 1px solid #454545;
@@ -3420,8 +3420,62 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   cursor: pointer;
 }
 
-
 /* Setting Component Style End */
+
+/* Story Popup Component Style Start */
+
+.story-popup-component-content-area {
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.story-popup-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.story-popup-component-content-area form{
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.story-popup-component-content-area form input{
+  width: 100%;
+  height: 5vh;
+}
+
+.story-popup-component-content-area form button{
+  width: 100%;
+  height: 5vh;
+  border: none;
+  border-radius: 5px;
+  background-color: orange;
+  cursor: pointer;
+}
+
+.story-popup-content .close-button {
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #454545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+/* Story Popup Component Style End */
 
 /* Responsive Design Style Start */
 
