@@ -37,6 +37,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.1",
+    "node-cron": "^3.0.3",
     "podkast-audio-player": "^1.4.0",
     "uuid": "^9.0.1"
   },
