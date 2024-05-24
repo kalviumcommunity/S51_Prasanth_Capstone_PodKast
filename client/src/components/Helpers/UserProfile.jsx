@@ -36,53 +36,50 @@ function UserProfile() {
     <>
       {user ? (
         <div className="user-profile-component-content-area">
-          <div className="user-profile-component-first-content-area">
-            <div className="first-content-area-left-side-content">
-              <div className="first-content-area-left-side-user-avatar-name-username-no-of-posts">
-                <div className="first-content-area-left-side-user-avatar-name-username">
-                  <div className="first-content-area-left-side-user-avatar"></div>
-                  <div className="first-content-area-left-side-user-no-of-posts">
-                    <p>No.of Posts : {user.posts}</p>
-                  </div>
-                </div>
-                <div className="first-content-area-left-side-user-details">
-                  <h1>{user.name}</h1>
-                  <p>@{user.username}</p>
-                </div>
-              </div>
-              <div className="first-content-area-left-side-user-location-webite">
-                <div className="first-content-area-left-side-user-location">
-                  <img src={Location} alt="location-icon" />
-                  <p>Location</p>
-                </div>
-                <div className="first-content-area-left-side-user-website">
-                  <img src={Website} alt="location-icon" />
-                  <p>https://website.link/link</p>
-                </div>
-              </div>
-              <div className="first-content-area-left-side-user-bio">
-                <p>this is the area for users bio.</p>
-              </div>
+          <div className="user-profile-component-header-area">
+            <div className="header-area-pattern-format-area"></div>
+            <div className="header-area-user-profile-area" style={{ backgroundImage: `url(${user.avatar})` }}></div>
+            <div className="header-area-user-details-area">
+              <p>@ {username}</p>
+              <span>{user.publicUserID}</span>
             </div>
           </div>
-          <div className="user-profile-component-second-content-area"></div>
+          <div className="user-profile-component-main-content-area">
+            <div className="main-content-area-bio-area">
+              <label htmlFor="bio">Bio : </label>
+              <div className="bio-area-box-content">
+                <p>{user.publicProfile.bio}</p>
+              </div>
+            </div>
+            <div className="main-content-area-location-area">
+              <label htmlFor="location"> <img src={Location} alt="" /> Location :</label>
+              <p>{user.publicProfile.location}</p>
+            </div>
+            <div className="main-content-area-website-area">
+              <label htmlFor="website"> <img src={Website} alt="" /> Website :</label>
+              <div className="website-area-content-area">
+                <a href={user.publicProfile.website} target="_blank" rel="noreferrer">{user.publicProfile.website}</a>
+              </div>
+            </div>
+            <div className="main-content-area-instagram-area">
+              <label htmlFor="instagram"> <img src={Instagram} alt="" /> Instagram :</label>
+              <p>{user.publicProfile.socialMedia.instagram}</p>
+            </div>
+            <div className="main-content-area-linkedin-area">
+              <label htmlFor="instagram"> <img src={LinkedIn} alt="" /> Linkedin :</label>
+              <p>{user.publicProfile.socialMedia.instagram}</p>
+            </div>
+            <div className="main-content-area-x-area">
+              <label htmlFor="instagram"> <img src={X} alt="" /> Instagram :</label>
+              <p>{user.publicProfile.socialMedia.instagram}</p>
+            </div>
+          </div>
         </div>
       ) : (
-        <p>No posts available</p>
+        <div className="loading-spinner"></div>
       )}
     </>
   );
 }
 
 export default UserProfile;
-
-// {user ? (
-//     <>
-//       <h1>{user.username}'s Profile</h1>
-//       <p>Email: {user.email}</p>
-//       <p>Posts count: {user.posts.length}</p>
-//       <img src={user.avatar} alt={`${user.username}'s avatar`} />
-//     </>
-//   ) : (
-//     <p>Loading...</p>
-//   )}

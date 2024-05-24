@@ -2127,65 +2127,265 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 /* User Profile Component Style Start */
 
 .user-profile-component-content-area {
-  width: 100vw;
-  height: 100vh;
-  background-color: #222222;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  gap: 20px;
+  width: 100%;
+  height: 140vh;
+  background-color: #121212;
   color: white;
-}
-
-.user-profile-component-first-content-area {
-  width: 95vw;
-  height: 30vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+  overflow-y: scroll;
+}
+
+.user-profile-component-header-area {
+  width: 95%;
+  height: 50vh;
   border-radius: 10px;
   background: rgba(47, 47, 47, 0.6);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  color: white;
-}
-
-.first-content-area-left-side-content {
-  border: 1px solid white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40vw;
-  height: 100%;
 }
 
-.first-content-area-left-side-user-avatar-name-username-no-of-posts {
+.header-area-pattern-format-area {
+  width: 100%;
+  height: 35vh;
+  border-radius: 10px 10px 0px 0px;
+  --s: 140px; /* control the size */
+
+  --_g: #0000 52%, #170409 /* first color */ 54% 57%, #0000 59%;
+  background: radial-gradient(farthest-side at -33.33% 50%, var(--_g)) 0
+      calc(var(--s) / 2),
+    radial-gradient(farthest-side at 50% 133.33%, var(--_g)) calc(var(--s) / 2)
+      0,
+    radial-gradient(farthest-side at 133.33% 50%, var(--_g)),
+    radial-gradient(farthest-side at 50% -33.33%, var(--_g)), #67917a; /* second color */
+  background-size: calc(var(--s) / 4.667) var(--s),
+    var(--s) calc(var(--s) / 4.667);
+}
+
+.header-area-user-profile-area {
+  width: 250px;
+  height: 250px;
+  background-image: url("../assets/Cover/audio-1.jpg");
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  border-radius: 150px;
+  bottom: 30px;
+}
+
+.header-area-user-details-area {
+  width: 98%;
+  height: 15vh;
   display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.header-area-user-details-area span {
+  font-size: 14px;
+  color: lightgray;
+}
+
+.header-area-user-details-area p:hover {
+  text-decoration: underline;
+}
+
+.user-profile-component-main-content-area {
+  width: 95%;
+  height: 80vh;
+  background: rgba(47, 47, 47, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid white;
-  width: 30vw;
-  height: 100%;
+  overflow-y: scroll;
+  gap: 20px;
 }
 
-.first-content-area-left-side-user-avatar-name-username {
+.main-content-area-bio-area {
+  width: 90%;
+  height: 20vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  gap: 10px;
 }
 
-.first-content-area-left-side-user-avatar {
-  width: 150px;
-  height: 150px;
-  background-image: url("../assets/Cover/audio-1.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+.main-content-area-bio-area label{
+  font-size: 14px;
+  color: lightgray;
+}
+
+.bio-area-box-content {
+  width: 100%;
+  height: 15vh;
+  background-color: #121212;
+  border: 1px solid #454545;
   border-radius: 10px;
+}
+
+.bio-area-box-content p{
+  margin: 6px;
+  font-size: 14px;
+}
+
+.main-content-area-location-area {
+  width: 90%;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.main-content-area-location-area label img{
+  width: 10px;
+}
+
+.main-content-area-location-area label{
+  font-size: 14px;
+  color: lightgray;
+}
+
+.main-content-area-location-area p{
+  font-size: 14px;
+}
+
+.main-content-area-location-area p:hover {
+  text-decoration: underline;
+}
+
+.main-content-area-website-area {
+  width: 90%;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.main-content-area-website-area label{
+  font-size: 14px;
+  color: lightgray;
+}
+
+.main-content-area-website-area label img{
+  width: 10px;
+}
+
+.website-area-content-area {
+  width: 100%;
+  height: 10vh;
+  background-color: #121212;
+  border: 1px solid #454545;
+  border-radius: 10px;
+}
+
+.website-area-content-area a {
+  color: orange;
+  text-decoration: none;
+  margin: 10px;
+  font-size: 14px;
+}
+
+.website-area-content-area a:hover{
+  text-decoration: underline;
+}
+
+.main-content-area-instagram-area {
+  width: 90%;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.main-content-area-instagram-area label{
+  font-size: 14px;
+  color: lightgray;
+}
+
+.main-content-area-instagram-area label img{
+  width: 10px;
+}
+
+.main-content-area-instagram-area p{
+  font-size: 14px;
+}
+
+.main-content-area-instagram-area p:hover {
+  text-decoration: underline;
+}
+
+.main-content-area-linkedin-area {
+  width: 90%;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.main-content-area-linkedin-area label{
+  font-size: 14px;
+  color: lightgray;
+}
+
+.main-content-area-linkedin-area label img{
+  width: 10px;
+}
+
+.main-content-area-linkedin-area p{
+  font-size: 14px;
+}
+
+.main-content-area-linkedin-area p:hover {
+  text-decoration: underline;
+}
+
+.main-content-area-x-area {
+  width: 90%;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.main-content-area-x-area label{
+  font-size: 14px;
+  color: lightgray;
+}
+
+.main-content-area-x-area label img{
+  width: 10px;
+}
+
+.main-content-area-x-area p{
+  font-size: 14px;
+}
+
+.main-content-area-x-area p:hover {
+  text-decoration: underline;
 }
 
 /* User Profile Component Style End */
