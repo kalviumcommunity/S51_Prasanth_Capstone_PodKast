@@ -2224,7 +2224,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.main-content-area-bio-area label{
+.main-content-area-bio-area label {
   font-size: 14px;
   color: lightgray;
 }
@@ -2237,7 +2237,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   border-radius: 10px;
 }
 
-.bio-area-box-content p{
+.bio-area-box-content p {
   margin: 6px;
   font-size: 14px;
 }
@@ -2252,16 +2252,16 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.main-content-area-location-area label img{
+.main-content-area-location-area label img {
   width: 10px;
 }
 
-.main-content-area-location-area label{
+.main-content-area-location-area label {
   font-size: 14px;
   color: lightgray;
 }
 
-.main-content-area-location-area p{
+.main-content-area-location-area p {
   font-size: 14px;
 }
 
@@ -2279,12 +2279,12 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.main-content-area-website-area label{
+.main-content-area-website-area label {
   font-size: 14px;
   color: lightgray;
 }
 
-.main-content-area-website-area label img{
+.main-content-area-website-area label img {
   width: 10px;
 }
 
@@ -2303,7 +2303,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   font-size: 14px;
 }
 
-.website-area-content-area a:hover{
+.website-area-content-area a:hover {
   text-decoration: underline;
 }
 
@@ -2317,16 +2317,16 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.main-content-area-instagram-area label{
+.main-content-area-instagram-area label {
   font-size: 14px;
   color: lightgray;
 }
 
-.main-content-area-instagram-area label img{
+.main-content-area-instagram-area label img {
   width: 10px;
 }
 
-.main-content-area-instagram-area p{
+.main-content-area-instagram-area p {
   font-size: 14px;
 }
 
@@ -2344,16 +2344,16 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.main-content-area-linkedin-area label{
+.main-content-area-linkedin-area label {
   font-size: 14px;
   color: lightgray;
 }
 
-.main-content-area-linkedin-area label img{
+.main-content-area-linkedin-area label img {
   width: 10px;
 }
 
-.main-content-area-linkedin-area p{
+.main-content-area-linkedin-area p {
   font-size: 14px;
 }
 
@@ -2371,16 +2371,16 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.main-content-area-x-area label{
+.main-content-area-x-area label {
   font-size: 14px;
   color: lightgray;
 }
 
-.main-content-area-x-area label img{
+.main-content-area-x-area label img {
   width: 10px;
 }
 
-.main-content-area-x-area p{
+.main-content-area-x-area p {
   font-size: 14px;
 }
 
@@ -3641,7 +3641,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   align-items: flex-start;
 }
 
-.story-popup-component-content-area form{
+.story-popup-component-content-area form {
   width: 100%;
   height: 20vh;
   display: flex;
@@ -3651,12 +3651,12 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 10px;
 }
 
-.story-popup-component-content-area form input{
+.story-popup-component-content-area form input {
   width: 100%;
   height: 5vh;
 }
 
-.story-popup-component-content-area form button{
+.story-popup-component-content-area form button {
   width: 100%;
   height: 5vh;
   border: none;
@@ -3676,6 +3676,186 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 }
 
 /* Story Popup Component Style End */
+
+/* Game Component Style Start */
+
+.game-component-content-area {
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.game-component-content-area-top-featured-one {
+  width: 95%;
+  height: 20vh;
+  border-radius: 10px;
+  background: rgba(47, 47, 47, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.top-featured-one-image-and-details {
+  width: 30vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.image-and-details-area-game-image {
+  width: 12vw;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+.top-feature-featured-tag {
+  width: 10vw;
+  height: fit-content;
+  background-color: #008000;
+  border: 1px solid #454545;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-feature-featured-tag p {
+  font-size: 14px;
+}
+
+.game-component-content-area-main-content-part {
+  width: 95%;
+  height: 75vh;
+  border-radius: 10px;
+  background: rgba(47, 47, 47, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-content-part-left-side-panel {
+  width: 20vw;
+  height: 100%;
+  background-color: #121212;
+  border-right: 1px solid #454545;
+  border-radius: 10px 0px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.left-side-panel-search-area {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.left-side-panel-search-area input {
+  width: 95%;
+  height: 5vh;
+  background-color: transparent;
+  border: 1px solid #454545;
+  border-radius: 10px;
+  color: white;
+}
+
+.left-side-panel-search-area button {
+  width: 95%;
+  height: 3vh;
+  border-radius: 5px;
+  border: none;
+  background-color: orange;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.left-side-panel-all-games-area {
+  width: 95%;
+  height: 62vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  border-top: 1px solid #454545;
+}
+
+.left-side-panel-all-games-area ul {
+  list-style: none;
+}
+
+.left-side-panel-all-games-area ul li {
+  font-size: 14px;
+  margin: 10px;
+}
+
+.left-side-panel-all-games-area p {
+  font-size: 14px;
+  color: lightgray;
+}
+
+.main-content-part-right-panel-area {
+  width: 75vw;
+  height: 100%;
+  border-radius: 0px 10px 10px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.right-panel-area-patterns-area {
+  width: 100%;
+  height: 20vh;
+  --s: 60px;
+  --c1: #180a22;
+  --c2: #5b42f3;
+  --_g: radial-gradient(
+    25% 25% at 25% 25%,
+    var(--c1) 99%,
+    rgba(0, 0, 0, 0) 101%
+  );
+  background: var(--_g) var(--s) var(--s) / calc(2 * var(--s))
+      calc(2 * var(--s)),
+    var(--_g) 0 0 / calc(2 * var(--s)) calc(2 * var(--s)),
+    radial-gradient(50% 50%, var(--c2) 98%, rgba(0, 0, 0, 0)) 0 0 / var(--s)
+      var(--s),
+    repeating-conic-gradient(var(--c2) 0 50%, var(--c1) 0 100%)
+      calc(0.5 * var(--s)) 0 / calc(2 * var(--s)) var(--s);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-panel-area-all-games-area-list {
+  width: 100%;
+  height: 60vh;
+  border: 1px solid white;
+  overflow: scroll;
+}
+
+/* Game Component Style End */
 
 /* Responsive Design Style Start */
 
