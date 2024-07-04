@@ -20,6 +20,9 @@ PodKast is a sophisticated social media platform designed exclusively for podcas
 - **Cloud Integration**: Utilizes Firebase Storage for secure cloud storage of podcast audio files.
 - **Deployment**: Deployed on Render for backend services and Netlify Hosting for frontend deployment.
 
+## Deployed Link:
+[Link to Website](https://podkasts.netlify.app/)
+
 ## Installation
 
 1. Clone the repository:
