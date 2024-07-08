@@ -93,9 +93,13 @@ function LoginComponent({ popupClose }) {
     navigate("/register");
   };
 
-  const handleESC = () => {
-    popupClose();
+  const handleForgetPassword = () => {
+    navigate("/forgot-password");
   }
+
+  // const handleESC = () => {
+  //   popupClose();
+  // }
 
   return (
     <>
@@ -103,7 +107,7 @@ function LoginComponent({ popupClose }) {
         <div className="login-component-left-image-area"></div>
         <div className="login-component-right-form-area">
           <div className="login-component-close-popup-button">
-            <p onClick={handleESC}>Press (ESC) to Close. or Press this</p>
+            {/* <p onClick={handleESC}>Press (ESC) to Close. or Press this</p> */}
           </div>
           <div className="login-component-logo-area">
             <img src={Logo} alt="podkast-logo" />
@@ -156,7 +160,7 @@ function LoginComponent({ popupClose }) {
                 <label htmlFor="remember-me">Remember Me</label>
               </div>
               <div className="login-component-forget-password-button">
-                <p>Forget Password?</p>
+                <p onClick={handleForgetPassword}>Forget Password?</p>
               </div>
             </div>
             <div className="login-component-form-submit-button">

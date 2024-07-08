@@ -101,6 +101,8 @@ function Navbar() {
       };
 
       fetchUserAvatar();
+    } else {
+      setShowPopup(true);
     }
   }, [isLoggedIn]);
 
@@ -120,18 +122,18 @@ function Navbar() {
     setShowPopup((prevShowPopup) => !prevShowPopup);
   };
 
-  const closePopupOnEsc = (event) => {
-    if (event.keyCode === 27) {
-      setShowPopup(false);
-    }
-  };
+  // const closePopupOnEsc = (event) => {
+  //   if (event.keyCode === 27) {
+  //     setShowPopup(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener("keydown", closePopupOnEsc);
-    return () => {
-      window.removeEventListener("keydowan", closePopupOnEsc);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("keydown", closePopupOnEsc);
+  //   return () => {
+  //     window.removeEventListener("keydowan", closePopupOnEsc);
+  //   };
+  // }, []);
 
   const handleAvatarClick = () => {
     // Navigate to the user's profile page when the avatar is clicked

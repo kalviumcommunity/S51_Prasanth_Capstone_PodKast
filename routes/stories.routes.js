@@ -7,19 +7,25 @@ require('dotenv').config();
 
 const storyUploadRouter = express.Router();
 
+// Middleware configuration
 storyUploadRouter.use(fileUpload());
 
 const getUploadUrl = async () => {
-  const response = await axios.post(
-    `${process.env.API_URL}/b2api/v2/b2_get_upload_url`,
-    { bucketId: process.env.B2_BUCKET_ID },
-    {
-      headers: {
-        Authorization: `Basic ${Buffer.from(`${process.env.B2_APPLICATION_KEY_ID}:${process.env.B2_APPLICATION_KEY}`).toString('base64')}`,
-      },
-    }
-  );
-  return response.data;
+  try {
+    const response = await axios.post(
+      `${process.env.API_URL}/b2api/v2/b2_get_upload_url`,
+      { bucketId: process.env.B2_BUCKET_ID },
+      {
+        headers: {
+          Authorization: `Basic ${Buffer.from(`${process.env.B2_APPLICATION_KEY_ID}:${process.env.B2_APPLICATION_KEY}`).toString('base64')}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error getting upload URL:', error);
+    throw new Error('Failed to get upload URL');
+  }
 };
 
 storyUploadRouter.post('/upload/story', async (req, res) => {
@@ -29,7 +35,7 @@ storyUploadRouter.post('/upload/story', async (req, res) => {
       return res.status(400).json({ error: 'Missing required image file.' });
     }
 
-    const imageFile = req.files.image; // Corrected key name
+    const imageFile = req.files.image;
 
     // Get upload URL and authorization token
     const { uploadUrl, authorizationToken } = await getUploadUrl();
@@ -56,18 +62,15 @@ storyUploadRouter.post('/upload/story', async (req, res) => {
 
     const imageURL = response.data.fileUrl;
 
-    // Calculate the expiration time (24 hours from now)
-    const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
-
     // Save the story to the database
-    const newStory = new Story({ imageURL, expiresAt });
+    const newStory = new Story({ userId, imageUrl: imageURL });
     await newStory.save();
 
     // Send the image URL in the response
     res.json({ imageURL });
   } catch (error) {
     console.error('Error uploading image to Backblaze B2:', error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
@@ -83,6 +86,7 @@ storyUploadRouter.post('/stories/:storyId/like', async (req, res) => {
 
     res.json({ message: story.isLiked ? 'Story liked' : 'Story disliked' });
   } catch (error) {
+    console.error('Error updating like status:', error);
     res.status(500).json({ error: 'Failed to update like status' });
   }
 });
@@ -92,6 +96,7 @@ storyUploadRouter.get('/stories', async (req, res) => {
     const stories = await Story.find().sort({ createdAt: -1 });
     res.json(stories);
   } catch (error) {
+    console.error('Error fetching stories:', error);
     res.status(500).json({ error: 'Failed to fetch stories' });
   }
 });

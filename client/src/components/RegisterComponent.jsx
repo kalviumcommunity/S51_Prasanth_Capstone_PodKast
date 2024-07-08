@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
@@ -7,6 +7,7 @@ import { createUserWithEmailAndPassword } from "./firebase";
 import axios from "axios";
 import md5 from "md5";
 import { AuthContext } from "./AuthContext";
+import { jwtDecode } from "jwt-decode";
 
 import Back from "../assets/Icons/Back.svg";
 import Register from "../assets/Icons/Register.svg";
@@ -47,6 +48,22 @@ function RegisterComponent() {
   });
   const { setIsLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        if (decodedToken.exp * 1000 > Date.now()) {
+          // Token is valid, close the popup and set isLoggedIn to true
+          setIsLoggedIn(true);
+          navigate("/");
+        }
+      } catch (error) {
+        localStorage.removeItem("token");
+      }
+    }
+  }, [setIsLoggedIn, navigate]);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);

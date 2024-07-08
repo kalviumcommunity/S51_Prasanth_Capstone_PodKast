@@ -4,6 +4,8 @@ import Home from "./components/Home";
 import RegisterComponent from "./components/RegisterComponent";
 import { AuthContext } from "./components/AuthContext";
 import UserProfile from "./components/Helpers/UserProfile";
+import ForgetPasswordComponent from "./components/ForgetPasswordComponent";
+import ResetPasswordComponent from "./components/ResetPasswordComponent";
 
 function AllRouter() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -17,6 +19,8 @@ function AllRouter() {
         path="/register"
         element={isLoggedIn ? <Navigate to="/" /> : <RegisterComponent />}
       />
+      <Route path="/forgot-password" element={<ForgetPasswordComponent/>} />
+      <Route path="/reset-password/:token" element={<ResetPasswordComponent/>} />
     </Routes>
   );
 }
