@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
+import {jwtDecode} from "jwt-decode"; // Correct import statement
 
 const StoryPopup = ({ onClose }) => {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setUserId(decodedToken.userId); // Assuming 'userId' is stored in the token
+    } else {
+      toast.error("Token not found. Please login again.");
+    }
+  }, []);
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
@@ -23,8 +36,13 @@ const StoryPopup = ({ onClose }) => {
     try {
       const formData = new FormData();
       formData.append("image", image);
+      formData.append("userId", userId); // Assuming userId is correctly fetched from decoded token
 
       const token = localStorage.getItem("token");
+
+      if (!token) {
+        throw new Error("Token not found. Please login again.");
+      }
 
       const response = await axios.post(
         "http://localhost:3000/api/upload/story",
@@ -55,7 +73,7 @@ const StoryPopup = ({ onClose }) => {
     <div className="story-popup-component-content-area">
       <div className="story-popup-content">
         <h2>Upload Story</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <input type="file" accept="image/*" onChange={handleImageChange} />
           <button type="submit" disabled={loading}>
             {loading ? "Uploading..." : "Upload"}

@@ -25,19 +25,19 @@ function GameComponent() {
                     <div className="left-side-panel-all-games-area">
                         <p>All Games</p>
                         <ul>
-                            <li>Game one</li>
-                            <li>Game one</li>
-                            <li>Game one</li>
-                            <li>Game one</li>
-                            <li>Game one</li>
-                            <li>Game one</li>
-                            <li>Game one</li>
-                            <li>Game one</li>
-                            <li>Game one</li>
-                            <li>Game one</li>
-                            <li>Game one</li>
-                            <li>Game one</li>
-                            <li>Game one</li>
+                            <li>Game One</li>
+                            <li>Game Two</li>
+                            <li>Game Three</li>
+                            <li>Game Four</li>
+                            <li>Game Five</li>
+                            <li>Game Six</li>
+                            <li>Game Seven</li>
+                            <li>Game Eight</li>
+                            <li>Game Nine</li>
+                            <li>Game Ten</li>
+                            <li>Game Eleven</li>
+                            <li>Game Twele</li>
+                            <li>Game Thirty</li>
                         </ul>
                     </div>
                 </div>

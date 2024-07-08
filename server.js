@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const fileUpload = require('express-fileupload');
 require("dotenv").config();
 require("./cornjobs/cleanup")
 const { startDatabase, isConnected } = require("./config/db");
@@ -13,6 +14,7 @@ const uploadRouter = require("./routes/media.upload.routes");
 const queueRouter = require("./routes/queue.route");
 const settingsRouter = require("./routes/settings.routes");
 const storyUploadRouter = require("./routes/stories.routes");
+const resetRouter = require("./routes/forgetpassword.routes");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -26,6 +28,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(fileUpload())
 app.use('/api', loginRouter);
 app.use('/api', registerRouter);
 app.use('/api/users', getRouter);
@@ -35,6 +38,7 @@ app.use('/api', uploadRouter);
 app.use('/api', storyUploadRouter);
 app.use('/api', queueRouter);
 app.use('/api', settingsRouter);
+app.use('/api/auth', resetRouter);
 app.use(cors());
 
 app.get("/", (req, res) => {
