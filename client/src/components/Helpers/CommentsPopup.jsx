@@ -13,7 +13,9 @@ function CommentsPopup({ post, onClose }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [publicUserID, setPublicUserID] = useState("");
-  const [isLiked, setIsLiked] = useState(false); // Initialize isLiked state
+  const [isLiked, setIsLiked] = useState(false);
+  const [editingComment, setEditingComment] = useState(null);
+  const [editContent, setEditContent] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -43,7 +45,7 @@ function CommentsPopup({ post, onClose }) {
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
-      toast.error("Failed to fetch user data"); // Notify user of error
+      toast.error("Failed to fetch user data");
     }
   };
 
@@ -169,6 +171,45 @@ function CommentsPopup({ post, onClose }) {
       comments.some((comment) => comment.likedBy.includes(publicUserID))
     );
   }, [comments, publicUserID]);
+
+  const handleEditComment = (comment) => {
+    setEditingComment(comment.commentID);
+    setEditContent(comment.content);
+  };
+
+  const handleSaveEdit = async (commentID) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/media/post/comment/edit/${commentID}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({
+            content: editContent,
+            publicUserID: publicUserID,
+          }),
+        }
+      );
+      if (response.ok) {
+        setEditingComment(null);
+        setEditContent("");
+        fetchComments();
+      } else {
+        console.error("Failed to edit comment:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error editing comment:", error);
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setEditingComment(null);
+    setEditContent("");
+  };
+
   return (
     <>
       <div className="comments-left-right-area">
@@ -211,16 +252,32 @@ function CommentsPopup({ post, onClose }) {
                   </div>
                 </div>
                 <div className="gap-provider-two"></div>
-                <div className="delete-icon">
-                  <img
-                    src={Delete}
-                    alt="delete-icon"
-                    onClick={() => handleDeleteComment(comment._id)}
-                  />
-                </div>
+                {comment.userData.publicUserID === publicUserID && (
+                  <div className="delete-icon">
+                    <img
+                      src={Delete}
+                      alt="delete-icon"
+                      onClick={() => handleDeleteComment(comment._id)}
+                    />
+                  </div>
+                )}
               </div>
               <div className="center-area-comments-content">
-                <p>{comment.content}</p>
+                {editingComment === comment.commentID ? (
+                  <div className="comments-edit-option-area">
+                    <input
+                      type="text"
+                      value={editContent}
+                      onChange={(e) => setEditContent(e.target.value)}
+                    />
+                    <button onClick={() => handleSaveEdit(comment.commentID)}>
+                      Save
+                    </button>
+                    <button className="comment-cancel" onClick={handleCancelEdit}>Cancel</button>
+                  </div>
+                ) : (
+                  <p>{comment.content}</p>
+                )}
               </div>
               <div className="bottom-area-comments-content">
                 <div className="like-comment">
@@ -231,13 +288,16 @@ function CommentsPopup({ post, onClose }) {
                       handleLikeComment(comment.commentID, isLiked);
                     }}
                   />
-
                   <p>{comment.likes} Like</p>
                 </div>
-                <div className="edit-comment">
-                  <img src={Edit} alt="" />
-                  <p>Edit</p>
-                </div>
+                {comment.userData.publicUserID === publicUserID && (
+                  <div className="edit-comment" onClick={() => handleEditComment(comment)}>
+                    <img
+                      src={Edit}
+                      alt=""/>
+                    <p>Edit</p>
+                  </div>
+                )}
               </div>
             </div>
           ))}

@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 import Like from "./assets/Heart.svg";
 import DisLike from "./assets/Heart-Full.svg";
+import Group from "./assets/group.svg"
 
 function Stories() {
   const [stories, setStories] = useState([]);
@@ -59,6 +60,21 @@ function Stories() {
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+
+  if (stories.length === 0) {
+    return(
+      <>
+      <div className="helpers-stories-area-if-there-is-no-launch">
+        <img src={Group} alt="" />
+        <div className="helpers-stories-area-if-there-is-no-launch-heading">
+          <h1>Launch</h1>
+          <p>Launch is a feature where you can see the people&apos;s new post or podcast updates here.</p>
+          <button>Add Your&apos;s Now</button>
+        </div>
+      </div>
+      </>
+    );
   }
 
   return (
