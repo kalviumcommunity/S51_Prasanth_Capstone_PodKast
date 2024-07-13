@@ -214,7 +214,7 @@ postRouter.delete("/post/comment/:commentID", async (req, res) => {
     const commentID = req.params.commentID;
 
     // Find the comment by commentId and delete it
-    const deletedComment = await Comment.findOneAndDelete({ _id : commentID });
+    const deletedComment = await Comment.findOneAndDelete({ _id: commentID });
 
     if (!deletedComment) {
       return res.status(404).json({ error: "Comment not found" });
@@ -233,45 +233,91 @@ postRouter.delete("/post/comment/:commentID", async (req, res) => {
   }
 });
 
-postRouter.patch("/post/comment/like/:commentID/:publicUserID", async (req, res) => {
-  const { commentID, publicUserID } = req.params;
+postRouter.patch(
+  "/post/comment/like/:commentID/:publicUserID",
+  async (req, res) => {
+    const { commentID, publicUserID } = req.params;
 
-  try {
-    // Find the user by their publicUserID
-    const user = await User.findOne({ publicUserID });
+    try {
+      // Find the user by their publicUserID
+      const user = await User.findOne({ publicUserID });
 
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      const comment = await Comment.findOne({ commentID });
+
+      if (!comment) {
+        return res.status(404).json({ error: "Comment not found" });
+      }
+
+      // Check if the user has already liked the post
+      if (comment.likedBy.includes(user._id)) {
+        return res
+          .status(400)
+          .json({ error: "User has already liked the comment" });
+      }
+
+      // Add the user's ID to the likedBy array and increment likes
+      comment.likedBy.push(user._id);
+      comment.likes += 1;
+
+      // Save the updated post
+      await comment.save();
+
+      res.json({ message: "Liked the Comment", likes: comment.likes });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
     }
-
-    const comment = await Comment.findOne({ commentID });
-
-    if (!comment) {
-      return res.status(404).json({ error: "Comment not found" });
-    }
-
-    // Check if the user has already liked the post
-    if (comment.likedBy.includes(user._id)) {
-      return res.status(400).json({ error: "User has already liked the comment" });
-    }
-
-    // Add the user's ID to the likedBy array and increment likes
-    comment.likedBy.push(user._id);
-    comment.likes += 1;
-
-    // Save the updated post
-    await comment.save();
-
-    res.json({ message: "Liked the Comment", likes: comment.likes });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
   }
-});
+);
 
-postRouter.patch("/post/comment/dislike/:commentID/:publicUserID", async (req, res) => {
-  const { commentID, publicUserID } = req.params;
+postRouter.patch(
+  "/post/comment/dislike/:commentID/:publicUserID",
+  async (req, res) => {
+    const { commentID, publicUserID } = req.params;
 
+    try {
+      // Find the user by their publicUserID
+      const user = await User.findOne({ publicUserID });
+
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      const comment = await Comment.findOne({ commentID });
+
+      if (!comment) {
+        return res.status(404).json({ error: "Comment not found" });
+      }
+
+      // Check if the user has not liked the post
+      if (!comment.likedBy.includes(user._id)) {
+        return res
+          .status(400)
+          .json({ error: "User has not liked the Comment" });
+      }
+
+      // Remove the user's ID from the likedBy array and decrement likes
+      comment.likedBy.pull(user._id);
+      comment.likes -= 1;
+
+      // Save the updated post
+      await comment.save();
+
+      res.json({ message: "Unliked the Comment", likes: comment.likes });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+);
+
+postRouter.patch("/post/comment/edit/:commentID", async (req, res) => {
   try {
+    const { commentID } = req.params;
+    const { content, publicUserID } = req.body;
+
     // Find the user by their publicUserID
     const user = await User.findOne({ publicUserID });
 
@@ -279,27 +325,33 @@ postRouter.patch("/post/comment/dislike/:commentID/:publicUserID", async (req, r
       return res.status(404).json({ error: "User not found" });
     }
 
+    // Find the comment by commentID
     const comment = await Comment.findOne({ commentID });
 
     if (!comment) {
       return res.status(404).json({ error: "Comment not found" });
     }
 
-    // Check if the user has not liked the post
-    if (!comment.likedBy.includes(user._id)) {
-      return res.status(400).json({ error: "User has not liked the Comment" });
+    // Check if the user is the author of the comment
+    if (comment.user.toString() !== user._id.toString()) {
+      return res
+        .status(403)
+        .json({ error: "User not authorized to edit this comment" });
     }
 
-    // Remove the user's ID from the likedBy array and decrement likes
-    comment.likedBy.pull(user._id);
-    comment.likes -= 1;
+    // Update the comment's content
+    comment.content = content;
 
-    // Save the updated post
-    await comment.save();
+    // Save the updated comment
+    const updatedComment = await comment.save();
 
-    res.json({ message: "Unliked the Comment", likes: comment.likes });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.json({
+      message: "Comment edited successfully",
+      comment: updatedComment,
+    });
+  } catch (err) {
+    console.error("Error editing comment:", err);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
