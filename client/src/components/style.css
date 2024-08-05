@@ -1228,7 +1228,6 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 .home-component-center-post-area {
   width: 43vw;
   height: 90vh;
-  overflow-y: auto;
   border-radius: 10px;
   background: rgba(47, 47, 47, 0.6);
   backdrop-filter: blur(20px);
@@ -1342,13 +1341,14 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 
 .home-component-posts-show-area {
   width: 100%;
-  height: 80vh;
+  height: 90%;
   overflow: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 10px;
+  margin: 10px;
 }
 
 .home-component-artists-suggestions {
@@ -1558,10 +1558,11 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 .lot-of-post-content-area {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  max-height: max-content;
+  height: max-content;
   width: 100%;
+  gap: 10px;
 }
 
 .helper-post-content-area {
@@ -2486,6 +2487,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   background-color: transparent;
   color: white;
   border: 1px solid lightgray;
+  padding: 10px;
 }
 
 .add-your-comments-area img {
@@ -3091,12 +3093,16 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 }
 
 .random-health-tips {
-  width: 100%;
-  height: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.random-health-tips p{
+  text-align: center;
+  font-size: 16px;
 }
 
 .suggestions-content-area {
@@ -3798,7 +3804,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 }
 
 .top-featured-one-image-and-details {
-  width: 30vw;
+  width: 50vw;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -3806,18 +3812,22 @@ home-component-navbar-for-account-notification-and-others.scrolled {
   gap: 20px;
 }
 
+.top-featured-one-details p{
+  font-size: 14px;
+}
+
 .image-and-details-area-game-image {
-  width: 12vw;
-  height: 100%;
+  width: 30vw;
+  height: 90%;
   border-radius: 10px;
-  border: 1px solid white;
+  background-size: cover;
+  background-position: center;
 }
 
 .top-feature-featured-tag {
   width: 10vw;
   height: fit-content;
   background-color: #008000;
-  border: 1px solid #454545;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -3825,7 +3835,7 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 }
 
 .top-feature-featured-tag p {
-  font-size: 14px;
+  font-size: 14 px;
 }
 
 .game-component-content-area-main-content-part {
@@ -3946,8 +3956,62 @@ home-component-navbar-for-account-notification-and-others.scrolled {
 .right-panel-area-all-games-area-list {
   width: 100%;
   height: 60vh;
-  border: 1px solid white;
   overflow: scroll;
+  overflow-x: hidden;
+}
+
+.game-details {
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  overflow-x: hidden;
+}
+
+.game-details img{
+  width: 90%;
+  border-radius: 10px;
+}
+
+.game-details p{
+  width: 90%;
+}
+
+.game-details h2{
+  width: 90%;
+}
+
+.play-now-game-details-button {
+  width: 30vh;
+  height: 5vh;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background-color: orange;
+  cursor: pointer;
+}
+
+.right-panel-no-game-selected-area{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.right-panel-no-game-selected-area img{
+  width: 30%;
+  border-radius: 10px;
+}
+
+.right-panel-no-game-selected-area p{
+  font-size: 14px;
 }
 
 /* Game Component Style End */

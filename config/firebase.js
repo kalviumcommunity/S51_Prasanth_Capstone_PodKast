@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-require('dotenv').config()
+const { initializeApp } = require("firebase/app");
+const { getStorage } = require("firebase/storage");
+require('dotenv').config();
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -14,5 +15,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
+const storage = getStorage(firebaseApp);
 
-export default firebaseApp;
+module.exports = { storage };

@@ -1,60 +1,51 @@
 const express = require("express");
-const { v4: uuidv4 } = require("uuid"); // Import the uuid package and destructure v4 (UUID version 4)
+const { v4: uuidv4 } = require("uuid");
 const validatePost = require("../validators/post.validator");
 const Comment = require("../models/comments.model");
 const Post = require("../models/post.model");
 const User = require("../models/users.model");
+require("dotenv").config();
 
 const postRouter = express.Router();
 
-// POST route to create a new post
-postRouter.post("/post", async (req, res) => {
+
+// POST route to create a new post with file upload
+postRouter.post('/post', async (req, res) => {
   try {
-    // Validate the request body using your Joi validation function
-    const { error, value } = validatePost(req.body);
-    if (error) {
-      // Return a 400 Bad Request response if validation fails
-      return res.status(400).json({ error: error.details });
+    console.log('Request body:', req.body);
+    const { publicUserID, title, content, artists, audiosrc, coverpic } = req.body;
+
+    // Validate required fields
+    if (!publicUserID || !title || !audiosrc || !coverpic || !content || !artists) {
+      return res.status(400).json({ error: 'Missing required fields' });
     }
+
     // Find the user by publicUserID
-    const user = await User.findOne({ publicUserID: value.publicUserID });
-
+    const user = await User.findOne({ publicUserID });
     if (!user) {
-      // Return a 404 Not Found response if the user does not exist
-      return res.status(404).json({ error: "User not found" });
+      return res.status(404).json({ error: 'User not found' });
     }
 
-    // Ensure the postID is unique before creating a new post
-    const existingPost = await Post.findOne({ postID: value.postID });
-    if (existingPost) {
-      return res.status(400).json({ error: "postID must be unique" });
-    }
-
-    // Generate a UUID for the new post
-    const newPostID = uuidv4();
-
-    // Create a new post using the validated data
+    // Create a new post with podcast details
     const newPost = new Post({
-      ...value,
-      user: user._id, // Use the user's _id (ObjectId) in the post
-      postID: newPostID, // Set the generated UUID as the postID
+      content,
+      user: user._id,
+      postID: uuidv4(),
+      podcast: {
+        title,
+        audiosrc,
+        artists,
+        coverpic,
+      },
     });
 
     // Save the post to the database
-    const savedPost = await newPost.save();
+    await newPost.save();
 
-    // Associate the post with the user
-    user.posts.push(savedPost._id);
-    await user.save();
-
-    // Return a 201 Created response with the saved post document
-    res
-      .status(201)
-      .json({ message: "Post Created Successfully", post: savedPost });
-  } catch (err) {
-    // Handle any other errors (e.g., database errors) and return a 500 Internal Server Error response
-    console.error("Error creating post:", err);
-    res.status(500).json({ error: err.message });
+    res.status(201).json({ message: 'Podcast created successfully', post: newPost });
+  } catch (error) {
+    console.error('Error creating post:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 
