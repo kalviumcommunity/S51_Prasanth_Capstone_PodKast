@@ -9,7 +9,7 @@ import X from "../assets/Social/X.svg";
 import Right from "../assets/Icons/Right.svg";
 import Left from "../assets/Icons/Left.svg";
 import Invite from "../assets/Icons/Invite.svg";
-import RandomOne from "../assets/Slides/random-1.svg";
+import RandomOne from "../assets/Slides/User flow-cuate.svg";
 import UserNotFound from "../assets/Slides/Virtual reality-cuate.svg";
 
 function SearchComponent() {
@@ -168,7 +168,7 @@ function SearchComponent() {
                 )}
               </div>
             ) : (
-              <p>No daaata</p>
+              <p>No data</p>
             )}
           </div>
           {showDetails && searchedUser ? (
@@ -222,7 +222,7 @@ function SearchComponent() {
             <div className="search-component-main-content-right-area">
               <div className="random-health-tips">
                 <img src={RandomOne} alt="" />
-                <p>Hi</p>
+                <p>Post your Podcast and get featured on the right side of the Promotion Tab</p>
               </div>
             </div>
           )}

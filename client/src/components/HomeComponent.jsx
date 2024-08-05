@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import AudioPlayer from "podkast-audio-player";
@@ -179,7 +179,7 @@ function HomeComponent() {
                 <img src={Story} alt="" />
                 <p>Launch</p>
               </div>
-              <div className="add-yours" onClick={() => togglePopup("story")} >
+              <div className="add-yours" onClick={() => togglePopup("story")}>
                 <img src={Add} alt="" />
                 <p>New Launch</p>
               </div>
@@ -201,10 +201,15 @@ function HomeComponent() {
                         type="text"
                         name="posttext"
                         placeholder="Write something here..."
+                        disabled
                       />
                     </div>
                     <div className="home-component-audio-choose">
-                      <img src={Microphone} alt="" onClick={() => togglePopup("audio")} />
+                      <img
+                        src={Microphone}
+                        alt=""
+                        onClick={() => togglePopup("audio")}
+                      />
                     </div>
                     <div className="home-component-send-button">
                       <img src={Send} alt="" />
